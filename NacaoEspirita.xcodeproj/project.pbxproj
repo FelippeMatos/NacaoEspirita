@@ -59,6 +59,17 @@
 		5E86CA57237C15DA00A0B06E /* PDFView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA56237C15DA00A0B06E /* PDFView+Extension.swift */; };
 		5E86CA59237C166D00A0B06E /* PDFView+ScaleFactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA58237C166D00A0B06E /* PDFView+ScaleFactor.swift */; };
 		5E86CA5B237C16B800A0B06E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA5A237C16B800A0B06E /* UIView+Extension.swift */; };
+		5E86CA6C237D875200A0B06E /* PDFViewGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA6B237D875200A0B06E /* PDFViewGestureRecognizer.swift */; };
+		5E86CA76237D995F00A0B06E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA70237D995F00A0B06E /* SearchViewController.swift */; };
+		5E86CA77237D995F00A0B06E /* OutlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA71237D995F00A0B06E /* OutlineCell.swift */; };
+		5E86CA78237D995F00A0B06E /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA72237D995F00A0B06E /* AppearanceViewController.swift */; };
+		5E86CA79237D995F00A0B06E /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA73237D995F00A0B06E /* BookmarkViewController.swift */; };
+		5E86CA7A237D995F00A0B06E /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA74237D995F00A0B06E /* OutlineViewController.swift */; };
+		5E86CA7B237D995F00A0B06E /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA75237D995F00A0B06E /* SearchResultsCell.swift */; };
+		5E86CA7E237D99B900A0B06E /* ThumbnailGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA7C237D99B900A0B06E /* ThumbnailGridViewController.swift */; };
+		5E86CA7F237D99B900A0B06E /* ThumbnailGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA7D237D99B900A0B06E /* ThumbnailGridCell.swift */; };
+		5E86CAF9237DAE9100A0B06E /* ThumbnailGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E86CAF7237DAE9100A0B06E /* ThumbnailGridCell.xib */; };
+		5E86CAFA237DAE9100A0B06E /* SearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E86CAF8237DAE9100A0B06E /* SearchResultsCell.xib */; };
 		5EA375872354B6080026E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA375862354B6080026E8E5 /* AppDelegate.swift */; };
 		5EA3758C2354B6080026E8E5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3758A2354B6080026E8E5 /* Login.storyboard */; };
 		5EA3758E2354B6110026E8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3758D2354B6110026E8E5 /* Assets.xcassets */; };
@@ -152,11 +163,22 @@
 		5E86CA42237599A700A0B06E /* MidiaBookDisplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaBookDisplayProtocol.swift; sourceTree = "<group>"; };
 		5E86CA44237599D600A0B06E /* MidiaBookDisplayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaBookDisplayRouter.swift; sourceTree = "<group>"; };
 		5E86CA4623759A5D00A0B06E /* book-livro-dos-espiritos.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "book-livro-dos-espiritos.pdf"; sourceTree = "<group>"; };
-		5E86CA482375BE8D00A0B06E /* OutlineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineTableViewController.swift; sourceTree = "<group>"; };
+		5E86CA482375BE8D00A0B06E /* OutlineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OutlineTableViewController.swift; path = ../OutlineTableViewController.swift; sourceTree = "<group>"; };
 		5E86CA4A237C14B500A0B06E /* PDFView+Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFView+Zoom.swift"; sourceTree = "<group>"; };
 		5E86CA56237C15DA00A0B06E /* PDFView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDFView+Extension.swift"; sourceTree = "<group>"; };
 		5E86CA58237C166D00A0B06E /* PDFView+ScaleFactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDFView+ScaleFactor.swift"; sourceTree = "<group>"; };
 		5E86CA5A237C16B800A0B06E /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		5E86CA6B237D875200A0B06E /* PDFViewGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewGestureRecognizer.swift; sourceTree = "<group>"; };
+		5E86CA70237D995F00A0B06E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
+		5E86CA71237D995F00A0B06E /* OutlineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OutlineCell.swift; path = ../OutlineCell.swift; sourceTree = "<group>"; };
+		5E86CA72237D995F00A0B06E /* AppearanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppearanceViewController.swift; path = ../AppearanceViewController.swift; sourceTree = "<group>"; };
+		5E86CA73237D995F00A0B06E /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkViewController.swift; path = ../BookmarkViewController.swift; sourceTree = "<group>"; };
+		5E86CA74237D995F00A0B06E /* OutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OutlineViewController.swift; path = ../OutlineViewController.swift; sourceTree = "<group>"; };
+		5E86CA75237D995F00A0B06E /* SearchResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsCell.swift; path = ../SearchResultsCell.swift; sourceTree = "<group>"; };
+		5E86CA7C237D99B900A0B06E /* ThumbnailGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThumbnailGridViewController.swift; path = ../ThumbnailGridViewController.swift; sourceTree = "<group>"; };
+		5E86CA7D237D99B900A0B06E /* ThumbnailGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThumbnailGridCell.swift; path = ../ThumbnailGridCell.swift; sourceTree = "<group>"; };
+		5E86CAF7237DAE9100A0B06E /* ThumbnailGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThumbnailGridCell.xib; sourceTree = "<group>"; };
+		5E86CAF8237DAE9100A0B06E /* SearchResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsCell.xib; sourceTree = "<group>"; };
 		5EA375832354B6080026E8E5 /* NacaoEspirita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NacaoEspirita.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA375862354B6080026E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA3758B2354B6080026E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -578,6 +600,7 @@
 		5E86CA342375793F00A0B06E /* book-module */ = {
 			isa = PBXGroup;
 			children = (
+				5E86CAF6237DAE7A00A0B06E /* book-display */,
 				5E10F73023742043000B2DFE /* BookCollectionCell.xib */,
 				5E10F73523749CED000B2DFE /* BookSectionCell.xib */,
 			);
@@ -639,10 +662,35 @@
 		5E86CA3B237598B000A0B06E /* view */ = {
 			isa = PBXGroup;
 			children = (
-				5E86CA482375BE8D00A0B06E /* OutlineTableViewController.swift */,
+				5E86CA80237D99BC00A0B06E /* New Group */,
 				5E86CA3C237598CB00A0B06E /* MidiaBookDisplayViewController.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		5E86CA80237D99BC00A0B06E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				5E86CA7D237D99B900A0B06E /* ThumbnailGridCell.swift */,
+				5E86CA7C237D99B900A0B06E /* ThumbnailGridViewController.swift */,
+				5E86CA72237D995F00A0B06E /* AppearanceViewController.swift */,
+				5E86CA73237D995F00A0B06E /* BookmarkViewController.swift */,
+				5E86CA71237D995F00A0B06E /* OutlineCell.swift */,
+				5E86CA74237D995F00A0B06E /* OutlineViewController.swift */,
+				5E86CA75237D995F00A0B06E /* SearchResultsCell.swift */,
+				5E86CA70237D995F00A0B06E /* SearchViewController.swift */,
+				5E86CA482375BE8D00A0B06E /* OutlineTableViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		5E86CAF6237DAE7A00A0B06E /* book-display */ = {
+			isa = PBXGroup;
+			children = (
+				5E86CAF8237DAE9100A0B06E /* SearchResultsCell.xib */,
+				5E86CAF7237DAE9100A0B06E /* ThumbnailGridCell.xib */,
+			);
+			path = "book-display";
 			sourceTree = "<group>";
 		};
 		5EA3757A2354B6080026E8E5 = {
@@ -997,6 +1045,7 @@
 				5E7897F0236063BE00F769A7 /* SearchFooter.swift */,
 				5EA375F323577BC50026E8E5 /* LoginBaseViewController.swift */,
 				5EA375F523578C580026E8E5 /* BackgroundEffectsView.swift */,
+				5E86CA6B237D875200A0B06E /* PDFViewGestureRecognizer.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1129,12 +1178,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E86CAF9237DAE9100A0B06E /* ThumbnailGridCell.xib in Resources */,
 				5EA375912354B6110026E8E5 /* LaunchScreen.storyboard in Resources */,
 				5E10F73623749CED000B2DFE /* BookSectionCell.xib in Resources */,
 				5EA3761123599BF70026E8E5 /* Home.storyboard in Resources */,
 				5EA3758E2354B6110026E8E5 /* Assets.xcassets in Resources */,
 				5E86CA4723759A5D00A0B06E /* book-livro-dos-espiritos.pdf in Resources */,
 				5E78981923634EAE00F769A7 /* AnswerCell.xib in Resources */,
+				5E86CAFA237DAE9100A0B06E /* SearchResultsCell.xib in Resources */,
 				5E10F73123742043000B2DFE /* BookCollectionCell.xib in Resources */,
 				5EA3758C2354B6080026E8E5 /* Login.storyboard in Resources */,
 				5E10F73E2375755F000B2DFE /* VideoCollectionCell.xib in Resources */,
@@ -1197,11 +1248,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EA375F023577A330026E8E5 /* UIView+RoundCorners.swift in Sources */,
+				5E86CA76237D995F00A0B06E /* SearchViewController.swift in Sources */,
 				5EA375E1235723990026E8E5 /* LoginCreateRouter.swift in Sources */,
 				5E7898132362F83E00F769A7 /* AddAnswerPresenter.swift in Sources */,
 				5EBD4CD3236AEC7000D494B7 /* AnswerModel.swift in Sources */,
 				5EA375A72355C4780026E8E5 /* LoginPresenter.swift in Sources */,
 				5EA3760B23599BC70026E8E5 /* HomePresenter.swift in Sources */,
+				5E86CA7E237D99B900A0B06E /* ThumbnailGridViewController.swift in Sources */,
 				5EA3760923599BBB0026E8E5 /* HomeInteractor.swift in Sources */,
 				5E21DB62235F2257008D4849 /* QuestionsPresenter.swift in Sources */,
 				5EA375F223577A330026E8E5 /* UITextField+BottomBorder.swift in Sources */,
@@ -1214,6 +1267,7 @@
 				5E7898042361C4DC00F769A7 /* AddQuestionRouter.swift in Sources */,
 				5EA375F423577BC50026E8E5 /* LoginBaseViewController.swift in Sources */,
 				5EA3760F23599BE40026E8E5 /* HomeRouter.swift in Sources */,
+				5E86CA78237D995F00A0B06E /* AppearanceViewController.swift in Sources */,
 				5E86CA412375998300A0B06E /* MidiaBookDisplayPresenter.swift in Sources */,
 				5E86CA3F2375994E00A0B06E /* MidiaBookDisplayInteractor.swift in Sources */,
 				5EA375F123577A330026E8E5 /* UIView+Shadow.swift in Sources */,
@@ -1236,11 +1290,14 @@
 				5E7898172362F85300F769A7 /* AddAnswerRouter.swift in Sources */,
 				5EA375D92357236A0026E8E5 /* LoginCreateViewController.swift in Sources */,
 				5E10F72C237409FF000B2DFE /* MidiaRouter.swift in Sources */,
+				5E86CA7B237D995F00A0B06E /* SearchResultsCell.swift in Sources */,
 				5E86CA45237599D600A0B06E /* MidiaBookDisplayRouter.swift in Sources */,
 				5EA375FC2358EEEE0026E8E5 /* TextConstants.swift in Sources */,
 				5EA375D123570EE00026E8E5 /* LoginAccessInteractor.swift in Sources */,
+				5E86CA77237D995F00A0B06E /* OutlineCell.swift in Sources */,
 				5EA375D323570EED0026E8E5 /* LoginAccessPresenter.swift in Sources */,
 				5EA375DD235723820026E8E5 /* LoginCreatePresenter.swift in Sources */,
+				5E86CA6C237D875200A0B06E /* PDFViewGestureRecognizer.swift in Sources */,
 				5EA375A52355C3CC0026E8E5 /* LoginViewController.swift in Sources */,
 				5EA3760723599B6E0026E8E5 /* HomeViewController.swift in Sources */,
 				5E10F734237420EB000B2DFE /* BookCollectionViewCell.swift in Sources */,
@@ -1270,8 +1327,11 @@
 				5E7898022361C4D200F769A7 /* AddQuestionInteractor.swift in Sources */,
 				5E10F718236EEBE6000B2DFE /* QuestionAnswerTableViewCell.swift in Sources */,
 				5E78981B2363505600F769A7 /* AnswerTableViewCell.swift in Sources */,
+				5E86CA7F237D99B900A0B06E /* ThumbnailGridCell.swift in Sources */,
+				5E86CA7A237D995F00A0B06E /* OutlineViewController.swift in Sources */,
 				5E21DB60235F2207008D4849 /* QuestionsProtocol.swift in Sources */,
 				5E10F72A237409B3000B2DFE /* MidiaPresenter.swift in Sources */,
+				5E86CA79237D995F00A0B06E /* BookmarkViewController.swift in Sources */,
 				5E86CA59237C166D00A0B06E /* PDFView+ScaleFactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

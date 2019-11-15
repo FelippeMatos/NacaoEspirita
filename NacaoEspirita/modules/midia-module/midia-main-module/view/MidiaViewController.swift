@@ -23,6 +23,24 @@ class MidiaViewController: UIViewController {
 
         setTableView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
+    
+    fileprivate func configureNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.topItem?.title = "Nação Espírita"
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
+             NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter-Bold", size: 21)!]
+    }
 
 }
 
