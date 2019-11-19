@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseUI
 
 class BookSectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionTableView: UICollectionView!
-    var bookArray: [String] = []
+    var bookArray: [BookModel] = []
     var navigationController: UINavigationController?
+    let storage = Storage.storage()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setCollectionTableView()
     }
+    
     //CONFIGURAR A COLLECTIONVIEW AQUI E FAZER O MESMO PROCESSO!!!!!!!! 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -26,6 +30,10 @@ class BookSectionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func reloadCell(bookArrayList: [BookModel]) {
+        self.bookArray = bookArrayList
+        collectionTableView.reloadData()
+    }
 
 }
 
@@ -40,10 +48,20 @@ extension BookSectionTableViewCell : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionCell", for: indexPath) as! BookCollectionViewCell
         
-        cell.testLabel.text = bookArray[indexPath.row]
+        let book = bookArray[indexPath.row]
+        cell.bookTitleLabel.text = book.name
+        
+        // Reference to an image file in Firebase Storage
+
+        let storageRef = storage.reference(withPath: "images/")
+        let reference = storageRef.child("\(book.linkImage!).jpg")
+        // Placeholder image
+        let placeholderImage = UIImage(named: "placeholder.png")
+        // Load the image using SDWebImage
+        cell.bookImage.sd_setImage(with: reference, placeholderImage: placeholderImage)
+        
         cell.buttonTappedAction = { (cell) in
-            self.goToPdfScreen()
-            
+            self.downloadBook(linkBook: book.linkBook!)
         }
         
         return cell
@@ -54,21 +72,37 @@ extension BookSectionTableViewCell : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemsPerRow:CGFloat = 2.5
-        let hardCodedPadding:CGFloat = 5
-        let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding
         let itemHeight = collectionView.bounds.height
+        let itemWidth = itemHeight * 0.66
+        
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
-    func goToPdfScreen() {
+    func downloadBook(linkBook: String) {
+        showProgressIndicator(view: navigationController!.view)
         
-        guard let path = Bundle.main.url(forResource: "book-livro-dos-espiritos", withExtension: "pdf") else {
-            print("failed to unwrap fileURL")
-            return
+        // Create a reference to the file you want to download
+        let storageRef = storage.reference(withPath: "books/")
+        let bookRef = storageRef.child("\(linkBook).pdf")
+        
+        // Create local filesystem URL
+        let tmporaryDirectoryURL = FileManager.default.temporaryDirectory
+        let localURL = tmporaryDirectoryURL.appendingPathComponent("\(linkBook).pdf")
+        
+        // Download to the local filesystem
+        _ = bookRef.write(toFile: localURL) { url, error in
+            if let error = error {
+                print("$$$$$$$$$$$$ ERROR -> \(error)")
+            } else {
+                self.goToPdfScreen(urlBook: url!)
+            }
         }
+    }
+    
+    func goToPdfScreen(urlBook: URL) {
+        hideProgressIndicator(view: navigationController!.view)
         
-        let pdfModule = MidiaBookDisplayRouter.createModule(pdfUrl: path)
+        let pdfModule = MidiaBookDisplayRouter.createModule(pdfUrl: urlBook)
         self.navigationController?.pushViewController(pdfModule, animated: true)
     }
 }

@@ -24,9 +24,10 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
     let barHideOnTapGestureRecognizer = UITapGestureRecognizer()
     let pdfViewGestureRecognizer = PDFViewGestureRecognizer()
     
-    @IBOutlet weak var thumbnailGridViewConainer: UIView!
-    @IBOutlet weak var outlineViewConainer: UIView!
-    @IBOutlet weak var bookmarkViewConainer: UIView!
+    @IBOutlet weak var thumbnailGridViewContainer: UIView!
+    @IBOutlet weak var outlineViewContainer: UIView!
+    @IBOutlet weak var bookmarkViewContainer: UIView!
+    @IBOutlet weak var pdfViewContainer: UIView!
     
     let tableOfContentsToggleSegmentedControl = UISegmentedControl(items: [#imageLiteral(resourceName: "icon-grid"), #imageLiteral(resourceName: "icon-list"), #imageLiteral(resourceName: "icon-bookmark-off")])
     
@@ -82,7 +83,7 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        pdfView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        pdfView.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height + 50)
         let thumbanilHeight: CGFloat = 80
         thumbnailView.translatesAutoresizingMaskIntoConstraints = false
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: thumbnailView)
@@ -114,7 +115,6 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
     private func resume() {
         let backButton = UIBarButtonItem(image: UIImage(named: "icon-back")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(back(_:)))
         let tableOfContentsButton = UIBarButtonItem(image: UIImage(named: "icon-list")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showTableOfContents(_:)))
-        //        let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showActionMenu(_:)))
         navigationItem.leftBarButtonItems = [backButton, tableOfContentsButton]
         
         let brightnessButton = UIBarButtonItem(image: UIImage(named: "icon-brightness")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showAppearanceMenu(_:)))
@@ -125,11 +125,12 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         thumbnailView.alpha = 1
         
         pdfView.isHidden = false
+        pdfViewContainer.isHidden = false
         pageNumberLabelContainer.alpha = 1
         
         barHideOnTapGestureRecognizer.isEnabled = true
         
-//        updateBookmarkStatus()
+        updateBookmarkStatus()
         updatePageNumberLabel()
     }
     
@@ -151,7 +152,7 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         
         let backButton = UIBarButtonItem(image: UIImage(named: "icon-back")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(back(_:)))
         let tableOfContentsToggleBarButton = UIBarButtonItem(customView: tableOfContentsToggleSegmentedControl)
-        let resumeBarButton = UIBarButtonItem(title: NSLocalizedString("Resume", comment: ""), style: .plain, target: self, action: #selector(resume(_:)))
+        let resumeBarButton = UIBarButtonItem(title: NSLocalizedString("Retomar", comment: ""), style: .plain, target: self, action: #selector(resume(_:)))
         navigationItem.leftBarButtonItems = [backButton, tableOfContentsToggleBarButton]
         navigationItem.rightBarButtonItems = [resumeBarButton]
         
@@ -164,20 +165,21 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
     
     @objc func toggleTableOfContentsView(_ sender: UISegmentedControl) {
         pdfView.isHidden = true
+        pdfViewContainer.isHidden = true
         pageNumberLabelContainer.alpha = 0
         
         if tableOfContentsToggleSegmentedControl.selectedSegmentIndex == 0 {
-            thumbnailGridViewConainer.isHidden = false
-            outlineViewConainer.isHidden = true
-            bookmarkViewConainer.isHidden = true
+            thumbnailGridViewContainer.isHidden = false
+            outlineViewContainer.isHidden = true
+            bookmarkViewContainer.isHidden = true
         } else if tableOfContentsToggleSegmentedControl.selectedSegmentIndex == 1 {
-            thumbnailGridViewConainer.isHidden = true
-            outlineViewConainer.isHidden = false
-            bookmarkViewConainer.isHidden = true
+            thumbnailGridViewContainer.isHidden = true
+            outlineViewContainer.isHidden = false
+            bookmarkViewContainer.isHidden = true
         } else {
-            thumbnailGridViewConainer.isHidden = true
-            outlineViewConainer.isHidden = true
-            bookmarkViewConainer.isHidden = false
+            thumbnailGridViewContainer.isHidden = true
+            outlineViewContainer.isHidden = true
+            bookmarkViewContainer.isHidden = false
         }
     }
     
@@ -261,8 +263,17 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         if pdfViewGestureRecognizer.isTracking {
             hideBars()
         }
-//        updateBookmarkStatus()
+        updateBookmarkStatus()
         updatePageNumberLabel()
+    }
+    
+    private func updateBookmarkStatus() {
+        if let documentURL = document?.documentURL?.absoluteString,
+            let bookmarks = UserDefaults.standard.array(forKey: documentURL) as? [Int],
+            let currentPage = pdfView.currentPage,
+            let index = document?.index(for: currentPage) {
+            bookmarkButton.image = bookmarks.contains(index) ? #imageLiteral(resourceName: "icon-bookmark-on") : #imageLiteral(resourceName: "icon-bookmark-off")
+        }
     }
     
     @objc func gestureRecognizedToggleVisibility(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -287,7 +298,6 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         if let navigationController = navigationController {
             UIView.animate(withDuration: CATransaction.animationDuration()) {
                 navigationController.navigationBar.alpha = 1
-//                self.pdfThumbnailViewContainer.alpha = 1
                 self.thumbnailView.alpha = 1
                 self.pageNumberLabelContainer.alpha = 1
             }
@@ -298,7 +308,6 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         if let navigationController = navigationController {
             UIView.animate(withDuration: CATransaction.animationDuration()) {
                 navigationController.navigationBar.alpha = 0
-//                self.pdfThumbnailViewContainer.alpha = 0
                 self.thumbnailView.alpha = 0
                 self.pageNumberLabelContainer.alpha = 0
             }

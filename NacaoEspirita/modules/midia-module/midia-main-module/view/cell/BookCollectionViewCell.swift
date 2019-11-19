@@ -10,11 +10,17 @@ import UIKit
 
 class BookCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var bookContainerView: UIView! {
+        didSet {
+            self.bookContainerView.roundCorners(.allCorners, radius: 6)
+        }
+    }
+    @IBOutlet weak var bookTitleLabel: UILabel!
+    @IBOutlet weak var bookImage: UIImageView!
     
     var buttonTappedAction : ((UICollectionViewCell) -> Void)?
-    @IBOutlet weak var testButton: UIButton!
-    @IBAction func testAction(_ sender: AnyObject) {
+    @IBOutlet weak var bookButton: UIButton!
+    @IBAction func bookAction(_ sender: AnyObject) {
         buttonTappedAction?(self)
     }
     

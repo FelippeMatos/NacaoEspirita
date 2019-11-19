@@ -34,8 +34,8 @@ extension PDFView {
     struct Holder {
         // different form pdfView.scaleFactorForSizeToFit, the scaleFactorForSizeToFit use superArea not safeArea
         static var hgScaleFactorForSizeToFit: HGPDFScaleFactor?
-        static var hgScaleFactorVertical: HGPDFScaleFactor = HGPDFScaleFactor(portrait: 0.25, landscape: 0.25)
-        static var hgScaleFactorHorizontal: HGPDFScaleFactor = HGPDFScaleFactor(portrait: 0.25, landscape: 0.25)
+        static var hgScaleFactorVertical: HGPDFScaleFactor = HGPDFScaleFactor(portrait: 0.5, landscape: 0.40)
+        static var hgScaleFactorHorizontal: HGPDFScaleFactor = HGPDFScaleFactor(portrait: 0.5, landscape: 0.40)
         static var isZoomedIn: Bool = false
     }
 }

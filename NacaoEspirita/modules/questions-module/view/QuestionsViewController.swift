@@ -176,15 +176,6 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func reload(tableView: UITableView) {
-        
-        let contentOffset = tableView.contentOffset
-        tableView.reloadData()
-        tableView.layoutIfNeeded()
-        tableView.setContentOffset(contentOffset, animated: false)
-        
-    }
-    
 }
 
 //MARK: Setup tableview

@@ -15,8 +15,18 @@ class MidiaPresenter: MidiaViewToPresenterProtocol {
     var interactor: MidiaPresenterToInteractorProtocol?
     var router: MidiaPresenterToRouterProtocol?
     
+    func startFetchingBooks() {
+        interactor?.fetchBooks()
+    }
 }
 
 extension MidiaPresenter: MidiaInteractorToPresenterProtocol {
+
+    func booksFetchedSuccess(bookModelArray: [BookModel]) {
+        view?.showBooks(booksArray: bookModelArray)
+    }
     
+    func booksFetchFailed() {
+        view?.showError()
+    }
 }

@@ -13,44 +13,51 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCollectionCell" id="qIt-r0-Pd8" customClass="BookCollectionViewCell" customModule="NacaoEspirita" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cr-5a-mjc">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n45-q5-wK1">
-                                <rect key="frame" x="16" y="16" width="184" height="168"/>
+                                <rect key="frame" x="16" y="16" width="184" height="268"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Livro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6F-5H-yvD">
-                                        <rect key="frame" x="73.5" y="0.0" width="37.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0W-h7-Yzd">
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="268"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wN9-u4-F4C">
-                                        <rect key="frame" x="0.0" y="21" width="184" height="147"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="268"/>
                                         <connections>
-                                            <action selector="testAction:" destination="qIt-r0-Pd8" eventType="touchUpInside" id="j7h-aD-A9Y"/>
+                                            <action selector="bookAction:" destination="qIt-r0-Pd8" eventType="touchUpInside" id="j7h-aD-A9Y"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Livro" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6F-5H-yvD">
+                                        <rect key="frame" x="6" y="245" width="172" height="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="wN9-u4-F4C" secondAttribute="bottom" id="4GX-fp-ylB"/>
-                                    <constraint firstItem="wN9-u4-F4C" firstAttribute="top" secondItem="D6F-5H-yvD" secondAttribute="bottom" id="8Xw-gu-QJw"/>
-                                    <constraint firstItem="D6F-5H-yvD" firstAttribute="centerX" secondItem="n45-q5-wK1" secondAttribute="centerX" id="E9S-1l-dR4"/>
+                                    <constraint firstItem="D6F-5H-yvD" firstAttribute="leading" secondItem="n45-q5-wK1" secondAttribute="leading" constant="6" id="7ap-jv-dDI"/>
+                                    <constraint firstItem="wN9-u4-F4C" firstAttribute="top" secondItem="n45-q5-wK1" secondAttribute="top" id="8Xw-gu-QJw"/>
+                                    <constraint firstAttribute="trailing" secondItem="D6F-5H-yvD" secondAttribute="trailing" constant="6" id="CWc-fx-1P0"/>
                                     <constraint firstAttribute="trailing" secondItem="wN9-u4-F4C" secondAttribute="trailing" id="EcP-FO-6T3"/>
+                                    <constraint firstAttribute="trailing" secondItem="F0W-h7-Yzd" secondAttribute="trailing" id="Hl6-iz-ESR"/>
+                                    <constraint firstItem="F0W-h7-Yzd" firstAttribute="leading" secondItem="n45-q5-wK1" secondAttribute="leading" id="JbL-xv-Mhg"/>
                                     <constraint firstItem="wN9-u4-F4C" firstAttribute="leading" secondItem="n45-q5-wK1" secondAttribute="leading" id="ftm-KK-D9Q"/>
-                                    <constraint firstItem="D6F-5H-yvD" firstAttribute="top" secondItem="n45-q5-wK1" secondAttribute="top" id="tf4-Lu-N2F"/>
+                                    <constraint firstItem="F0W-h7-Yzd" firstAttribute="top" secondItem="n45-q5-wK1" secondAttribute="top" id="gfd-4e-SSv"/>
+                                    <constraint firstAttribute="bottom" secondItem="F0W-h7-Yzd" secondAttribute="bottom" id="j3c-HJ-xda"/>
+                                    <constraint firstItem="D6F-5H-yvD" firstAttribute="bottom" secondItem="n45-q5-wK1" secondAttribute="bottom" constant="-6" id="tf4-Lu-N2F"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="n45-q5-wK1" secondAttribute="trailing" id="GRE-bp-uFD"/>
                             <constraint firstAttribute="bottom" secondItem="n45-q5-wK1" secondAttribute="bottom" constant="16" id="LWl-9R-YYf"/>
@@ -68,8 +75,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="C3e-Gw-b1W"/>
             <connections>
-                <outlet property="testButton" destination="wN9-u4-F4C" id="MLr-9v-0SG"/>
-                <outlet property="testLabel" destination="D6F-5H-yvD" id="UlN-3o-kP2"/>
+                <outlet property="bookButton" destination="wN9-u4-F4C" id="MLr-9v-0SG"/>
+                <outlet property="bookContainerView" destination="n45-q5-wK1" id="jeq-aW-1Jy"/>
+                <outlet property="bookImage" destination="F0W-h7-Yzd" id="gFv-ue-tfs"/>
+                <outlet property="bookTitleLabel" destination="D6F-5H-yvD" id="UlN-3o-kP2"/>
             </connections>
         </collectionViewCell>
     </objects>

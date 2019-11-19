@@ -70,6 +70,11 @@
 		5E86CA7F237D99B900A0B06E /* ThumbnailGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86CA7D237D99B900A0B06E /* ThumbnailGridCell.swift */; };
 		5E86CAF9237DAE9100A0B06E /* ThumbnailGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E86CAF7237DAE9100A0B06E /* ThumbnailGridCell.xib */; };
 		5E86CAFA237DAE9100A0B06E /* SearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E86CAF8237DAE9100A0B06E /* SearchResultsCell.xib */; };
+		5E9127192383E16700E24D2B /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9127182383E16700E24D2B /* BookModel.swift */; };
+		5E91271B2384275F00E24D2B /* HeaderMidiaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E91271A2384275F00E24D2B /* HeaderMidiaView.xib */; };
+		5E91271D2384280A00E24D2B /* HeaderMidiaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91271C2384280A00E24D2B /* HeaderMidiaView.swift */; };
+		5E91272023845B6B00E24D2B /* HelperProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91271E23845B6A00E24D2B /* HelperProgressIndicator.swift */; };
+		5E91272123845B6B00E24D2B /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91271F23845B6B00E24D2B /* ProgressIndicator.swift */; };
 		5EA375872354B6080026E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA375862354B6080026E8E5 /* AppDelegate.swift */; };
 		5EA3758C2354B6080026E8E5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3758A2354B6080026E8E5 /* Login.storyboard */; };
 		5EA3758E2354B6110026E8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3758D2354B6110026E8E5 /* Assets.xcassets */; };
@@ -179,6 +184,11 @@
 		5E86CA7D237D99B900A0B06E /* ThumbnailGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThumbnailGridCell.swift; path = ../ThumbnailGridCell.swift; sourceTree = "<group>"; };
 		5E86CAF7237DAE9100A0B06E /* ThumbnailGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThumbnailGridCell.xib; sourceTree = "<group>"; };
 		5E86CAF8237DAE9100A0B06E /* SearchResultsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultsCell.xib; sourceTree = "<group>"; };
+		5E9127182383E16700E24D2B /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		5E91271A2384275F00E24D2B /* HeaderMidiaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderMidiaView.xib; sourceTree = "<group>"; };
+		5E91271C2384280A00E24D2B /* HeaderMidiaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMidiaView.swift; sourceTree = "<group>"; };
+		5E91271E23845B6A00E24D2B /* HelperProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperProgressIndicator.swift; sourceTree = "<group>"; };
+		5E91271F23845B6B00E24D2B /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		5EA375832354B6080026E8E5 /* NacaoEspirita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NacaoEspirita.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA375862354B6080026E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA3758B2354B6080026E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -289,6 +299,7 @@
 		5E10F71D23740885000B2DFE /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				5E9127182383E16700E24D2B /* BookModel.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -322,6 +333,7 @@
 			children = (
 				5E10F732237420D9000B2DFE /* cell */,
 				5E10F722237408BA000B2DFE /* MidiaViewController.swift */,
+				5E91271C2384280A00E24D2B /* HeaderMidiaView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -575,6 +587,7 @@
 				5E86CA322375793F00A0B06E /* video-module */,
 				5E86CA332375793F00A0B06E /* podcast-module */,
 				5E86CA342375793F00A0B06E /* book-module */,
+				5E91271A2384275F00E24D2B /* HeaderMidiaView.xib */,
 			);
 			path = "midia-module";
 			sourceTree = "<group>";
@@ -662,13 +675,13 @@
 		5E86CA3B237598B000A0B06E /* view */ = {
 			isa = PBXGroup;
 			children = (
-				5E86CA80237D99BC00A0B06E /* New Group */,
+				5E86CA80237D99BC00A0B06E /* support */,
 				5E86CA3C237598CB00A0B06E /* MidiaBookDisplayViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
 		};
-		5E86CA80237D99BC00A0B06E /* New Group */ = {
+		5E86CA80237D99BC00A0B06E /* support */ = {
 			isa = PBXGroup;
 			children = (
 				5E86CA7D237D99B900A0B06E /* ThumbnailGridCell.swift */,
@@ -681,7 +694,7 @@
 				5E86CA70237D995F00A0B06E /* SearchViewController.swift */,
 				5E86CA482375BE8D00A0B06E /* OutlineTableViewController.swift */,
 			);
-			path = "New Group";
+			path = support;
 			sourceTree = "<group>";
 		};
 		5E86CAF6237DAE7A00A0B06E /* book-display */ = {
@@ -1046,6 +1059,8 @@
 				5EA375F323577BC50026E8E5 /* LoginBaseViewController.swift */,
 				5EA375F523578C580026E8E5 /* BackgroundEffectsView.swift */,
 				5E86CA6B237D875200A0B06E /* PDFViewGestureRecognizer.swift */,
+				5E91271E23845B6A00E24D2B /* HelperProgressIndicator.swift */,
+				5E91271F23845B6B00E24D2B /* ProgressIndicator.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1178,6 +1193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E91271B2384275F00E24D2B /* HeaderMidiaView.xib in Resources */,
 				5E86CAF9237DAE9100A0B06E /* ThumbnailGridCell.xib in Resources */,
 				5EA375912354B6110026E8E5 /* LaunchScreen.storyboard in Resources */,
 				5E10F73623749CED000B2DFE /* BookSectionCell.xib in Resources */,
@@ -1266,6 +1282,7 @@
 				5EA3760D23599BD80026E8E5 /* HomeProtocol.swift in Sources */,
 				5E7898042361C4DC00F769A7 /* AddQuestionRouter.swift in Sources */,
 				5EA375F423577BC50026E8E5 /* LoginBaseViewController.swift in Sources */,
+				5E91272023845B6B00E24D2B /* HelperProgressIndicator.swift in Sources */,
 				5EA3760F23599BE40026E8E5 /* HomeRouter.swift in Sources */,
 				5E86CA78237D995F00A0B06E /* AppearanceViewController.swift in Sources */,
 				5E86CA412375998300A0B06E /* MidiaBookDisplayPresenter.swift in Sources */,
@@ -1274,6 +1291,7 @@
 				5E10F72F23740DE7000B2DFE /* BookSectionTableViewCell.swift in Sources */,
 				5E86CA5B237C16B800A0B06E /* UIView+Extension.swift in Sources */,
 				5E7898152362F84900F769A7 /* AddAnswerProtocol.swift in Sources */,
+				5E91272123845B6B00E24D2B /* ProgressIndicator.swift in Sources */,
 				5EA375DB235723770026E8E5 /* LoginCreateInteractor.swift in Sources */,
 				5EA375D723570F110026E8E5 /* LoginAccessRouter.swift in Sources */,
 				5E10F73B237574B5000B2DFE /* VideoCollectionViewCell.swift in Sources */,
@@ -1304,6 +1322,7 @@
 				5E86CA43237599A700A0B06E /* MidiaBookDisplayProtocol.swift in Sources */,
 				5EA375FA2358EBE70026E8E5 /* ColorConstants.swift in Sources */,
 				5E21DB66235F22B1008D4849 /* QuestionsRouter.swift in Sources */,
+				5E9127192383E16700E24D2B /* BookModel.swift in Sources */,
 				5E78980F2362F81800F769A7 /* AddAnswerViewController.swift in Sources */,
 				5EA375AB2355CB3D0026E8E5 /* LoginRouter.swift in Sources */,
 				5E7897FA236198D500F769A7 /* AddQuestionViewController.swift in Sources */,
@@ -1318,6 +1337,7 @@
 				5E10F73C237574B5000B2DFE /* VideoSectionTableViewCell.swift in Sources */,
 				5EA375872354B6080026E8E5 /* AppDelegate.swift in Sources */,
 				5E10F72823740993000B2DFE /* MidiaInteractor.swift in Sources */,
+				5E91271D2384280A00E24D2B /* HeaderMidiaView.swift in Sources */,
 				5E10F74123757856000B2DFE /* PodcastCollectionViewCell.swift in Sources */,
 				5E7897FE2361C4BC00F769A7 /* AddQuestionProtocol.swift in Sources */,
 				5EA375DF2357238C0026E8E5 /* LoginCreateProtocol.swift in Sources */,

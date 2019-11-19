@@ -16,11 +16,13 @@ protocol MidiaViewToPresenterProtocol: class {
     var interactor: MidiaPresenterToInteractorProtocol? {get set}
     var router: MidiaPresenterToRouterProtocol? {get set}
     
+    func startFetchingBooks()
 }
 
 // Presenter -> View
 protocol MidiaPresenterToViewProtocol: class {
-
+    func showBooks(booksArray: [BookModel])
+    func showError()
 }
 
 // Presenter -> Router
@@ -32,10 +34,12 @@ protocol MidiaPresenterToRouterProtocol: class {
 protocol MidiaPresenterToInteractorProtocol: class {
     var presenter: MidiaInteractorToPresenterProtocol? {get set}
     
+    func fetchBooks()
 }
 
 // Interactor -> Presenter
 protocol MidiaInteractorToPresenterProtocol: class {
-
+    func booksFetchedSuccess(bookModelArray: [BookModel])
+    func booksFetchFailed()
 }
 
