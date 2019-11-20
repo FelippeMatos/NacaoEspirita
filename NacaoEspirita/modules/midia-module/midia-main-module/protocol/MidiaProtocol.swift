@@ -17,6 +17,7 @@ protocol MidiaViewToPresenterProtocol: class {
     var router: MidiaPresenterToRouterProtocol? {get set}
     
     func startFetchingBooks()
+    func goToMidiaAllBooksScreen(navigationController: UINavigationController)
 }
 
 // Presenter -> View
@@ -27,7 +28,7 @@ protocol MidiaPresenterToViewProtocol: class {
 
 // Presenter -> Router
 protocol MidiaPresenterToRouterProtocol: class {
-    
+    func pushToMidiaAllBooksScreen(navigationController: UINavigationController)
 }
 
 // Presenter -> Interactor

@@ -41,6 +41,68 @@
             </objects>
             <point key="canvasLocation" x="-7927.5" y="-1432.3943661971832"/>
         </scene>
+        <!--Midia All Books View Controller-->
+        <scene sceneID="7b3-Fl-NDz">
+            <objects>
+                <viewController storyboardIdentifier="MidiaAllBooks" id="MBc-tX-6eK" customClass="MidiaAllBooksViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dx8-7V-Xd8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-SQ-NBx">
+                                <rect key="frame" x="0.0" y="20" width="304" height="548"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HQK-Qz-Fh6">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vyg-dO-iF5" customClass="SearchFooter" customModule="NacaoEspirita" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Vba-Cp-cGB"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW7-58-B28">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="closeSearchOptionAction:" destination="MBc-tX-6eK" eventType="touchUpInside" id="qHB-Ld-p4V"/>
+                                    <action selector="closeSearchOptionAction:" destination="mwg-s1-IpU" eventType="touchUpInside" id="u5l-04-DjR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.97647058819999999" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g8B-qU-WKU" firstAttribute="bottom" secondItem="Vyg-dO-iF5" secondAttribute="bottom" id="3DG-v5-3Dm"/>
+                            <constraint firstItem="ss1-SQ-NBx" firstAttribute="top" secondItem="g8B-qU-WKU" secondAttribute="top" id="4C6-0Z-Jh6"/>
+                            <constraint firstItem="g8B-qU-WKU" firstAttribute="bottom" secondItem="ss1-SQ-NBx" secondAttribute="bottom" id="GH6-uR-rap"/>
+                            <constraint firstItem="Vyg-dO-iF5" firstAttribute="leading" secondItem="g8B-qU-WKU" secondAttribute="leading" id="LPf-mW-dHR"/>
+                            <constraint firstItem="ss1-SQ-NBx" firstAttribute="leading" secondItem="g8B-qU-WKU" secondAttribute="leading" id="VFY-hf-YTE"/>
+                            <constraint firstItem="g8B-qU-WKU" firstAttribute="trailing" secondItem="ss1-SQ-NBx" secondAttribute="trailing" constant="16" id="XOy-y2-PPy"/>
+                            <constraint firstItem="cW7-58-B28" firstAttribute="bottom" secondItem="g8B-qU-WKU" secondAttribute="bottom" id="d6U-oI-Dst"/>
+                            <constraint firstItem="cW7-58-B28" firstAttribute="leading" secondItem="g8B-qU-WKU" secondAttribute="leading" id="hLp-AP-wjl"/>
+                            <constraint firstItem="Vyg-dO-iF5" firstAttribute="trailing" secondItem="g8B-qU-WKU" secondAttribute="trailing" id="pDD-5N-Dpt"/>
+                            <constraint firstItem="cW7-58-B28" firstAttribute="top" secondItem="Dx8-7V-Xd8" secondAttribute="top" id="tdG-q3-TXJ"/>
+                            <constraint firstItem="cW7-58-B28" firstAttribute="trailing" secondItem="g8B-qU-WKU" secondAttribute="trailing" id="tqF-Gr-hRQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g8B-qU-WKU"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeSearchOption" destination="cW7-58-B28" id="Q2W-51-ZNv"/>
+                        <outlet property="collectionTableView" destination="ss1-SQ-NBx" id="Hgy-Qm-Vz5"/>
+                        <outlet property="searchFooter" destination="Vyg-dO-iF5" id="KUy-BK-XJV"/>
+                        <outlet property="searchFooterBottomConstraint" destination="3DG-v5-3Dm" id="GlY-lh-cjQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PvL-Nw-QeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7234" y="-1435"/>
+        </scene>
         <!--Midia Book Display View Controller-->
         <scene sceneID="4Nn-0z-GVr">
             <objects>
@@ -130,7 +192,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-7157" y="-1432"/>
+            <point key="canvasLocation" x="-6493" y="-1652"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="bxa-bV-fOe">
@@ -336,8 +398,8 @@
                                     <action selector="closeSearchOptionAction:" destination="mwg-s1-IpU" eventType="touchUpInside" id="M4l-ky-5kB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dv-fd-py1">
-                                <rect key="frame" x="262" y="511" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dv-fd-py1">
+                                <rect key="frame" x="262" y="510" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="O9s-Cb-TsH"/>
@@ -477,7 +539,7 @@
         <!--Appearance View Controller-->
         <scene sceneID="3dQ-Qk-sm0">
             <objects>
-                <viewController storyboardIdentifier="AppearanceViewController" id="1yf-2Q-2BZ" customClass="AppearanceViewController" customModule="BookReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AppearanceViewController" id="1yf-2Q-2BZ" customClass="AppearanceViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P35-a9-z5k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,12 +563,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOU-4I-Fdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7159" y="-1878"/>
+            <point key="canvasLocation" x="-6495" y="-2098"/>
         </scene>
         <!--Thumbnail Grid View Controller-->
         <scene sceneID="gYd-9a-LS7">
             <objects>
-                <collectionViewController id="K90-8O-ena" customClass="ThumbnailGridViewController" customModule="BookReader" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="K90-8O-ena" customClass="ThumbnailGridViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tHn-MV-puY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -526,18 +588,18 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bah-qB-yX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6428" y="-1212"/>
+            <point key="canvasLocation" x="-5764" y="-1432"/>
         </scene>
         <!--Outline View Controller-->
         <scene sceneID="U9a-Bx-TcW">
             <objects>
-                <tableViewController id="xTb-wk-Spc" customClass="OutlineViewController" customModule="BookReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xTb-wk-Spc" customClass="OutlineViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bod-Qj-6zT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="0em-tG-kMF" customClass="OutlineCell" customModule="BookReader" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="0em-tG-kMF" customClass="OutlineCell" customModule="NacaoEspirita" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0em-tG-kMF" id="sYx-ed-0kv">
@@ -581,12 +643,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Tb-HG-lk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5734" y="-1213"/>
+            <point key="canvasLocation" x="-5070" y="-1433"/>
         </scene>
         <!--Bookmark View Controller-->
         <scene sceneID="hjr-zl-MIl">
             <objects>
-                <collectionViewController id="8b8-pH-SRR" customClass="BookmarkViewController" customModule="BookReader" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="8b8-pH-SRR" customClass="BookmarkViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pTh-GQ-Gei">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -606,12 +668,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQX-ti-9Gn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5055" y="-1214"/>
+            <point key="canvasLocation" x="-4389" y="-1435"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="xxg-Dg-pom">
             <objects>
-                <tableViewController id="dUF-u6-Koh" customClass="SearchViewController" customModule="BookReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dUF-u6-Koh" customClass="SearchViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="bPi-ez-gLF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -625,7 +687,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVF-ZP-nxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5640" y="-2099"/>
+            <point key="canvasLocation" x="-4974" y="-2320"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eEF-xM-IU3">
@@ -643,7 +705,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWx-z6-hTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6429" y="-2099"/>
+            <point key="canvasLocation" x="-5764" y="-2320"/>
         </scene>
     </scenes>
     <resources>

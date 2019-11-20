@@ -18,6 +18,10 @@ class MidiaPresenter: MidiaViewToPresenterProtocol {
     func startFetchingBooks() {
         interactor?.fetchBooks()
     }
+    
+    func goToMidiaAllBooksScreen(navigationController: UINavigationController) {
+        router?.pushToMidiaAllBooksScreen(navigationController: navigationController)
+    }
 }
 
 extension MidiaPresenter: MidiaInteractorToPresenterProtocol {

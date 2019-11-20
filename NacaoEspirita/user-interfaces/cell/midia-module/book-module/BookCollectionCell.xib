@@ -23,19 +23,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n45-q5-wK1">
-                                <rect key="frame" x="16" y="16" width="184" height="268"/>
+                                <rect key="frame" x="16" y="8" width="184" height="284"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0W-h7-Yzd">
-                                        <rect key="frame" x="0.0" y="0.0" width="184" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="284"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wN9-u4-F4C">
-                                        <rect key="frame" x="0.0" y="0.0" width="184" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="284"/>
                                         <connections>
                                             <action selector="bookAction:" destination="qIt-r0-Pd8" eventType="touchUpInside" id="j7h-aD-A9Y"/>
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Livro" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6F-5H-yvD">
-                                        <rect key="frame" x="6" y="245" width="172" height="17"/>
+                                        <rect key="frame" x="6" y="261" width="172" height="17"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -57,12 +57,12 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="n45-q5-wK1" secondAttribute="trailing" id="GRE-bp-uFD"/>
-                            <constraint firstAttribute="bottom" secondItem="n45-q5-wK1" secondAttribute="bottom" constant="16" id="LWl-9R-YYf"/>
+                            <constraint firstAttribute="bottom" secondItem="n45-q5-wK1" secondAttribute="bottom" constant="8" id="LWl-9R-YYf"/>
                             <constraint firstItem="n45-q5-wK1" firstAttribute="leading" secondItem="5cr-5a-mjc" secondAttribute="leading" constant="16" id="cXu-gp-Cu4"/>
-                            <constraint firstItem="n45-q5-wK1" firstAttribute="top" secondItem="5cr-5a-mjc" secondAttribute="top" constant="16" id="yhc-QT-JgC"/>
+                            <constraint firstItem="n45-q5-wK1" firstAttribute="top" secondItem="5cr-5a-mjc" secondAttribute="top" constant="8" id="yhc-QT-JgC"/>
                         </constraints>
                     </view>
                 </subviews>

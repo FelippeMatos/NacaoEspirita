@@ -31,5 +31,9 @@ class MidiaRouter: MidiaPresenterToRouterProtocol {
         return UIStoryboard(name: "Home", bundle: Bundle.main)
     }
     
+    func pushToMidiaAllBooksScreen(navigationController: UINavigationController) {
+        let midiaAllBooksModule = MidiaAllBooksRouter.createModule()
+        navigationController.pushViewController(midiaAllBooksModule, animated: true)
+    }
 }
 

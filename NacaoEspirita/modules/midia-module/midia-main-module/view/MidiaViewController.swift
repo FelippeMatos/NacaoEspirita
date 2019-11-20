@@ -22,7 +22,6 @@ class MidiaViewController: UIViewController {
         super.viewDidLoad()
 
         setTableView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +87,7 @@ extension MidiaViewController: UITableViewDelegate, UITableViewDataSource {
         
         headerView.categoryTitleLabel.text = categories[section]
         headerView.sectionNumber = section
-//        headerView.delegate = MidiaViewController.self
+        headerView.delegate = self
         
         return headerView
     }
@@ -118,5 +117,11 @@ extension MidiaViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+}
 
+extension MidiaViewController: HeaderMidiaDelegate {
+    func headerMidiaView(_ headerMidiaView: HeaderMidiaView, didTapButtonInSection section: Int) {
+        print("$$$$$$$$$$$$$ did tap button", section)
+        presenter?.goToMidiaAllBooksScreen(navigationController: navigationController!)
+    }
 }

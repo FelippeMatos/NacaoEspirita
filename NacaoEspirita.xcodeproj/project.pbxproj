@@ -75,6 +75,11 @@
 		5E91271D2384280A00E24D2B /* HeaderMidiaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91271C2384280A00E24D2B /* HeaderMidiaView.swift */; };
 		5E91272023845B6B00E24D2B /* HelperProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91271E23845B6A00E24D2B /* HelperProgressIndicator.swift */; };
 		5E91272123845B6B00E24D2B /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91271F23845B6B00E24D2B /* ProgressIndicator.swift */; };
+		5E91272A238534E500E24D2B /* MidiaAllBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E912729238534E500E24D2B /* MidiaAllBooksViewController.swift */; };
+		5E91272C238535B900E24D2B /* MidiaAllBooksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91272B238535B900E24D2B /* MidiaAllBooksInteractor.swift */; };
+		5E91272E2385361200E24D2B /* MidiaAllBooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91272D2385361200E24D2B /* MidiaAllBooksPresenter.swift */; };
+		5E9127302385365100E24D2B /* MidiaAllBooksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91272F2385365100E24D2B /* MidiaAllBooksProtocol.swift */; };
+		5E912732238536D300E24D2B /* MidiaAllBooksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E912731238536D300E24D2B /* MidiaAllBooksRouter.swift */; };
 		5EA375872354B6080026E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA375862354B6080026E8E5 /* AppDelegate.swift */; };
 		5EA3758C2354B6080026E8E5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3758A2354B6080026E8E5 /* Login.storyboard */; };
 		5EA3758E2354B6110026E8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3758D2354B6110026E8E5 /* Assets.xcassets */; };
@@ -189,6 +194,11 @@
 		5E91271C2384280A00E24D2B /* HeaderMidiaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMidiaView.swift; sourceTree = "<group>"; };
 		5E91271E23845B6A00E24D2B /* HelperProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperProgressIndicator.swift; sourceTree = "<group>"; };
 		5E91271F23845B6B00E24D2B /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		5E912729238534E500E24D2B /* MidiaAllBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllBooksViewController.swift; sourceTree = "<group>"; };
+		5E91272B238535B900E24D2B /* MidiaAllBooksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllBooksInteractor.swift; sourceTree = "<group>"; };
+		5E91272D2385361200E24D2B /* MidiaAllBooksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllBooksPresenter.swift; sourceTree = "<group>"; };
+		5E91272F2385365100E24D2B /* MidiaAllBooksProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllBooksProtocol.swift; sourceTree = "<group>"; };
+		5E912731238536D300E24D2B /* MidiaAllBooksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllBooksRouter.swift; sourceTree = "<group>"; };
 		5EA375832354B6080026E8E5 /* NacaoEspirita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NacaoEspirita.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA375862354B6080026E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA3758B2354B6080026E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -269,6 +279,7 @@
 		5E10F71A23740867000B2DFE /* midia-module */ = {
 			isa = PBXGroup;
 			children = (
+				5E912722238533CF00E24D2B /* midia-all-books-module */,
 				5E86CA352375987100A0B06E /* midia-book-display-module */,
 				5E10F71B23740871000B2DFE /* midia-main-module */,
 			);
@@ -704,6 +715,66 @@
 				5E86CAF7237DAE9100A0B06E /* ThumbnailGridCell.xib */,
 			);
 			path = "book-display";
+			sourceTree = "<group>";
+		};
+		5E912722238533CF00E24D2B /* midia-all-books-module */ = {
+			isa = PBXGroup;
+			children = (
+				5E9127282385340E00E24D2B /* view */,
+				5E9127272385340800E24D2B /* interactor */,
+				5E9127262385340100E24D2B /* presenter */,
+				5E912725238533F700E24D2B /* protocol */,
+				5E912724238533EF00E24D2B /* entity */,
+				5E912723238533EA00E24D2B /* router */,
+			);
+			path = "midia-all-books-module";
+			sourceTree = "<group>";
+		};
+		5E912723238533EA00E24D2B /* router */ = {
+			isa = PBXGroup;
+			children = (
+				5E912731238536D300E24D2B /* MidiaAllBooksRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		5E912724238533EF00E24D2B /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		5E912725238533F700E24D2B /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5E91272F2385365100E24D2B /* MidiaAllBooksProtocol.swift */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		5E9127262385340100E24D2B /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5E91272D2385361200E24D2B /* MidiaAllBooksPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		5E9127272385340800E24D2B /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5E91272B238535B900E24D2B /* MidiaAllBooksInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		5E9127282385340E00E24D2B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5E912729238534E500E24D2B /* MidiaAllBooksViewController.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		5EA3757A2354B6080026E8E5 = {
@@ -1270,6 +1341,7 @@
 				5EBD4CD3236AEC7000D494B7 /* AnswerModel.swift in Sources */,
 				5EA375A72355C4780026E8E5 /* LoginPresenter.swift in Sources */,
 				5EA3760B23599BC70026E8E5 /* HomePresenter.swift in Sources */,
+				5E91272A238534E500E24D2B /* MidiaAllBooksViewController.swift in Sources */,
 				5E86CA7E237D99B900A0B06E /* ThumbnailGridViewController.swift in Sources */,
 				5EA3760923599BBB0026E8E5 /* HomeInteractor.swift in Sources */,
 				5E21DB62235F2257008D4849 /* QuestionsPresenter.swift in Sources */,
@@ -1283,9 +1355,11 @@
 				5E7898042361C4DC00F769A7 /* AddQuestionRouter.swift in Sources */,
 				5EA375F423577BC50026E8E5 /* LoginBaseViewController.swift in Sources */,
 				5E91272023845B6B00E24D2B /* HelperProgressIndicator.swift in Sources */,
+				5E912732238536D300E24D2B /* MidiaAllBooksRouter.swift in Sources */,
 				5EA3760F23599BE40026E8E5 /* HomeRouter.swift in Sources */,
 				5E86CA78237D995F00A0B06E /* AppearanceViewController.swift in Sources */,
 				5E86CA412375998300A0B06E /* MidiaBookDisplayPresenter.swift in Sources */,
+				5E91272E2385361200E24D2B /* MidiaAllBooksPresenter.swift in Sources */,
 				5E86CA3F2375994E00A0B06E /* MidiaBookDisplayInteractor.swift in Sources */,
 				5EA375F123577A330026E8E5 /* UIView+Shadow.swift in Sources */,
 				5E10F72F23740DE7000B2DFE /* BookSectionTableViewCell.swift in Sources */,
@@ -1304,6 +1378,7 @@
 				5E7898112362F83200F769A7 /* AddAnswerInteractor.swift in Sources */,
 				5EA375CF23570ED20026E8E5 /* LoginAccessViewController.swift in Sources */,
 				5E21DB5E235F148A008D4849 /* TabBarController.swift in Sources */,
+				5E91272C238535B900E24D2B /* MidiaAllBooksInteractor.swift in Sources */,
 				5E86CA3D237598CB00A0B06E /* MidiaBookDisplayViewController.swift in Sources */,
 				5E7898172362F85300F769A7 /* AddAnswerRouter.swift in Sources */,
 				5EA375D92357236A0026E8E5 /* LoginCreateViewController.swift in Sources */,
@@ -1319,6 +1394,7 @@
 				5EA375A52355C3CC0026E8E5 /* LoginViewController.swift in Sources */,
 				5EA3760723599B6E0026E8E5 /* HomeViewController.swift in Sources */,
 				5E10F734237420EB000B2DFE /* BookCollectionViewCell.swift in Sources */,
+				5E9127302385365100E24D2B /* MidiaAllBooksProtocol.swift in Sources */,
 				5E86CA43237599A700A0B06E /* MidiaBookDisplayProtocol.swift in Sources */,
 				5EA375FA2358EBE70026E8E5 /* ColorConstants.swift in Sources */,
 				5E21DB66235F22B1008D4849 /* QuestionsRouter.swift in Sources */,

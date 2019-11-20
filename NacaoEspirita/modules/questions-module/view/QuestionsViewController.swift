@@ -36,12 +36,11 @@ class QuestionsViewController: LoginBaseViewController {
         presenter?.showAddQuestionController(navigationController: view)
     }
     
-    //TEMP
     var questions: [QuestionModel] = []
     var userLike: [Int] = []
     var topAnswer: [AnswerModel] = []
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredCandies: [QuestionModel] = []
+    var filteredQuestions: [QuestionModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +99,7 @@ class QuestionsViewController: LoginBaseViewController {
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredCandies = questions.filter { (question: QuestionModel) -> Bool in
+        filteredQuestions = questions.filter { (question: QuestionModel) -> Bool in
             return ((question.name?.lowercased().contains(searchText.lowercased()))! || (question.question?.lowercased().contains(searchText.lowercased()))!)
         }
         
@@ -189,8 +188,8 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
-            searchFooter.setIsFilteringToShow(filteredItemCount: filteredCandies.count, of: questions.count)
-            return filteredCandies.count
+            searchFooter.setIsFilteringToShow(filteredItemCount: filteredQuestions.count, of: questions.count)
+            return filteredQuestions.count
         }
         
         searchFooter.setNotFiltering()
@@ -203,7 +202,7 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         let question: QuestionModel
     
         if isFiltering {
-            question = filteredCandies[indexPath.row]
+            question = filteredQuestions[indexPath.row]
         } else {
             question = questions[indexPath.row]
         }
