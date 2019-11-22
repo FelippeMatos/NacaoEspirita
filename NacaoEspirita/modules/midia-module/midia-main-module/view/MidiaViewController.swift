@@ -13,7 +13,7 @@ class MidiaViewController: UIViewController {
     var presenter: MidiaViewToPresenterProtocol?
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = ["Livros", "Videos", "Podcasts"]
+    var categories = ["LIVROS", "VÍDEOS", "PODCASTS"]
     var bookArray : [BookModel] = []
     var videoArray = ["Divaldo", "Chico", "Haroldo"]
     var podcastArray = ["Nao sei", "Preciso", "Pesquisar", "he he"]
@@ -121,7 +121,8 @@ extension MidiaViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MidiaViewController: HeaderMidiaDelegate {
     func headerMidiaView(_ headerMidiaView: HeaderMidiaView, didTapButtonInSection section: Int) {
-        print("$$$$$$$$$$$$$ did tap button", section)
-        presenter?.goToMidiaAllBooksScreen(navigationController: navigationController!)
+        if section == 0 {
+            presenter?.goToMidiaAllBooksScreen(navigationController: navigationController!)
+        }
     }
 }

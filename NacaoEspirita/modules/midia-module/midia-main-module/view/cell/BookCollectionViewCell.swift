@@ -16,7 +16,11 @@ class BookCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var bookImage: UIImageView!
+    @IBOutlet weak var bookImage: UIImageView! {
+        didSet {
+            self.bookImage.roundCorners(.allCorners, radius: 6)
+        }
+    }
     
     var buttonTappedAction : ((UICollectionViewCell) -> Void)?
     @IBOutlet weak var bookButton: UIButton!

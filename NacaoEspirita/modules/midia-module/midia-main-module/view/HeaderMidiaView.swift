@@ -18,8 +18,23 @@ class HeaderMidiaView: UITableViewHeaderFooterView {
     
     weak var delegate: HeaderMidiaDelegate?
     
+    @IBOutlet weak var categoryTitleContainerView: UIView! {
+        didSet {
+            self.categoryTitleContainerView.roundCorners(.allCorners, radius: 12)
+        }
+    }
     @IBOutlet weak var categoryTitleLabel: UILabel!
-    @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var categoryButton: UIButton! {
+        didSet {
+            self.categoryButton.roundCorners(.allCorners, radius: 12)
+        }
+    }
+
+    @IBOutlet weak var lineDashedView: UIView! {
+        didSet {
+            self.lineDashedView.addDashedBorder(width: 1, color: UIColor.lightGray, isVertical: false)
+        }
+    }
     
     var sectionNumber: Int!  // you don't have to do this, but it can be useful to have reference back to the section number so that when you tap on a button, you know which section you came from; obviously this is problematic if you insert/delete sections after the table is loaded; always reload in that case
     

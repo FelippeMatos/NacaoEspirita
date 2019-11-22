@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.97647058819999999" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g8B-qU-WKU" firstAttribute="bottom" secondItem="Vyg-dO-iF5" secondAttribute="bottom" id="3DG-v5-3Dm"/>
                             <constraint firstItem="ss1-SQ-NBx" firstAttribute="top" secondItem="g8B-qU-WKU" secondAttribute="top" id="4C6-0Z-Jh6"/>
