@@ -19,6 +19,10 @@ class MidiaPresenter: MidiaViewToPresenterProtocol {
         interactor?.fetchBooks()
     }
     
+    func startFetchingVideos() {
+        interactor?.checkStatusVideos()
+    }
+    
     func goToMidiaAllBooksScreen(navigationController: UINavigationController) {
         router?.pushToMidiaAllBooksScreen(navigationController: navigationController)
     }
@@ -31,6 +35,14 @@ extension MidiaPresenter: MidiaInteractorToPresenterProtocol {
     }
     
     func booksFetchFailed() {
+        view?.showError()
+    }
+    
+    func videosFetchedSuccess(videoModelArray: [VideoModel]) {
+        view?.showVideos(videosArray: videoModelArray)
+    }
+    
+    func videosFetchFailed() {
         view?.showError()
     }
 }

@@ -18,4 +18,7 @@ target 'NacaoEspirita' do
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
   
+  # Pods for Alamofire
+  pod 'Alamofire', '~> 5.0.0-rc.3'
+  
 end

@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.0-rc.3)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -148,6 +149,7 @@ PODS:
   - SDWebImage/Core (5.3.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.3)
   - Bolts
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -160,6 +162,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Bolts
     - BoringSSL-GRPC
     - FBSDKCoreKit
@@ -188,6 +191,7 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
@@ -215,6 +219,6 @@ SPEC CHECKSUMS:
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
 
-PODFILE CHECKSUM: 82fa964e136f0a90ac91ebc143de29aaeab720ee
+PODFILE CHECKSUM: 0e2a190cf8fafab2619dfd792a25f39c19b21327
 
 COCOAPODS: 1.8.3

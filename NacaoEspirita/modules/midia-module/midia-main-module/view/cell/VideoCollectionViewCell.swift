@@ -11,6 +11,8 @@ import UIKit
 class VideoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var channelLabel: UILabel!
+    @IBOutlet weak var videoImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

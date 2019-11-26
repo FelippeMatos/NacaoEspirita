@@ -32,6 +32,9 @@
 		5E21DB62235F2257008D4849 /* QuestionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21DB61235F2257008D4849 /* QuestionsPresenter.swift */; };
 		5E21DB64235F2287008D4849 /* QuestionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21DB63235F2287008D4849 /* QuestionsInteractor.swift */; };
 		5E21DB66235F22B1008D4849 /* QuestionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21DB65235F22B1008D4849 /* QuestionsRouter.swift */; };
+		5E54C2A12387D8D0002D3651 /* AppKeysConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A02387D8D0002D3651 /* AppKeysConstants.swift */; };
+		5E54C2A323880589002D3651 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A223880589002D3651 /* VideoModel.swift */; };
+		5E54C2A5238D22E0002D3651 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A4238D22E0002D3651 /* DateUtils.swift */; };
 		5E7897EC2360559700F769A7 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7897EB2360559700F769A7 /* QuestionCell.xib */; };
 		5E7897EF2360561800F769A7 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */; };
 		5E7897F1236063BE00F769A7 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897F0236063BE00F769A7 /* SearchFooter.swift */; };
@@ -151,6 +154,9 @@
 		5E21DB61235F2257008D4849 /* QuestionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPresenter.swift; sourceTree = "<group>"; };
 		5E21DB63235F2287008D4849 /* QuestionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsInteractor.swift; sourceTree = "<group>"; };
 		5E21DB65235F22B1008D4849 /* QuestionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsRouter.swift; sourceTree = "<group>"; };
+		5E54C2A02387D8D0002D3651 /* AppKeysConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeysConstants.swift; sourceTree = "<group>"; };
+		5E54C2A223880589002D3651 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		5E54C2A4238D22E0002D3651 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		5E7897EB2360559700F769A7 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		5E7897F0236063BE00F769A7 /* SearchFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9127182383E16700E24D2B /* BookModel.swift */,
+				5E54C2A223880589002D3651 /* VideoModel.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -1109,6 +1116,7 @@
 				5EA375E923577A330026E8E5 /* UIView+RoundCorners.swift */,
 				5EA375EA23577A330026E8E5 /* UIView+Shadow.swift */,
 				5EBD4CD4236C235B00D494B7 /* UIView+DashedBorder.swift */,
+				5E54C2A4238D22E0002D3651 /* DateUtils.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1119,6 +1127,7 @@
 				5EA375F92358EBE70026E8E5 /* ColorConstants.swift */,
 				5EA375FB2358EEEE0026E8E5 /* TextConstants.swift */,
 				5EA375FD2358F0320026E8E5 /* ImageNameConstants.swift */,
+				5E54C2A02387D8D0002D3651 /* AppKeysConstants.swift */,
 			);
 			path = constants;
 			sourceTree = "<group>";
@@ -1345,6 +1354,7 @@
 				5E86CA7E237D99B900A0B06E /* ThumbnailGridViewController.swift in Sources */,
 				5EA3760923599BBB0026E8E5 /* HomeInteractor.swift in Sources */,
 				5E21DB62235F2257008D4849 /* QuestionsPresenter.swift in Sources */,
+				5E54C2A12387D8D0002D3651 /* AppKeysConstants.swift in Sources */,
 				5EA375F223577A330026E8E5 /* UITextField+BottomBorder.swift in Sources */,
 				5E7897EF2360561800F769A7 /* QuestionTableViewCell.swift in Sources */,
 				5E86CA4B237C14B500A0B06E /* PDFView+Zoom.swift in Sources */,
@@ -1364,6 +1374,7 @@
 				5EA375F123577A330026E8E5 /* UIView+Shadow.swift in Sources */,
 				5E10F72F23740DE7000B2DFE /* BookSectionTableViewCell.swift in Sources */,
 				5E86CA5B237C16B800A0B06E /* UIView+Extension.swift in Sources */,
+				5E54C2A323880589002D3651 /* VideoModel.swift in Sources */,
 				5E7898152362F84900F769A7 /* AddAnswerProtocol.swift in Sources */,
 				5E91272123845B6B00E24D2B /* ProgressIndicator.swift in Sources */,
 				5EA375DB235723770026E8E5 /* LoginCreateInteractor.swift in Sources */,
@@ -1371,6 +1382,7 @@
 				5E10F73B237574B5000B2DFE /* VideoCollectionViewCell.swift in Sources */,
 				5EA375AD2355CEFE0026E8E5 /* LoginInteractor.swift in Sources */,
 				5EA375D523570F020026E8E5 /* LoginAccessProtocol.swift in Sources */,
+				5E54C2A5238D22E0002D3651 /* DateUtils.swift in Sources */,
 				5E86CA492375BE8E00A0B06E /* OutlineTableViewController.swift in Sources */,
 				5E21DB5A235F0914008D4849 /* QuestionsViewController.swift in Sources */,
 				5E21DB64235F2287008D4849 /* QuestionsInteractor.swift in Sources */,

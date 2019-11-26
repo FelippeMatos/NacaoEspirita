@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import FirebaseUI
 
 class VideoSectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionTableView: UICollectionView!
-    var videoArray: [String] = []
+    var videoArray: [VideoModel] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,11 @@ class VideoSectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    func reloadCell(videoArrayList: [VideoModel]) {
+        self.videoArray = videoArrayList
+        collectionTableView.reloadData()
     }
     
 
@@ -38,7 +44,11 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionCell", for: indexPath) as! VideoCollectionViewCell
-        cell.testLabel.text = videoArray[indexPath.row]
+        cell.testLabel.text = videoArray[indexPath.row].items?[0].snippet.title
+        cell.channelLabel.text = videoArray[indexPath.row].items?[0].snippet.channelTitle
+        let linkThumb = videoArray[indexPath.row].items?[0].snippet.thumbnails.medium.url
+        print("$$$$$$ URL THUMB : \(linkThumb)")
+        cell.videoImage.downloaded(from: linkThumb!)
         
         return cell
     }

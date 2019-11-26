@@ -13,15 +13,15 @@ class MidiaViewController: UIViewController {
     var presenter: MidiaViewToPresenterProtocol?
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = ["LIVROS", "VÍDEOS", "PODCASTS"]
-    var bookArray : [BookModel] = []
-    var videoArray = ["Divaldo", "Chico", "Haroldo"]
-    var podcastArray = ["Nao sei", "Preciso", "Pesquisar", "he he"]
+    var categories = ["LIVROS", "VÍDEOS"]
+    var bookArray: [BookModel] = []
+    var videoArray: [VideoModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setTableView()
+        presenter?.startFetchingVideos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +55,14 @@ extension MidiaViewController: MidiaPresenterToViewProtocol {
         let cell = tableView.cellForRow(at: indexPath) as? BookSectionTableViewCell
         cell?.reloadCell(bookArrayList: booksArray)
         
+    }
+    
+    func showVideos(videosArray: [VideoModel]) {
+        self.videoArray = videosArray
+        
+        let indexPath = IndexPath(item: 0, section: 1)
+        let cell = tableView.cellForRow(at: indexPath) as? VideoSectionTableViewCell
+        cell?.reloadCell(videoArrayList: videoArray)
     }
     
     func showError() {
@@ -101,19 +109,14 @@ extension MidiaViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BookSectionCell", for: indexPath) as! BookSectionTableViewCell
             cell.bookArray = self.bookArray
             cell.navigationController = navigationController
             return cell
-        case 1:
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoSectionCell", for: indexPath) as! VideoSectionTableViewCell
             cell.videoArray = self.videoArray
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PodcastSectionCell", for: indexPath) as! PodcastSectionTableViewCell
-            cell.podcastArray = self.podcastArray
             return cell
         }
     }
