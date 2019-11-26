@@ -19,19 +19,11 @@ class VideoSectionTableViewCell: UITableViewCell {
         
         setCollectionTableView()
     }
-    //CONFIGURAR A COLLECTIONVIEW AQUI E FAZER O MESMO PROCESSO!!!!!!!! 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
     func reloadCell(videoArrayList: [VideoModel]) {
         self.videoArray = videoArrayList
         collectionTableView.reloadData()
     }
-    
-
 }
 
 extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -44,11 +36,12 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionCell", for: indexPath) as! VideoCollectionViewCell
-        cell.testLabel.text = videoArray[indexPath.row].items?[0].snippet.title
-        cell.channelLabel.text = videoArray[indexPath.row].items?[0].snippet.channelTitle
-        let linkThumb = videoArray[indexPath.row].items?[0].snippet.thumbnails.medium.url
-        print("$$$$$$ URL THUMB : \(linkThumb)")
-        cell.videoImage.downloaded(from: linkThumb!)
+        
+        cell.testLabel.text = videoArray[indexPath.row].title
+        cell.channelLabel.text = videoArray[indexPath.row].channelTitle
+        
+        let linkThumb = videoArray[indexPath.row].thumbnailHigh
+        cell.videoImage.downloaded(from: linkThumb!, contentMode: .redraw)
         
         return cell
     }
@@ -58,10 +51,9 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemsPerRow:CGFloat = 1.25
-        let hardCodedPadding:CGFloat = 5
-        let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding
-        let itemHeight = collectionView.bounds.height
+        let hardCodedPadding:CGFloat = 25
+        let itemWidth = collectionView.bounds.width - hardCodedPadding
+        let itemHeight = (itemWidth * 0.56) + 76
         return CGSize(width: itemWidth, height: itemHeight)
     }
     

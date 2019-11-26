@@ -21,4 +21,7 @@ target 'NacaoEspirita' do
   # Pods for Alamofire
   pod 'Alamofire', '~> 5.0.0-rc.3'
   
+  # Pods for Image
+  pod 'Kingfisher', '~> 5.0'
+  
 end

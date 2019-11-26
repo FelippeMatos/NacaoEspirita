@@ -19,7 +19,9 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
     var ref: DocumentReference? = nil
     
     let dateUtils = DateUtils()
-    
+    var currentDateString: String?
+
+    //MARK: BOOKS
     func fetchBooks() {
       
         guard let id = Auth.auth().currentUser?.uid, !id.isEmpty else {
@@ -30,7 +32,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         
         db.collection("books").order(by: "name", descending: false).getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchBooks : ERROR = \(err)")
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchBooks : ERROR = \(err)")
                 self.presenter?.booksFetchFailed()
             } else {
                 for document in querySnapshot!.documents {
@@ -42,26 +44,57 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         }
     }
     
+    //MARK: VIDEOS
     func checkStatusVideos() {
         let currentHour = dateUtils.currentHour()
         
+        /* TABELA DE HORARIOS PARA ATUALIZAR:
+         // 15 vezes ao dia: (GMT - 3 horas para estar de acordo com o Brasil)
+         // BR  GMT     - STATUS
+         // 1   (4)     - X
+         // 2   (5)     - X
+         // 3   (6)     - X
+         // 4   (7)     - X
+         // 5   (8)     - X
+         // 6   (9)     - 1
+         // 7   (10)    - 1
+         // 8   (11)    - 1
+         // 9   (12)    - 1
+         // 10  (13)    - X
+         // 11  (14)    - 1
+         // 12  (15)    - 1
+         // 13  (16)    - 1
+         // 14  (17)    - X
+         // 15  (18)    - 1
+         // 16  (19)    - X
+         // 17  (20)    - 1
+         // 18  (21)    - 1
+         // 19  (22)    - 1
+         // 20  (23)    - 1
+         // 21  (00)    - 1
+         // 22  (1)     - 1
+         // 23  (2)     - X
+         // 00  (3)     - 1
+        */
+
         switch currentHour {
-        case 6, 7, 8, 9, 11, 12, 13, 15, 17, 18, 19, 20, 21, 22, 0:
+        case 0, 1, 3, 9, 10, 11, 12, 14, 15, 16, 18, 20, 21, 22, 23:
             compareLastUpdateDateWithCurrentDate()
+            debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/checkStatusVideos : STATUS = DENTRO DA HORA DE ATUALIZAR OS VIDEOS")
         default:
-            //SE NAO - Chamar FetchVideosInFirebase()
-            print("$$$$$$$$ PEGAR DADOS EXISTENTES")
+            debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/checkStatusVideos : STATUS = FORA DA HORA DE ATUALIZAR OS VIDEOS")
+            self.fetchVideosInFirebase()
         }
     }
     
     func compareLastUpdateDateWithCurrentDate() {
         
-        let currentDate = dateUtils.currentDateToUpdateVideos()
-        print("$$$$$$$$$$ CURRENT DATE: \(currentDate)")
+        currentDateString = dateUtils.currentDateString()
+        let currentDate = dateUtils.stringToDate(currentDateString!)
         
         db.collection("videosLastUpdate").document("01").getDocument() { (querySnapshot, err) in
             if let err = err {
-                print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/compareLastUpdateDateWithCurrentDate : ERROR = \(err)")
             } else {
                 if querySnapshot!.exists {
                     let data = querySnapshot!.data()
@@ -69,19 +102,35 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
                     let lastUpdateDate = self.dateUtils.stringToDate(lastUpdate!)
                     
                     if currentDate <= lastUpdateDate {
-                        // SE MENOR OU IGUAL QUE DATA DO FB - Chamar FetchVideosInFirebase()
-                        print("$$$$$$$$ PEGAR DADOS EXISTENTES")
-                        
+                        debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/compareLastUpdateDateWithCurrentDate : STATUS = ATUALIZAR PELO FIREBASE")
+                        self.fetchVideosInFirebase()
                     } else {
-                        print("$$$$$$$$ ATT")
-//                        fetchVideosInYoutube()
+                        debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/compareLastUpdateDateWithCurrentDate : STATUS = ATUALIZAR PELA API DO YOUTUBE")
+                        self.fetchVideosInYoutube()
                     }
                 } else {
-                    print("$$$$$$$ DEU MERDA")
+                    debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/compareLastUpdateDateWithCurrentDate : ERROR = VERIFICAR OBJETO NO FIREBASE")
                 }
             }
         }
-       
+    }
+    
+    func fetchVideosInFirebase() {
+        
+        var videoArray = [VideoModel]()
+
+        db.collection("videos").order(by: "publishedAt", descending: true).limit(to: 5).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInFirebase : ERROR = \(err)")
+                self.presenter?.videosFetchFailed()
+            } else {
+                for document in querySnapshot!.documents {
+                    videoArray.append(VideoModel(document: document)!)
+                }
+                self.videoArrayList = videoArray
+                self.presenter?.videosFetchedSuccess(videoModelArray: self.videoArrayList)
+            }
+        }
     }
     
     func fetchVideosInYoutube() {
@@ -89,23 +138,63 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         var count = [Int]()
         for channel in AppKeys.YOUTUBE_CHANNEL_KEYS {
             let youtubeQuery = "https://www.googleapis.com/youtube/v3/search?key=\(AppKeys.YOUTUBE_API_KEY)&channelId=\(channel)&part=snippet,id&order=date&maxResults=1"
-            print("$$$$$$$$$$$$$ QUERY: \(youtubeQuery)")
             AF.request(youtubeQuery).responseJSON { response in
                 if let data = response.data {
                     do {
-                        let video = try JSONDecoder().decode(VideoModel.self, from: data)
-                        videoArray.append(video)
+                        let video = try JSONDecoder().decode(VideoParser.self, from: data)
+                        videoArray.append(VideoModel(videoParser: video)!)
                         count.append(0)
                         if count.count == AppKeys.YOUTUBE_CHANNEL_KEYS.count {
                             self.videoArrayList = videoArray
-                            self.presenter?.videosFetchedSuccess(videoModelArray: self.videoArrayList)
+                            self.saveVideosInFirebase(videoArrayList: self.videoArrayList)
+                            debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInYoutube : STATUS = VIDEOS PARSEADOS")
                         }
-                    } catch let error {
-                        print(error)
-                        print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchVideos : ERROR = \(error)")
-                        self.presenter?.videosFetchFailed()
+                    } catch let err {
+                        debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInYoutube : ERROR = \(err)")
+                        self.fetchVideosInFirebase()
                     }
                 }
+            }
+        }
+    }
+    
+    func saveVideosInFirebase(videoArrayList: [VideoModel]) {
+
+        var count = [Int]()
+        for video in videoArrayList {
+            db.collection("videos").document(video.id!).setData([
+                "channelId": video.channelId!,
+                "channelTitle": video.channelTitle!,
+                "description": video.description!,
+                "publishedAt": video.publishedAt!,
+                "thumbnailHigh": video.thumbnailHigh!,
+                "thumbnailMedium": video.thumbnailMedium!,
+                "title": video.title!
+            ]) { err in
+                if let err = err {
+                    debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/saveVideosInFirebase : ERROR = \(err)")
+                } else {
+                    count.append(0)
+                    if count.count == videoArrayList.count {
+                        self.updateStatusVideos()
+                        self.presenter?.videosFetchedSuccess(videoModelArray: self.videoArrayList)
+                        debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/saveVideosInFirebase : STATUS = VIDEOS SALVOS NO FIREBASE")
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateStatusVideos() {
+        let updateRef = db.collection("videosLastUpdate").document("01")
+        
+        updateRef.updateData([
+            "lastUpdate": self.currentDateString!
+        ]) { err in
+            if let err = err {
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/updateStatusVideos : ERROR = \(err)")
+            } else {
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/updateStatusVideos : STATUS = ATUALIZADO")
             }
         }
     }

@@ -8,7 +8,8 @@
 
 import UIKit
 
-struct VideoModel: Codable {
+//MARK: MODEL TO YOUTUBE API
+struct VideoParser: Codable {
     let kind: String
     let etag: String
     let regionCode: String
@@ -43,4 +44,65 @@ struct Thumbnail: Codable {
     let url: String
     let width: Int
     let height: Int
+}
+
+//MARK: MODEL TO FIREBASE
+import Firebase
+
+private let ID = "key"
+private let CHANNEL_ID = "channelId"
+private let CHANNEL_TITLE = "channelTitle"
+private let DESCRIPTION = "description"
+private let PUBLISHED_AT = "publishedAt"
+private let THUMBNAIL_MEDIUM = "thumbnailMedium"
+private let THUMBNAIL_HIGH = "thumbnailHigh"
+private let TITLE = "title"
+
+class VideoModel {
+    
+    internal var id: String?
+    internal var channelId: String?
+    internal var channelTitle: String?
+    internal var description: String?
+    internal var publishedAt: String?
+    internal var thumbnailMedium: String?
+    internal var thumbnailHigh: String?
+    internal var title: String?
+    
+    init?(document: QueryDocumentSnapshot) {
+        mapping(document: document)
+    }
+    
+    init?(videoParser: VideoParser) {
+        mappingWithParser(video: videoParser)
+    }
+    
+    func mapping(document: QueryDocumentSnapshot) {
+        
+        self.id = document.documentID
+        let data = document.data()
+        
+        self.channelId = data[CHANNEL_ID] as? String
+        self.channelTitle = data[CHANNEL_TITLE] as? String
+        self.description = data[DESCRIPTION] as? String
+        self.publishedAt = data[PUBLISHED_AT] as? String
+        self.thumbnailMedium = data[THUMBNAIL_MEDIUM] as? String
+        self.thumbnailHigh = data[THUMBNAIL_HIGH] as? String
+        self.title = data[TITLE] as? String
+        
+    }
+    
+    func mappingWithParser(video: VideoParser) {
+        
+        self.id = video.items?[0].id.videoId
+        self.channelId = video.items?[0].snippet.channelId
+        self.channelTitle = video.items?[0].snippet.channelTitle
+        self.description = video.items?[0].snippet.description
+        self.publishedAt = video.items?[0].snippet.publishedAt
+        self.thumbnailMedium = video.items?[0].snippet.thumbnails.medium.url
+        self.thumbnailHigh = video.items?[0].snippet.thumbnails.high.url
+        self.title = video.items?[0].snippet.title
+        
+    }
+    
 }

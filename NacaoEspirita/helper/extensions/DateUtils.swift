@@ -19,7 +19,7 @@ class DateUtils {
         return currentHourInInt
     }
     
-    func currentDateToUpdateVideos() -> Date {
+    func currentDateString() -> String {
         let date = Date()
         let calendar = Calendar.current
         
@@ -29,13 +29,7 @@ class DateUtils {
         let year = calendar.component(.year, from: date)
         
         let timeString = "\(year)-\(month)-\(day) \(hour)"
-        
-        let dateFormatter = DateFormatter()
-        let format = "yyyy-MM-dd HH"
-        dateFormatter.dateFormat = format
-        
-        let dateFormated = dateFormatter.date(from: timeString)
-        return dateFormated!
+        return timeString
     }
     
     func stringToDate(_ dateString: String) -> Date {
