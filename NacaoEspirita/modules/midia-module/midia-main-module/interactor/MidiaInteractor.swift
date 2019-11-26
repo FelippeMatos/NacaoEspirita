@@ -127,6 +127,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
                 for document in querySnapshot!.documents {
                     videoArray.append(VideoModel(document: document)!)
                 }
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInFirebase : STATUS = VIDEOS RESGATADOS DO FB")
                 self.videoArrayList = videoArray
                 self.presenter?.videosFetchedSuccess(videoModelArray: self.videoArrayList)
             }
@@ -141,12 +142,13 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
             AF.request(youtubeQuery).responseJSON { response in
                 if let data = response.data {
                     do {
-                        let video = try JSONDecoder().decode(VideoParser.self, from: data)
-                        videoArray.append(VideoModel(videoParser: video)!)
+                        let videoParser = try JSONDecoder().decode(VideoParser.self, from: data)
+                        for video in videoParser.items! {
+                            videoArray.append(VideoModel(videoParser: video)!)
+                        }
                         count.append(0)
                         if count.count == AppKeys.YOUTUBE_CHANNEL_KEYS.count {
-                            self.videoArrayList = videoArray
-                            self.saveVideosInFirebase(videoArrayList: self.videoArrayList)
+                            self.saveVideosInFirebase(videoArrayList: videoArray)
                             debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInYoutube : STATUS = VIDEOS PARSEADOS")
                         }
                     } catch let err {
@@ -177,7 +179,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
                     count.append(0)
                     if count.count == videoArrayList.count {
                         self.updateStatusVideos()
-                        self.presenter?.videosFetchedSuccess(videoModelArray: self.videoArrayList)
+                        self.fetchVideosInFirebase()
                         debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/saveVideosInFirebase : STATUS = VIDEOS SALVOS NO FIREBASE")
                     }
                 }
@@ -200,3 +202,6 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
     }
 }
 
+/*
+ GET https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Cstatistics&id=[VIDEO_ID]&key=[YOUR_API_KEY]
+ */

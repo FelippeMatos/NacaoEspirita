@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -74,6 +74,7 @@
                                     <constraint firstItem="D6F-5H-yvD" firstAttribute="leading" secondItem="o5e-Fn-7Wm" secondAttribute="trailing" constant="8" id="RXt-9c-M7u"/>
                                     <constraint firstItem="Zp4-89-mFa" firstAttribute="top" secondItem="D6F-5H-yvD" secondAttribute="bottom" id="bMm-DJ-xhQ"/>
                                     <constraint firstAttribute="bottom" secondItem="Zp4-89-mFa" secondAttribute="bottom" constant="7" id="iWh-18-b8S"/>
+                                    <constraint firstAttribute="height" constant="70" id="jJ9-nr-1xK"/>
                                     <constraint firstItem="o5e-Fn-7Wm" firstAttribute="top" secondItem="I2Q-1a-Kbr" secondAttribute="top" constant="8" id="nM8-Ma-Eei"/>
                                     <constraint firstAttribute="trailing" secondItem="D6F-5H-yvD" secondAttribute="trailing" id="oZL-3I-DQI"/>
                                     <constraint firstItem="o5e-Fn-7Wm" firstAttribute="leading" secondItem="I2Q-1a-Kbr" secondAttribute="leading" constant="16" id="rh3-VT-loh"/>

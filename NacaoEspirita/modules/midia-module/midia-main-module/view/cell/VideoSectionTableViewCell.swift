@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseUI
+import Kingfisher
 
 class VideoSectionTableViewCell: UITableViewCell {
     
@@ -40,8 +41,8 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
         cell.testLabel.text = videoArray[indexPath.row].title
         cell.channelLabel.text = videoArray[indexPath.row].channelTitle
         
-        let linkThumb = videoArray[indexPath.row].thumbnailHigh
-        cell.videoImage.downloaded(from: linkThumb!, contentMode: .redraw)
+        let urlThumb = URL(string: videoArray[indexPath.row].thumbnailHigh!)
+        cell.videoImage.kf.setImage(with: urlThumb)
         
         return cell
     }

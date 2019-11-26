@@ -73,7 +73,7 @@ class VideoModel {
         mapping(document: document)
     }
     
-    init?(videoParser: VideoParser) {
+    init?(videoParser: Item) {
         mappingWithParser(video: videoParser)
     }
     
@@ -92,17 +92,16 @@ class VideoModel {
         
     }
     
-    func mappingWithParser(video: VideoParser) {
+    func mappingWithParser(video: Item) {
         
-        self.id = video.items?[0].id.videoId
-        self.channelId = video.items?[0].snippet.channelId
-        self.channelTitle = video.items?[0].snippet.channelTitle
-        self.description = video.items?[0].snippet.description
-        self.publishedAt = video.items?[0].snippet.publishedAt
-        self.thumbnailMedium = video.items?[0].snippet.thumbnails.medium.url
-        self.thumbnailHigh = video.items?[0].snippet.thumbnails.high.url
-        self.title = video.items?[0].snippet.title
-        
+        self.id = video.id.videoId
+        self.channelId = video.snippet.channelId
+        self.channelTitle = video.snippet.channelTitle
+        self.description = video.snippet.description
+        self.publishedAt = video.snippet.publishedAt
+        self.thumbnailMedium = video.snippet.thumbnails.medium.url
+        self.thumbnailHigh = video.snippet.thumbnails.high.url
+        self.title = video.snippet.title
     }
-    
+
 }
