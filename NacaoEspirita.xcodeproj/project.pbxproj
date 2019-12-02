@@ -35,6 +35,22 @@
 		5E54C2A12387D8D0002D3651 /* AppKeysConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A02387D8D0002D3651 /* AppKeysConstants.swift */; };
 		5E54C2A323880589002D3651 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A223880589002D3651 /* VideoModel.swift */; };
 		5E54C2A5238D22E0002D3651 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A4238D22E0002D3651 /* DateUtils.swift */; };
+		5E54C2A9238E86CA002D3651 /* String+formaterYoutubeDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2A8238E86CA002D3651 /* String+formaterYoutubeDuration.swift */; };
+		5E54C2B1238E9AD4002D3651 /* MidiaAllVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2B0238E9AD4002D3651 /* MidiaAllVideosViewController.swift */; };
+		5E54C2B3238E9B48002D3651 /* MidiaAllVideosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2B2238E9B48002D3651 /* MidiaAllVideosPresenter.swift */; };
+		5E54C2B5238E9B55002D3651 /* MidiaAllVideosProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2B4238E9B55002D3651 /* MidiaAllVideosProtocol.swift */; };
+		5E54C2B7238E9B65002D3651 /* MidiaAllVideosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2B6238E9B65002D3651 /* MidiaAllVideosRouter.swift */; };
+		5E54C2BA238E9D09002D3651 /* MidiaAllVideosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2B9238E9D09002D3651 /* MidiaAllVideosInteractor.swift */; };
+		5E54C2BC238EA6D1002D3651 /* HeaderMidiaAllVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E54C2BB238EA6D1002D3651 /* HeaderMidiaAllVideos.xib */; };
+		5E54C2BE238EA79C002D3651 /* ChannelCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E54C2BD238EA79C002D3651 /* ChannelCollectionCell.xib */; };
+		5E54C2C1238EA9EB002D3651 /* ChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2C0238EA9EB002D3651 /* ChannelCollectionViewCell.swift */; };
+		5E54C2C3238EAB78002D3651 /* HeaderMidiaAllVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2C2238EAB78002D3651 /* HeaderMidiaAllVideosView.swift */; };
+		5E54C2C5238EB919002D3651 /* VideoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E54C2C4238EB919002D3651 /* VideoTableCell.xib */; };
+		5E54C2C7238EB9B8002D3651 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2C6238EB9B8002D3651 /* VideoTableViewCell.swift */; };
+		5E54C2CB238ED195002D3651 /* MidiaVideoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2CA238ED194002D3651 /* MidiaVideoDisplayViewController.swift */; };
+		5E54C2D0238ED2C8002D3651 /* MidiaVideoDisplayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2CF238ED2C8002D3651 /* MidiaVideoDisplayPresenter.swift */; };
+		5E54C2D2238ED2DA002D3651 /* MidiaVideoDisplayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2D1238ED2DA002D3651 /* MidiaVideoDisplayProtocol.swift */; };
+		5E54C2D4238ED2E7002D3651 /* MidiaVideoDisplayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E54C2D3238ED2E7002D3651 /* MidiaVideoDisplayRouter.swift */; };
 		5E7897EC2360559700F769A7 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7897EB2360559700F769A7 /* QuestionCell.xib */; };
 		5E7897EF2360561800F769A7 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */; };
 		5E7897F1236063BE00F769A7 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897F0236063BE00F769A7 /* SearchFooter.swift */; };
@@ -157,6 +173,22 @@
 		5E54C2A02387D8D0002D3651 /* AppKeysConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeysConstants.swift; sourceTree = "<group>"; };
 		5E54C2A223880589002D3651 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		5E54C2A4238D22E0002D3651 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		5E54C2A8238E86CA002D3651 /* String+formaterYoutubeDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+formaterYoutubeDuration.swift"; sourceTree = "<group>"; };
+		5E54C2B0238E9AD4002D3651 /* MidiaAllVideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllVideosViewController.swift; sourceTree = "<group>"; };
+		5E54C2B2238E9B48002D3651 /* MidiaAllVideosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllVideosPresenter.swift; sourceTree = "<group>"; };
+		5E54C2B4238E9B55002D3651 /* MidiaAllVideosProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllVideosProtocol.swift; sourceTree = "<group>"; };
+		5E54C2B6238E9B65002D3651 /* MidiaAllVideosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllVideosRouter.swift; sourceTree = "<group>"; };
+		5E54C2B9238E9D09002D3651 /* MidiaAllVideosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaAllVideosInteractor.swift; sourceTree = "<group>"; };
+		5E54C2BB238EA6D1002D3651 /* HeaderMidiaAllVideos.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderMidiaAllVideos.xib; sourceTree = "<group>"; };
+		5E54C2BD238EA79C002D3651 /* ChannelCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCollectionCell.xib; sourceTree = "<group>"; };
+		5E54C2C0238EA9EB002D3651 /* ChannelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCell.swift; sourceTree = "<group>"; };
+		5E54C2C2238EAB78002D3651 /* HeaderMidiaAllVideosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderMidiaAllVideosView.swift; path = "NacaoEspirita/modules/midia-module/midia-all-videos-module/view/HeaderMidiaAllVideosView.swift"; sourceTree = SOURCE_ROOT; };
+		5E54C2C4238EB919002D3651 /* VideoTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTableCell.xib; sourceTree = "<group>"; };
+		5E54C2C6238EB9B8002D3651 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		5E54C2CA238ED194002D3651 /* MidiaVideoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaVideoDisplayViewController.swift; sourceTree = "<group>"; };
+		5E54C2CF238ED2C8002D3651 /* MidiaVideoDisplayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaVideoDisplayPresenter.swift; sourceTree = "<group>"; };
+		5E54C2D1238ED2DA002D3651 /* MidiaVideoDisplayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaVideoDisplayProtocol.swift; sourceTree = "<group>"; };
+		5E54C2D3238ED2E7002D3651 /* MidiaVideoDisplayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaVideoDisplayRouter.swift; sourceTree = "<group>"; };
 		5E7897EB2360559700F769A7 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		5E7897F0236063BE00F769A7 /* SearchFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
@@ -285,6 +317,8 @@
 		5E10F71A23740867000B2DFE /* midia-module */ = {
 			isa = PBXGroup;
 			children = (
+				5E54C2C8238ED15E002D3651 /* midia-video-display-module */,
+				5E54C2AA238E9A90002D3651 /* midia-all-videos-module */,
 				5E912722238533CF00E24D2B /* midia-all-books-module */,
 				5E86CA352375987100A0B06E /* midia-book-display-module */,
 				5E10F71B23740871000B2DFE /* midia-main-module */,
@@ -459,6 +493,120 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		5E54C2AA238E9A90002D3651 /* midia-all-videos-module */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2AF238E9AB9002D3651 /* view */,
+				5E54C2B8238E9CF4002D3651 /* interactor */,
+				5E54C2AE238E9AB3002D3651 /* presenter */,
+				5E54C2AD238E9AAD002D3651 /* protocol */,
+				5E54C2AC238E9AA7002D3651 /* entity */,
+				5E54C2AB238E9A9A002D3651 /* router */,
+			);
+			path = "midia-all-videos-module";
+			sourceTree = "<group>";
+		};
+		5E54C2AB238E9A9A002D3651 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2B6238E9B65002D3651 /* MidiaAllVideosRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		5E54C2AC238E9AA7002D3651 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		5E54C2AD238E9AAD002D3651 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2B4238E9B55002D3651 /* MidiaAllVideosProtocol.swift */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		5E54C2AE238E9AB3002D3651 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2B2238E9B48002D3651 /* MidiaAllVideosPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		5E54C2AF238E9AB9002D3651 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2BF238EA9CA002D3651 /* cell */,
+				5E54C2B0238E9AD4002D3651 /* MidiaAllVideosViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5E54C2B8238E9CF4002D3651 /* interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2B9238E9D09002D3651 /* MidiaAllVideosInteractor.swift */,
+			);
+			path = interactor;
+			sourceTree = "<group>";
+		};
+		5E54C2BF238EA9CA002D3651 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2C0238EA9EB002D3651 /* ChannelCollectionViewCell.swift */,
+				5E54C2C2238EAB78002D3651 /* HeaderMidiaAllVideosView.swift */,
+				5E54C2C6238EB9B8002D3651 /* VideoTableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		5E54C2C8238ED15E002D3651 /* midia-video-display-module */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2C9238ED16D002D3651 /* view */,
+				5E54C2CE238ED232002D3651 /* presenter */,
+				5E54C2CD238ED22C002D3651 /* protocol */,
+				5E54C2CC238ED217002D3651 /* router */,
+			);
+			path = "midia-video-display-module";
+			sourceTree = "<group>";
+		};
+		5E54C2C9238ED16D002D3651 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2CA238ED194002D3651 /* MidiaVideoDisplayViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5E54C2CC238ED217002D3651 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2D3238ED2E7002D3651 /* MidiaVideoDisplayRouter.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		5E54C2CD238ED22C002D3651 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2D1238ED2DA002D3651 /* MidiaVideoDisplayProtocol.swift */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		5E54C2CE238ED232002D3651 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5E54C2CF238ED2C8002D3651 /* MidiaVideoDisplayPresenter.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
 		5E7897EA2360556200F769A7 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +763,9 @@
 			children = (
 				5E10F73D2375755F000B2DFE /* VideoCollectionCell.xib */,
 				5E10F7372375747F000B2DFE /* VideoSectionCell.xib */,
+				5E54C2BB238EA6D1002D3651 /* HeaderMidiaAllVideos.xib */,
+				5E54C2BD238EA79C002D3651 /* ChannelCollectionCell.xib */,
+				5E54C2C4238EB919002D3651 /* VideoTableCell.xib */,
 			);
 			path = "video-module";
 			sourceTree = "<group>";
@@ -1117,6 +1268,7 @@
 				5EA375EA23577A330026E8E5 /* UIView+Shadow.swift */,
 				5EBD4CD4236C235B00D494B7 /* UIView+DashedBorder.swift */,
 				5E54C2A4238D22E0002D3651 /* DateUtils.swift */,
+				5E54C2A8238E86CA002D3651 /* String+formaterYoutubeDuration.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1280,13 +1432,16 @@
 				5EA3761123599BF70026E8E5 /* Home.storyboard in Resources */,
 				5EA3758E2354B6110026E8E5 /* Assets.xcassets in Resources */,
 				5E86CA4723759A5D00A0B06E /* book-livro-dos-espiritos.pdf in Resources */,
+				5E54C2C5238EB919002D3651 /* VideoTableCell.xib in Resources */,
 				5E78981923634EAE00F769A7 /* AnswerCell.xib in Resources */,
 				5E86CAFA237DAE9100A0B06E /* SearchResultsCell.xib in Resources */,
 				5E10F73123742043000B2DFE /* BookCollectionCell.xib in Resources */,
+				5E54C2BC238EA6D1002D3651 /* HeaderMidiaAllVideos.xib in Resources */,
 				5EA3758C2354B6080026E8E5 /* Login.storyboard in Resources */,
 				5E10F73E2375755F000B2DFE /* VideoCollectionCell.xib in Resources */,
 				5E10F746237578B3000B2DFE /* PodcastSectionCell.xib in Resources */,
 				5EA375F82358926D0026E8E5 /* GoogleService-Info.plist in Resources */,
+				5E54C2BE238EA79C002D3651 /* ChannelCollectionCell.xib in Resources */,
 				5E7897EC2360559700F769A7 /* QuestionCell.xib in Resources */,
 				5E10F745237578B3000B2DFE /* PodcastCollectionCell.xib in Resources */,
 				5E10F716236EE982000B2DFE /* QuestionAnswerCell.xib in Resources */,
@@ -1352,7 +1507,9 @@
 				5EA3760B23599BC70026E8E5 /* HomePresenter.swift in Sources */,
 				5E91272A238534E500E24D2B /* MidiaAllBooksViewController.swift in Sources */,
 				5E86CA7E237D99B900A0B06E /* ThumbnailGridViewController.swift in Sources */,
+				5E54C2C1238EA9EB002D3651 /* ChannelCollectionViewCell.swift in Sources */,
 				5EA3760923599BBB0026E8E5 /* HomeInteractor.swift in Sources */,
+				5E54C2D4238ED2E7002D3651 /* MidiaVideoDisplayRouter.swift in Sources */,
 				5E21DB62235F2257008D4849 /* QuestionsPresenter.swift in Sources */,
 				5E54C2A12387D8D0002D3651 /* AppKeysConstants.swift in Sources */,
 				5EA375F223577A330026E8E5 /* UITextField+BottomBorder.swift in Sources */,
@@ -1362,29 +1519,36 @@
 				5EA375FE2358F0320026E8E5 /* ImageNameConstants.swift in Sources */,
 				5EA375A92355C4AC0026E8E5 /* LoginProtocol.swift in Sources */,
 				5EA3760D23599BD80026E8E5 /* HomeProtocol.swift in Sources */,
+				5E54C2C3238EAB78002D3651 /* HeaderMidiaAllVideosView.swift in Sources */,
 				5E7898042361C4DC00F769A7 /* AddQuestionRouter.swift in Sources */,
 				5EA375F423577BC50026E8E5 /* LoginBaseViewController.swift in Sources */,
 				5E91272023845B6B00E24D2B /* HelperProgressIndicator.swift in Sources */,
 				5E912732238536D300E24D2B /* MidiaAllBooksRouter.swift in Sources */,
 				5EA3760F23599BE40026E8E5 /* HomeRouter.swift in Sources */,
+				5E54C2C7238EB9B8002D3651 /* VideoTableViewCell.swift in Sources */,
 				5E86CA78237D995F00A0B06E /* AppearanceViewController.swift in Sources */,
 				5E86CA412375998300A0B06E /* MidiaBookDisplayPresenter.swift in Sources */,
 				5E91272E2385361200E24D2B /* MidiaAllBooksPresenter.swift in Sources */,
+				5E54C2A9238E86CA002D3651 /* String+formaterYoutubeDuration.swift in Sources */,
 				5E86CA3F2375994E00A0B06E /* MidiaBookDisplayInteractor.swift in Sources */,
+				5E54C2CB238ED195002D3651 /* MidiaVideoDisplayViewController.swift in Sources */,
 				5EA375F123577A330026E8E5 /* UIView+Shadow.swift in Sources */,
 				5E10F72F23740DE7000B2DFE /* BookSectionTableViewCell.swift in Sources */,
 				5E86CA5B237C16B800A0B06E /* UIView+Extension.swift in Sources */,
 				5E54C2A323880589002D3651 /* VideoModel.swift in Sources */,
+				5E54C2D0238ED2C8002D3651 /* MidiaVideoDisplayPresenter.swift in Sources */,
 				5E7898152362F84900F769A7 /* AddAnswerProtocol.swift in Sources */,
 				5E91272123845B6B00E24D2B /* ProgressIndicator.swift in Sources */,
 				5EA375DB235723770026E8E5 /* LoginCreateInteractor.swift in Sources */,
 				5EA375D723570F110026E8E5 /* LoginAccessRouter.swift in Sources */,
 				5E10F73B237574B5000B2DFE /* VideoCollectionViewCell.swift in Sources */,
+				5E54C2B3238E9B48002D3651 /* MidiaAllVideosPresenter.swift in Sources */,
 				5EA375AD2355CEFE0026E8E5 /* LoginInteractor.swift in Sources */,
 				5EA375D523570F020026E8E5 /* LoginAccessProtocol.swift in Sources */,
 				5E54C2A5238D22E0002D3651 /* DateUtils.swift in Sources */,
 				5E86CA492375BE8E00A0B06E /* OutlineTableViewController.swift in Sources */,
 				5E21DB5A235F0914008D4849 /* QuestionsViewController.swift in Sources */,
+				5E54C2B5238E9B55002D3651 /* MidiaAllVideosProtocol.swift in Sources */,
 				5E21DB64235F2287008D4849 /* QuestionsInteractor.swift in Sources */,
 				5EBD4CD5236C235B00D494B7 /* UIView+DashedBorder.swift in Sources */,
 				5E7898112362F83200F769A7 /* AddAnswerInteractor.swift in Sources */,
@@ -1407,6 +1571,7 @@
 				5EA3760723599B6E0026E8E5 /* HomeViewController.swift in Sources */,
 				5E10F734237420EB000B2DFE /* BookCollectionViewCell.swift in Sources */,
 				5E9127302385365100E24D2B /* MidiaAllBooksProtocol.swift in Sources */,
+				5E54C2BA238E9D09002D3651 /* MidiaAllVideosInteractor.swift in Sources */,
 				5E86CA43237599A700A0B06E /* MidiaBookDisplayProtocol.swift in Sources */,
 				5EA375FA2358EBE70026E8E5 /* ColorConstants.swift in Sources */,
 				5E21DB66235F22B1008D4849 /* QuestionsRouter.swift in Sources */,
@@ -1419,6 +1584,7 @@
 				5E10F723237408BB000B2DFE /* MidiaViewController.swift in Sources */,
 				5E10F74223757856000B2DFE /* PodcastSectionTableViewCell.swift in Sources */,
 				5E7897F1236063BE00F769A7 /* SearchFooter.swift in Sources */,
+				5E54C2B7238E9B65002D3651 /* MidiaAllVideosRouter.swift in Sources */,
 				5EA375F623578C580026E8E5 /* BackgroundEffectsView.swift in Sources */,
 				5EA375ED23577A330026E8E5 /* UIColor+HexAndRgb.swift in Sources */,
 				5E7898062361DF3300F769A7 /* QuestionModel.swift in Sources */,
@@ -1429,6 +1595,7 @@
 				5E10F74123757856000B2DFE /* PodcastCollectionViewCell.swift in Sources */,
 				5E7897FE2361C4BC00F769A7 /* AddQuestionProtocol.swift in Sources */,
 				5EA375DF2357238C0026E8E5 /* LoginCreateProtocol.swift in Sources */,
+				5E54C2B1238E9AD4002D3651 /* MidiaAllVideosViewController.swift in Sources */,
 				5EA375EF23577A330026E8E5 /* UIImage+Gif.swift in Sources */,
 				5EA375EE23577A330026E8E5 /* UIImage+Download.swift in Sources */,
 				5E7898002361C4C600F769A7 /* AddQuestionPresenter.swift in Sources */,
@@ -1439,6 +1606,7 @@
 				5E86CA7A237D995F00A0B06E /* OutlineViewController.swift in Sources */,
 				5E21DB60235F2207008D4849 /* QuestionsProtocol.swift in Sources */,
 				5E10F72A237409B3000B2DFE /* MidiaPresenter.swift in Sources */,
+				5E54C2D2238ED2DA002D3651 /* MidiaVideoDisplayProtocol.swift in Sources */,
 				5E86CA79237D995F00A0B06E /* BookmarkViewController.swift in Sources */,
 				5E86CA59237C166D00A0B06E /* PDFView+ScaleFactor.swift in Sources */,
 			);

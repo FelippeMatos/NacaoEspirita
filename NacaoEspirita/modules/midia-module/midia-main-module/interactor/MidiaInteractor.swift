@@ -57,11 +57,11 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
          // 4   (7)     - X
          // 5   (8)     - X
          // 6   (9)     - 1
-         // 7   (10)    - 1
+         // 7   (10)    - X
          // 8   (11)    - 1
          // 9   (12)    - 1
          // 10  (13)    - X
-         // 11  (14)    - 1
+         // 11  (14)    - X
          // 12  (15)    - 1
          // 13  (16)    - 1
          // 14  (17)    - X
@@ -70,7 +70,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
          // 17  (20)    - 1
          // 18  (21)    - 1
          // 19  (22)    - 1
-         // 20  (23)    - 1
+         // 20  (23)    - X
          // 21  (00)    - 1
          // 22  (1)     - 1
          // 23  (2)     - X
@@ -78,7 +78,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         */
 
         switch currentHour {
-        case 0, 1, 3, 9, 10, 11, 12, 14, 15, 16, 18, 20, 21, 22, 23:
+        case 0, 1, 3, 9, 11, 12, 15, 16, 18, 20, 21, 22:
             compareLastUpdateDateWithCurrentDate()
             debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/checkStatusVideos : STATUS = DENTRO DA HORA DE ATUALIZAR OS VIDEOS")
         default:
@@ -138,13 +138,15 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         var videoArray = [VideoModel]()
         var count = [Int]()
         for channel in AppKeys.YOUTUBE_CHANNEL_KEYS {
-            let youtubeQuery = "https://www.googleapis.com/youtube/v3/search?key=\(AppKeys.YOUTUBE_API_KEY)&channelId=\(channel)&part=snippet,id&order=date&maxResults=1"
+            let youtubeQuery = "https://www.googleapis.com/youtube/v3/search?key=\(AppKeys.YOUTUBE_API_KEY)&channelId=\(channel)&part=snippet,id&order=date&maxResults=5"
             AF.request(youtubeQuery).responseJSON { response in
                 if let data = response.data {
                     do {
                         let videoParser = try JSONDecoder().decode(VideoParser.self, from: data)
-                        for video in videoParser.items! {
-                            videoArray.append(VideoModel(videoParser: video)!)
+                        for video in videoParser.items {
+                            if video.snippet?.liveBroadcastContent == "none" {
+                                videoArray.append(VideoModel(videoParser: video)!)
+                            }
                         }
                         count.append(0)
                         if count.count == AppKeys.YOUTUBE_CHANNEL_KEYS.count {
@@ -178,6 +180,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
                 } else {
                     count.append(0)
                     if count.count == videoArrayList.count {
+                        self.fetchDurationVideos(videoArrayList: videoArrayList)
                         self.updateStatusVideos()
                         self.fetchVideosInFirebase()
                         debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/saveVideosInFirebase : STATUS = VIDEOS SALVOS NO FIREBASE")
@@ -200,8 +203,66 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
             }
         }
     }
+    
+    func fetchDurationVideos(videoArrayList: [VideoModel]) {
+        var videoArray = [VideoModel]()
+        var count = [Int]()
+        for video in videoArrayList {
+            let youtubeQuery = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=\(video.id!)&key=\(AppKeys.YOUTUBE_API_KEY)"
+            AF.request(youtubeQuery).responseJSON { response in
+                if let data = response.data {
+                    do {
+                        let videoParser = try JSONDecoder().decode(VideoParserDuration.self, from: data)
+                        for video in videoParser.items {
+                            videoArray.append(VideoModel(videoParserDuration: video)!)
+                        }
+                        count.append(0)
+                        if count.count == videoArrayList.count {
+                            self.updateVideosInFirebase(videoArrayList: videoArray)
+                            debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchDurationVideos : STATUS = DURACAO PARSEADA")
+                        }
+                    } catch let err {
+                        debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchDurationVideos : ERROR = \(err)")
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateVideosInFirebase(videoArrayList: [VideoModel]) {
+        for video in videoArrayList {
+            let updateRef = db.collection("videos").document(video.id!)
+            
+            updateRef.updateData([
+                "duration": video.duration!
+            ]) { err in
+                if let err = err {
+                    debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/updateVideosInFirebase : ERROR = \(err)")
+                } else {
+                    debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/updateVideosInFirebase : STATUS = ATUALIZADO")
+                }
+            }
+        }
+    }
+    
+    //MARK: Funcao de apoio a cadastro de informacoes
+    /*
+    func TEMPinsertDurationInAllVideos() {
+        var videoArray = [VideoModel]()
+        
+        db.collection("videos").order(by: "publishedAt", descending: true).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInFirebase : ERROR = \(err)")
+                self.presenter?.videosFetchFailed()
+            } else {
+                print("$$$$$$$$$$ NUMERO DE VIDEOS: \(querySnapshot!.documents.count)")
+                for document in querySnapshot!.documents {
+                    videoArray.append(VideoModel(document: document)!)
+                }
+                debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInFirebase : STATUS = VIDEOS RESGATADOS DO FB")
+                self.fetchDurationVideos(videoArrayList: videoArray)
+            }
+        }
+    }
+    */
 }
-
-/*
- GET https://www.googleapis.com/youtube/v3/videos?part=contentDetails%2Cstatistics&id=[VIDEO_ID]&key=[YOUR_API_KEY]
- */

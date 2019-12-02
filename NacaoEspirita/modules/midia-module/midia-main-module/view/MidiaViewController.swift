@@ -37,10 +37,10 @@ class MidiaViewController: UIViewController {
     
     fileprivate func configureNavigationBar() {
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.topItem?.title = "Nação Espírita"
+        navigationController?.navigationBar.topItem?.title = "Mídias"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
-             NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter-Bold", size: 21)!]
+             NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
     }
 
 }
@@ -126,6 +126,8 @@ extension MidiaViewController: HeaderMidiaDelegate {
     func headerMidiaView(_ headerMidiaView: HeaderMidiaView, didTapButtonInSection section: Int) {
         if section == 0 {
             presenter?.goToMidiaAllBooksScreen(navigationController: navigationController!)
+        } else {
+            presenter?.goToMidiaAllVideosScreen(navigationController: navigationController!)
         }
     }
 }

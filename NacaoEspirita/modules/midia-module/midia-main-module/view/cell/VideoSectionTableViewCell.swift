@@ -38,11 +38,40 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCollectionCell", for: indexPath) as! VideoCollectionViewCell
         
-        cell.testLabel.text = videoArray[indexPath.row].title
-        cell.channelLabel.text = videoArray[indexPath.row].channelTitle
+        let video = videoArray[indexPath.row]
         
-        let urlThumb = URL(string: videoArray[indexPath.row].thumbnailHigh!)
+        cell.videoNamesLabel.text = video.title
+        cell.channelLabel.text = video.channelTitle
+        if let duration = video.duration {
+            cell.videoDurationlabel.text = duration.getYoutubeFormattedDuration()
+        }
+        
+        let urlThumb = URL(string: video.thumbnailHigh!)
+        
+        //MARK: TEMPORARIO PQ ESTA HORRIVEL ISSO!
+        var channelImage = ""
+        switch video.channelId {
+        case AppKeys.YOUTUBE_CHANNEL1_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL1_THUMB
+        case AppKeys.YOUTUBE_CHANNEL2_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL2_THUMB
+        case AppKeys.YOUTUBE_CHANNEL3_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL3_THUMB
+        case AppKeys.YOUTUBE_CHANNEL4_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL4_THUMB
+        case AppKeys.YOUTUBE_CHANNEL5_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL5_THUMB
+        case AppKeys.YOUTUBE_CHANNEL6_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL6_THUMB
+        case AppKeys.YOUTUBE_CHANNEL7_KEY:
+            channelImage = AppKeys.YOUTUBE_CHANNEL7_THUMB
+        default:
+            channelImage = AppKeys.YOUTUBE_CHANNEL1_THUMB
+        }
+        let urlChannel = URL(string: channelImage)
+        
         cell.videoImage.kf.setImage(with: urlThumb)
+        cell.channelImage.kf.setImage(with: urlChannel)
         
         return cell
     }

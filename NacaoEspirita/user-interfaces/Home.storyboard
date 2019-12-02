@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iSv-hv-YG1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iSv-hv-YG1">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
@@ -40,6 +40,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvy-SH-75b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7927.5" y="-1432.3943661971832"/>
+        </scene>
+        <!--Midia All Videos View Controller-->
+        <scene sceneID="zd6-bI-M0G">
+            <objects>
+                <viewController storyboardIdentifier="MidiaAllVideos" id="DT1-Yc-bWN" customClass="MidiaAllVideosViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I5W-dE-O0V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UCs-Lz-cMv">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3X-Mj-WqV">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <connections>
+                                    <action selector="closeSearchOptionAction:" destination="DT1-Yc-bWN" eventType="touchUpInside" id="T3i-i0-k17"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cRh-am-z8m" firstAttribute="bottom" secondItem="E3X-Mj-WqV" secondAttribute="bottom" id="5xE-Uj-8s7"/>
+                            <constraint firstItem="UCs-Lz-cMv" firstAttribute="leading" secondItem="I5W-dE-O0V" secondAttribute="leading" id="Krs-me-34r"/>
+                            <constraint firstItem="cRh-am-z8m" firstAttribute="bottom" secondItem="UCs-Lz-cMv" secondAttribute="bottom" id="YHa-PH-Yrc"/>
+                            <constraint firstItem="cRh-am-z8m" firstAttribute="trailing" secondItem="UCs-Lz-cMv" secondAttribute="trailing" id="gTx-Zi-3bI"/>
+                            <constraint firstItem="E3X-Mj-WqV" firstAttribute="top" secondItem="cRh-am-z8m" secondAttribute="top" id="i6N-Se-sQp"/>
+                            <constraint firstItem="E3X-Mj-WqV" firstAttribute="leading" secondItem="cRh-am-z8m" secondAttribute="leading" id="oJN-RS-Npc"/>
+                            <constraint firstItem="cRh-am-z8m" firstAttribute="trailing" secondItem="E3X-Mj-WqV" secondAttribute="trailing" id="tU7-7y-AP7"/>
+                            <constraint firstItem="UCs-Lz-cMv" firstAttribute="top" secondItem="cRh-am-z8m" secondAttribute="top" id="tjf-VT-e89"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cRh-am-z8m"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeSearchOption" destination="E3X-Mj-WqV" id="tjD-1b-6Tb"/>
+                        <outlet property="tableView" destination="UCs-Lz-cMv" id="fDU-Fs-mv3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hLB-pn-whT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7239.375" y="-1432.3943661971832"/>
+        </scene>
+        <!--Midia Video Display View Controller-->
+        <scene sceneID="0CJ-cb-abe">
+            <objects>
+                <viewController storyboardIdentifier="MidiaVideoDisplay" id="vTk-JI-eb3" customClass="MidiaVideoDisplayViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Wh-11-FC0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SiM-MR-7or"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvs-o5-scJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6561" y="-1432"/>
         </scene>
         <!--Midia All Books View Controller-->
         <scene sceneID="7b3-Fl-NDz">
@@ -101,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvL-Nw-QeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7234" y="-1435"/>
+            <point key="canvasLocation" x="-7236" y="-2122"/>
         </scene>
         <!--Midia Book Display View Controller-->
         <scene sceneID="4Nn-0z-GVr">
@@ -192,7 +249,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-6493" y="-1652"/>
+            <point key="canvasLocation" x="-6493" y="-2339"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="bxa-bV-fOe">
@@ -563,7 +620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOU-4I-Fdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6495" y="-2098"/>
+            <point key="canvasLocation" x="-6495" y="-2786"/>
         </scene>
         <!--Thumbnail Grid View Controller-->
         <scene sceneID="gYd-9a-LS7">
@@ -588,7 +645,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bah-qB-yX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5764" y="-1432"/>
+            <point key="canvasLocation" x="-5766" y="-2119"/>
         </scene>
         <!--Outline View Controller-->
         <scene sceneID="U9a-Bx-TcW">
@@ -643,7 +700,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Tb-HG-lk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5070" y="-1433"/>
+            <point key="canvasLocation" x="-5070" y="-2120"/>
         </scene>
         <!--Bookmark View Controller-->
         <scene sceneID="hjr-zl-MIl">
@@ -668,7 +725,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQX-ti-9Gn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4389" y="-1435"/>
+            <point key="canvasLocation" x="-4389" y="-2122"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="xxg-Dg-pom">
@@ -687,7 +744,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVF-ZP-nxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4974" y="-2320"/>
+            <point key="canvasLocation" x="-4974" y="-3007"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eEF-xM-IU3">
@@ -705,7 +762,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWx-z6-hTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5764" y="-2320"/>
+            <point key="canvasLocation" x="-5766" y="-3007"/>
         </scene>
     </scenes>
     <resources>

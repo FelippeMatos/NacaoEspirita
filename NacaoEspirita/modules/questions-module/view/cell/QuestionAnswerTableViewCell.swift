@@ -125,7 +125,6 @@ class QuestionAnswerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        styleSetup()
     }
     
     override func prepareForReuse() {
@@ -140,11 +139,4 @@ class QuestionAnswerTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-}
-
-extension QuestionAnswerTableViewCell {
-    
-    func styleSetup() {
-        
-    }
 }

@@ -83,10 +83,10 @@ class QuestionsViewController: LoginBaseViewController {
     
     fileprivate func configureNavigationBar() {
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.topItem?.title = "Nação Espírita"
+        navigationController?.navigationBar.topItem?.title = "Questões"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
-             NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter-Bold", size: 21)!]
+             NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
     }
     
     var isSearchBarEmpty: Bool {

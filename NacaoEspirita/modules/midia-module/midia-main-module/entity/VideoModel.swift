@@ -12,13 +12,13 @@ import UIKit
 struct VideoParser: Codable {
     let kind: String
     let etag: String
-    let regionCode: String
-    let items: [Item]?
+    let regionCode: String?
+    let items: [Item]
 }
 
 struct Item: Codable {
     let id: Id
-    let snippet: Video
+    let snippet: Video?
 }
 
 struct Id: Codable {
@@ -33,6 +33,7 @@ struct Video: Codable {
     let description: String
     let thumbnails: Thumbnails
     let channelTitle: String
+    let liveBroadcastContent: String
 }
 
 struct Thumbnails: Codable {
@@ -46,6 +47,19 @@ struct Thumbnail: Codable {
     let height: Int
 }
 
+//DURATION
+struct VideoParserDuration: Codable {
+    let items: [ItemDuration]
+}
+struct ItemDuration: Codable {
+    let id: String
+    let contentDetails: Duration?
+}
+
+struct Duration: Codable {
+    let duration: String
+}
+
 //MARK: MODEL TO FIREBASE
 import Firebase
 
@@ -57,6 +71,7 @@ private let PUBLISHED_AT = "publishedAt"
 private let THUMBNAIL_MEDIUM = "thumbnailMedium"
 private let THUMBNAIL_HIGH = "thumbnailHigh"
 private let TITLE = "title"
+private let DURATION = "duration"
 
 class VideoModel {
     
@@ -68,6 +83,7 @@ class VideoModel {
     internal var thumbnailMedium: String?
     internal var thumbnailHigh: String?
     internal var title: String?
+    internal var duration: String?
     
     init?(document: QueryDocumentSnapshot) {
         mapping(document: document)
@@ -75,6 +91,10 @@ class VideoModel {
     
     init?(videoParser: Item) {
         mappingWithParser(video: videoParser)
+    }
+    
+    init?(videoParserDuration: ItemDuration) {
+        mappingWithParserDuration(video: videoParserDuration)
     }
     
     func mapping(document: QueryDocumentSnapshot) {
@@ -89,19 +109,26 @@ class VideoModel {
         self.thumbnailMedium = data[THUMBNAIL_MEDIUM] as? String
         self.thumbnailHigh = data[THUMBNAIL_HIGH] as? String
         self.title = data[TITLE] as? String
+        self.duration = data[DURATION] as? String
         
     }
     
     func mappingWithParser(video: Item) {
         
         self.id = video.id.videoId
-        self.channelId = video.snippet.channelId
-        self.channelTitle = video.snippet.channelTitle
-        self.description = video.snippet.description
-        self.publishedAt = video.snippet.publishedAt
-        self.thumbnailMedium = video.snippet.thumbnails.medium.url
-        self.thumbnailHigh = video.snippet.thumbnails.high.url
-        self.title = video.snippet.title
+        self.channelId = video.snippet?.channelId
+        self.channelTitle = video.snippet?.channelTitle
+        self.description = video.snippet?.description
+        self.publishedAt = video.snippet?.publishedAt
+        self.thumbnailMedium = video.snippet?.thumbnails.medium.url
+        self.thumbnailHigh = video.snippet?.thumbnails.high.url
+        self.title = video.snippet?.title
+    }
+    
+    func mappingWithParserDuration(video: ItemDuration) {
+        
+        self.id = video.id
+        self.duration = video.contentDetails?.duration
     }
 
 }

@@ -51,6 +51,18 @@ class AddQuestionViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
+    
+    fileprivate func configureNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.topItem?.title = "Criar"
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
+             NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
+    }
+    
     fileprivate func configureTextView() {
         questionTextView.text = AppText.ADD_QUESTION_PLACEHOLDER
         questionTextView.textColor = UIColor.lightGray

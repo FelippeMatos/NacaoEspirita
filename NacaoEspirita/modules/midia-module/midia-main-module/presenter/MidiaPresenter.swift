@@ -26,6 +26,10 @@ class MidiaPresenter: MidiaViewToPresenterProtocol {
     func goToMidiaAllBooksScreen(navigationController: UINavigationController) {
         router?.pushToMidiaAllBooksScreen(navigationController: navigationController)
     }
+    
+    func goToMidiaAllVideosScreen(navigationController: UINavigationController) {
+        router?.pushToMidiaAllVideosScreen(navigationController: navigationController)
+    }
 }
 
 extension MidiaPresenter: MidiaInteractorToPresenterProtocol {

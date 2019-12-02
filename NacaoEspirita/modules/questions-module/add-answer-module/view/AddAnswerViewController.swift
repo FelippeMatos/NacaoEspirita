@@ -69,6 +69,8 @@ class AddAnswerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        configureNavigationBar()
+        
         guard let focus = focus, focus else {
             return
         }
@@ -76,6 +78,14 @@ class AddAnswerViewController: UIViewController {
         if focus {
             answerTextView.becomeFirstResponder()
         }
+    }
+    
+    fileprivate func configureNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.topItem?.title = "Detalhes"
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
+             NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
     }
     
     fileprivate func configureTextView() {

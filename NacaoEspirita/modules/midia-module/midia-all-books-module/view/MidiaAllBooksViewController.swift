@@ -32,11 +32,33 @@ class MidiaAllBooksViewController: LoginBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setSearchBar()
         presenter?.startFetchingBooks()
+        setCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
+    
+    fileprivate func configureNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.topItem?.title = "Livros"
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
+             NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
+    }
+    
+    func setSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Procure por livros"
+        searchController.searchBar.placeholder = "Procure por autor ou título"
         
         navigationItem.searchController = searchController
         definesPresentationContext = true
@@ -48,17 +70,6 @@ class MidiaAllBooksViewController: LoginBaseViewController {
         notificationCenter.addObserver(forName: UIResponder.keyboardWillHideNotification,
                                        object: nil, queue: .main) { (notification) in
                                         self.handleKeyboard(notification: notification) }
-        
-        setCollectionView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        if let indexPath = collectionTableView.indexPathsForSelectedItems {
-//            collectionTableView.deselectItem(at: indexPath, animated: true)
-//        }
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     var isSearchBarEmpty: Bool {

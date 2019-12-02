@@ -35,5 +35,10 @@ class MidiaRouter: MidiaPresenterToRouterProtocol {
         let midiaAllBooksModule = MidiaAllBooksRouter.createModule()
         navigationController.pushViewController(midiaAllBooksModule, animated: true)
     }
+    
+    func pushToMidiaAllVideosScreen(navigationController: UINavigationController) {
+        let midiaAllVideosModule = MidiaAllVideosRouter.createModule()
+        navigationController.pushViewController(midiaAllVideosModule, animated: true)
+    }
 }
 

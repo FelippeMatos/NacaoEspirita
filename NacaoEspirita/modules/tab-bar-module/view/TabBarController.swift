@@ -13,11 +13,6 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
-        
-        
-        
         let homeScreen = getHomeScreen()
         let questionsScreen = getQuestionsScreen()
         let midiaScreen = getMidiaScreen()

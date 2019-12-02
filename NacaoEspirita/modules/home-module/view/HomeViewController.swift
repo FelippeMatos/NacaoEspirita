@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = "Nação Espírita"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,
-                NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter-Bold", size: 21)!]
+             NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
     }
 }
 

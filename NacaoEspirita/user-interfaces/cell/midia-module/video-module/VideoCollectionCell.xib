@@ -28,12 +28,22 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tBK-p4-CgJ">
                                         <rect key="frame" x="0.0" y="0.0" width="307" height="172"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:10:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuc-Fs-iPu">
+                                        <rect key="frame" x="260.66666666666669" y="152" width="40.333333333333314" height="14"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.85001070205479456" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.62492870720000004" blue="0.63498692469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="tBK-p4-CgJ" firstAttribute="top" secondItem="n45-q5-wK1" secondAttribute="top" id="7jI-4g-SwJ"/>
                                     <constraint firstAttribute="bottom" secondItem="tBK-p4-CgJ" secondAttribute="bottom" id="Gef-is-5XR"/>
                                     <constraint firstAttribute="trailing" secondItem="tBK-p4-CgJ" secondAttribute="trailing" id="PTw-jE-3mI"/>
+                                    <constraint firstAttribute="trailing" secondItem="kuc-Fs-iPu" secondAttribute="trailing" constant="6" id="QTC-rf-MTe"/>
+                                    <constraint firstAttribute="bottom" secondItem="kuc-Fs-iPu" secondAttribute="bottom" constant="6" id="YsF-u8-ymU"/>
                                     <constraint firstItem="tBK-p4-CgJ" firstAttribute="leading" secondItem="n45-q5-wK1" secondAttribute="leading" id="de5-Eb-83k"/>
                                 </constraints>
                             </view>
@@ -104,9 +114,11 @@
             <viewLayoutGuide key="safeArea" id="C3e-Gw-b1W"/>
             <size key="customSize" width="323" height="256"/>
             <connections>
+                <outlet property="channelImage" destination="o5e-Fn-7Wm" id="0Fw-eU-WS4"/>
                 <outlet property="channelLabel" destination="Zp4-89-mFa" id="ODn-hv-hts"/>
-                <outlet property="testLabel" destination="D6F-5H-yvD" id="lGL-1G-l4n"/>
+                <outlet property="videoDurationlabel" destination="kuc-Fs-iPu" id="inj-dD-cup"/>
                 <outlet property="videoImage" destination="tBK-p4-CgJ" id="rbd-ol-yjN"/>
+                <outlet property="videoNamesLabel" destination="D6F-5H-yvD" id="lGL-1G-l4n"/>
             </connections>
             <point key="canvasLocation" x="-47.10144927536232" y="-3.3482142857142856"/>
         </collectionViewCell>
