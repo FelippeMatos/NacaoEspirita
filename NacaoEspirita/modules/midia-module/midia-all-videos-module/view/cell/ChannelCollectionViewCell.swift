@@ -27,18 +27,10 @@ class ChannelCollectionViewCell: UICollectionViewCell {
     }
     @IBOutlet weak var containerNameView: UIView! {
         didSet {
-            self.containerNameView.roundCorners(.allCorners, radius: 6)
+            self.containerNameView.roundCorners(.allCorners, radius: 9)
         }
     }
-    @IBOutlet weak var channelNameLabel: UILabel! {
-        didSet {
-            self.channelNameLabel.layer.shadowColor = AppColor.ALMOST_WHITE.cgColor
-            self.channelNameLabel.layer.shadowRadius = 2.0
-            self.channelNameLabel.layer.shadowOpacity = 1.0
-            self.channelNameLabel.layer.shadowOffset = CGSize(width: 0, height: -2)
-            self.channelNameLabel.layer.masksToBounds = false
-        }
-    }
+    @IBOutlet weak var channelNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

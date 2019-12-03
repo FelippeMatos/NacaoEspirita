@@ -19,6 +19,7 @@ class HeaderMidiaAllVideosView: UITableViewCell {
     weak var delegate: HeaderMidiaAllVideosViewDelegate?
     
     var channelSelected: String?
+    var channelId: Int?
     var tableView: UITableView?
     @IBOutlet weak var collectionTableView: UICollectionView!
     @IBOutlet weak var dashedView: UIView! {
@@ -42,32 +43,35 @@ class HeaderMidiaAllVideosView: UITableViewCell {
     }
     
     func selectedChannel(_ number: Int) {
+        
+        if channelId == number {
+            //MOSTRAR TODOS
+            channelSelected = nil
+            channelId = nil
+            self.tableView?.reloadData()
+            return
+        }
+        channelId = number
+        
         switch number {
         case 0:
             channelSelected = AppKeys.YOUTUBE_CHANNEL1_TITLE
-            self.tableView?.reloadData()
         case 1:
             channelSelected = AppKeys.YOUTUBE_CHANNEL2_TITLE
-            self.tableView?.reloadData()
         case 2:
             channelSelected = AppKeys.YOUTUBE_CHANNEL3_TITLE
-            self.tableView?.reloadData()
         case 3:
             channelSelected = AppKeys.YOUTUBE_CHANNEL4_TITLE
-            self.tableView?.reloadData()
         case 4:
             channelSelected = AppKeys.YOUTUBE_CHANNEL5_TITLE
-            self.tableView?.reloadData()
         case 5:
             channelSelected = AppKeys.YOUTUBE_CHANNEL6_TITLE
-            self.tableView?.reloadData()
         case 6:
             channelSelected = AppKeys.YOUTUBE_CHANNEL7_TITLE
-            self.tableView?.reloadData()
         default:
             channelSelected = AppKeys.YOUTUBE_CHANNEL1_TITLE
-            self.tableView?.reloadData()
         }
+        self.tableView?.reloadData()
     }
 }
 
@@ -131,7 +135,7 @@ extension HeaderMidiaAllVideosView: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth: CGFloat = 100
-        let itemHeight: CGFloat = 110
+        let itemHeight: CGFloat = 130
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
