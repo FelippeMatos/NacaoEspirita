@@ -16,7 +16,6 @@ class LoginPresenter: LoginViewToPresenterProtocol {
     var router: LoginPresenterToRouterProtocol?
     
     func callFacebookLogin(view: UIViewController) {
-        
         interactor?.makeFacebookLogin(view: view)
     }
     

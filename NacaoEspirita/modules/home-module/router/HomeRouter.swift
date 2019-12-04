@@ -28,7 +28,6 @@ class HomeRouter: HomePresenterToRouterProtocol {
     }
     
     static func createModuleTabBar() -> UIViewController {
-        
         let view = homeStoryboard.instantiateViewController(withIdentifier: "TabBar") as! TabBarController
         return view
     }

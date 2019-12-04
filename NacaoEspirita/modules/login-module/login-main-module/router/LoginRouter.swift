@@ -46,13 +46,9 @@ class LoginRouter: LoginPresenterToRouterProtocol {
         //SET NEW NAVIGATION TO HOME
         let homeModule = HomeRouter.createModuleTabBar()
         
-        //Initiating instance of ui-navigation-controller with view-controller
-        let navigationController = UINavigationController()
-        navigationController.viewControllers = [homeModule]
-        
         //Setting up the root view-controller as ui-navigation-controller
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window!.rootViewController = navigationController
+        appDelegate.window!.rootViewController = homeModule
         appDelegate.window!.makeKeyAndVisible()
         
     }
