@@ -17,6 +17,7 @@ class HeaderMidiaAllVideosView: UITableViewCell {
     static let reuseIdentifier = "HeaderMidiaAllVideos"
     
     weak var delegate: HeaderMidiaAllVideosViewDelegate?
+    let userDefaults = UserDefaults.standard
     
     var channelSelected: String?
     var channelId: Int?
@@ -48,6 +49,11 @@ class HeaderMidiaAllVideosView: UITableViewCell {
             //MOSTRAR TODOS
             channelSelected = nil
             channelId = nil
+            
+            userDefaults.set(channelSelected, forKey: "channelSelected")
+            userDefaults.set(false, forKey: "filterByChannel")
+            userDefaults.synchronize()
+            
             self.tableView?.reloadData()
             return
         }
@@ -71,6 +77,11 @@ class HeaderMidiaAllVideosView: UITableViewCell {
         default:
             channelSelected = AppKeys.YOUTUBE_CHANNEL1_TITLE
         }
+        
+        userDefaults.set(channelSelected, forKey: "channelSelected")
+        userDefaults.set(true, forKey: "filterByChannel")
+        userDefaults.synchronize()
+        
         self.tableView?.reloadData()
     }
 }

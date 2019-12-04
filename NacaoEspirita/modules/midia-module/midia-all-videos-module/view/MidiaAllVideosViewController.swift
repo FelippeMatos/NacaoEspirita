@@ -13,6 +13,8 @@ class MidiaAllVideosViewController: UIViewController {
 
     var presenter: MidiaAllVideosViewToPresenterProtocol?
     
+    let userDefaults = UserDefaults.standard
+    
     var videoArray: [VideoModel] = []
     let searchController = UISearchController(searchResultsController: nil)
     var filteredVideos: [VideoModel] = []
@@ -49,6 +51,9 @@ class MidiaAllVideosViewController: UIViewController {
     }
     
     fileprivate func configureNavigationBar() {
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.topItem?.title = "Vídeos"
         self.navigationController?.navigationBar.titleTextAttributes =
@@ -60,6 +65,9 @@ class MidiaAllVideosViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Procure por um vídeo específico"
+        if #available(iOS 13.0, *) {
+            searchController.overrideUserInterfaceStyle = .light
+        }
         
         navigationItem.searchController = searchController
         definesPresentationContext = true
@@ -86,7 +94,7 @@ class MidiaAllVideosViewController: UIViewController {
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        if isFilteringByChannel {
+        if userDefaults.bool(forKey: "filterByChannel") {
             filteredVideos = filteredVideosByChannel.filter { (video: VideoModel) -> Bool in
                 return ((video.title?.lowercased().contains(searchText.lowercased()))! || (video.channelTitle?.lowercased().contains(searchText.lowercased()))!)
             }
@@ -100,8 +108,14 @@ class MidiaAllVideosViewController: UIViewController {
     }
     
     func filterContentForChannel(_ channelText: String) {
-        filteredVideosByChannel = videoArray.filter { (video: VideoModel) -> Bool in
-            return (video.channelTitle?.lowercased().contains(channelText.lowercased()))!
+        var array : [VideoModel] = []
+        if filteredVideos.count > 0 {
+            array = filteredVideos
+        } else {
+            array = videoArray
+        }
+        filteredVideosByChannel = array.filter { (video: VideoModel) -> Bool in
+            return ((video.title?.lowercased().contains(channelText.lowercased()))! || (video.channelTitle?.lowercased().contains(channelText.lowercased()))!)
         }
     }
     
@@ -153,15 +167,17 @@ extension MidiaAllVideosViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if userDefaults.bool(forKey: "filterByChannel") {
+            filterContentForChannel(userDefaults.string(forKey: "channelSelected")!)
+            return filteredVideosByChannel.count + 1
+        }
+        
         if isFiltering {
-            return filteredVideos.count
+            return filteredVideos.count + 1
         }
         
-        if isFilteringByChannel {
-            return filteredVideosByChannel.count
-        }
-        
-        return videoArray.count
+        return videoArray.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,23 +185,27 @@ extension MidiaAllVideosViewController: UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderMidiaAllVideos", for: indexPath) as! HeaderMidiaAllVideosView
             cell.tableView = self.tableView
             
-            if let channelSelected = cell.channelSelected {
-                filterContentForChannel(channelSelected)
-                isFilteringByChannel = true
-            } else {
-                isFilteringByChannel = false
+            if !userDefaults.bool(forKey: "filterByChannel") {
+                filteredVideosByChannel.removeAll()
             }
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableCell", for: indexPath) as! VideoTableViewCell
             
             let video: VideoModel
             
-            if isFiltering {
+            if isFiltering && userDefaults.bool(forKey: "filterByChannel") {
+                //FILTER: CHANNEL AND SEARCH
+                video = filteredVideosByChannel[indexPath.row-1]
+            } else if isFiltering && !userDefaults.bool(forKey: "filterByChannel") {
+                //FILTER: SEARCH
                 video = filteredVideos[indexPath.row-1]
-            } else if isFilteringByChannel {
+            } else if !isFiltering && userDefaults.bool(forKey: "filterByChannel") {
+                //FILTER: CHANNEL
                 video = filteredVideosByChannel[indexPath.row-1]
             } else {
+                //NO FILTER
                 video = self.videoArray[indexPath.row-1]
             }
             

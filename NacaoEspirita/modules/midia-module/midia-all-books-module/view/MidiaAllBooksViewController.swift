@@ -31,7 +31,7 @@ class MidiaAllBooksViewController: LoginBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setSearchBar()
         presenter?.startFetchingBooks()
         setCollectionView()
@@ -48,6 +48,9 @@ class MidiaAllBooksViewController: LoginBaseViewController {
     }
     
     fileprivate func configureNavigationBar() {
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.topItem?.title = "Livros"
         self.navigationController?.navigationBar.titleTextAttributes =
