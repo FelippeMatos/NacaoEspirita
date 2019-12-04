@@ -51,9 +51,6 @@ class MidiaAllVideosViewController: UIViewController {
     }
     
     fileprivate func configureNavigationBar() {
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.topItem?.title = "Vídeos"
         self.navigationController?.navigationBar.titleTextAttributes =
@@ -65,9 +62,6 @@ class MidiaAllVideosViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Procure por um vídeo específico"
-        if #available(iOS 13.0, *) {
-            searchController.overrideUserInterfaceStyle = .light
-        }
         
         navigationItem.searchController = searchController
         definesPresentationContext = true

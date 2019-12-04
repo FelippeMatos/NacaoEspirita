@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.45098039220000002" green="0.8862745098" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="color-question-background"/>
                         <constraints>
                             <constraint firstItem="JWA-wA-mPf" firstAttribute="centerX" secondItem="ICy-zO-520" secondAttribute="centerX" id="0xQ-D8-cbI"/>
                             <constraint firstItem="RF6-v8-X6u" firstAttribute="leading" secondItem="ICy-zO-520" secondAttribute="leading" id="3Tb-ze-yaZ"/>
@@ -51,7 +50,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEBTV - Tv da Federacao Espirita" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4A-Gh-mV1">
                                 <rect key="frame" x="3" y="3" width="74" height="33.5"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-CondensedBold" family="American Typewriter" pointSize="14"/>
-                                <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -60,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="36"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.83529411760000005" green="0.96470588239999999" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="color-question-background"/>
                         <constraints>
                             <constraint firstItem="hcj-Ki-GFw" firstAttribute="leading" secondItem="x5n-Hr-BEZ" secondAttribute="leading" id="B13-GK-Mts"/>
                             <constraint firstAttribute="bottom" secondItem="hcj-Ki-GFw" secondAttribute="bottom" id="QNY-Eo-pYT"/>
@@ -97,5 +96,8 @@
     <resources>
         <image name="icon-search" width="25" height="25"/>
         <image name="mask-channel" width="240" height="240"/>
+        <namedColor name="color-question-background">
+            <color red="0.93725490196078431" green="0.97647058823529409" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

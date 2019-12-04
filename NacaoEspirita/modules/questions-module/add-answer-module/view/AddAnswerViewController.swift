@@ -90,7 +90,7 @@ class AddAnswerViewController: UIViewController {
     
     fileprivate func configureTextView() {
         answerTextView.text = AppText.ADD_ANSWER_PLACEHOLDER
-        answerTextView.textColor = UIColor.lightGray
+        answerTextView.textColor = UIColor(named: "color-text-light")
         answerTextView.delegate = self
     }
     
@@ -171,16 +171,16 @@ extension AddAnswerViewController: AddAnswerPresenterToViewProtocol {
 extension AddAnswerViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor(named: "color-text-light") {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor(named: "color-text-current")
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = AppText.ADD_ANSWER_PLACEHOLDER
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor(named: "color-text-light")
         }
     }
     

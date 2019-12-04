@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,11 +19,11 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iSv-hv-YG1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color-background"/>
                                 <sections/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="iSv-hv-YG1" firstAttribute="top" secondItem="3tP-mP-Cbc" secondAttribute="top" id="cPO-c0-dGl"/>
                             <constraint firstItem="iSv-hv-YG1" firstAttribute="leading" secondItem="3tP-mP-Cbc" secondAttribute="leading" id="fff-iH-DpY"/>
@@ -59,7 +60,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="cRh-am-z8m" firstAttribute="bottom" secondItem="E3X-Mj-WqV" secondAttribute="bottom" id="5xE-Uj-8s7"/>
                             <constraint firstItem="UCs-Lz-cMv" firstAttribute="leading" secondItem="I5W-dE-O0V" secondAttribute="leading" id="Krs-me-34r"/>
@@ -88,7 +89,7 @@
                     <view key="view" contentMode="scaleToFill" id="9Wh-11-FC0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <viewLayoutGuide key="safeArea" id="SiM-MR-7or"/>
                     </view>
                 </viewController>
@@ -117,7 +118,7 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vyg-dO-iF5" customClass="SearchFooter" customModule="NacaoEspirita" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color-navigation-background"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Vba-Cp-cGB"/>
                                 </constraints>
@@ -131,7 +132,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="g8B-qU-WKU" firstAttribute="bottom" secondItem="Vyg-dO-iF5" secondAttribute="bottom" id="3DG-v5-3Dm"/>
                             <constraint firstItem="ss1-SQ-NBx" firstAttribute="top" secondItem="g8B-qU-WKU" secondAttribute="top" id="4C6-0Z-Jh6"/>
@@ -335,9 +336,9 @@
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-m6-Mo2">
                                                 <rect key="frame" x="50" y="8" width="176" height="36"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="color-background"/>
                                                 <color key="tintColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="color-text-light"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -358,14 +359,14 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="Enviar">
-                                                    <color key="titleColor" red="0.80784313725490198" green="0.80877017974853516" blue="0.80877017974853516" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" name="color-button-disabled"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="sendAnswerAction:" destination="RDy-au-YNe" eventType="touchUpInside" id="cbi-vG-1rz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color-navigation-background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="4Tg-JJ-8W4"/>
                                             <constraint firstAttribute="bottom" secondItem="2Gt-m6-Mo2" secondAttribute="bottom" constant="8" id="4Xy-Hb-mNj"/>
@@ -380,13 +381,13 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GS-wQ-nEh" userLabel="borderTop">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color-text-light"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="56j-jy-01f"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color-navigation-background"/>
                                 <constraints>
                                     <constraint firstItem="1GS-wQ-nEh" firstAttribute="top" secondItem="gfB-7m-4ev" secondAttribute="top" id="Mnt-Tp-9Fv"/>
                                     <constraint firstAttribute="trailing" secondItem="1GS-wQ-nEh" secondAttribute="trailing" id="Pkg-jL-UhO"/>
@@ -435,7 +436,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BoM-g6-0oz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color-background"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y05-iu-DaM" customClass="SearchFooter" customModule="NacaoEspirita" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="476" width="320" height="44"/>
@@ -468,7 +469,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="W8r-90-d9M" firstAttribute="trailing" secondItem="BoM-g6-0oz" secondAttribute="trailing" id="2ZA-Wh-Fha"/>
                             <constraint firstItem="hmn-UL-8MK" firstAttribute="trailing" secondItem="gXX-TX-9GF" secondAttribute="trailing" id="2ZH-5r-2ft"/>
@@ -506,8 +507,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7xk-38-C8G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="color-navigation-background"/>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWi-J3-b6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -531,18 +531,18 @@
                                             <constraint firstAttribute="height" constant="19" id="KNQ-jZ-efY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="color-text-current"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aC3-it-nL4">
                                         <rect key="frame" x="8" y="43" width="256" height="292"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color-background"/>
+                                        <color key="textColor" name="color-text-light"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color-navigation-background"/>
                                 <constraints>
                                     <constraint firstItem="tVj-Xg-sRC" firstAttribute="leading" secondItem="g17-IU-iDh" secondAttribute="leading" constant="8" id="BRE-Gq-YKg"/>
                                     <constraint firstAttribute="trailing" secondItem="aC3-it-nL4" secondAttribute="trailing" constant="8" id="EyE-TH-s3q"/>
@@ -567,7 +567,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="g17-IU-iDh" secondAttribute="trailing" constant="24" id="CRG-kr-trt"/>
                             <constraint firstItem="Mrv-bY-KX7" firstAttribute="top" secondItem="g17-IU-iDh" secondAttribute="bottom" constant="24" id="LoZ-eS-iUk"/>
@@ -763,5 +763,20 @@
     </scenes>
     <resources>
         <image name="icon-question" width="50" height="50"/>
+        <namedColor name="color-background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-button-disabled">
+            <color red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-navigation-background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-text-current">
+            <color red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-text-light">
+            <color red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

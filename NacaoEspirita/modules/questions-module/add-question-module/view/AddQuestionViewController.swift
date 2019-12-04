@@ -65,7 +65,7 @@ class AddQuestionViewController: UIViewController {
     
     fileprivate func configureTextView() {
         questionTextView.text = AppText.ADD_QUESTION_PLACEHOLDER
-        questionTextView.textColor = UIColor.lightGray
+        questionTextView.textColor = UIColor(named: "color-text-light")
         questionTextView.delegate = self
     }
 
@@ -84,16 +84,16 @@ extension AddQuestionViewController: AddQuestionPresenterToViewProtocol {
 extension AddQuestionViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor(named: "color-text-light") {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor(named: "color-text-current")
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = AppText.ADD_QUESTION_PLACEHOLDER
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor(named: "color-text-light")
         }
     }
     
