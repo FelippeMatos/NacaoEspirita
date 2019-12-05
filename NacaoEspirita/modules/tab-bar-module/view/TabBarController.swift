@@ -10,24 +10,25 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
+    let sizeOfIcon = CGSize(width: 23, height: 23)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let homeScreen = getHomeScreen()
         let questionsScreen = getQuestionsScreen()
         let midiaScreen = getMidiaScreen()
+        let profileScreen = getProfileScreen()
         
-        let viewControllerList = [homeScreen, questionsScreen, midiaScreen]
+        let viewControllerList = [homeScreen, questionsScreen, midiaScreen, profileScreen]
         viewControllers = viewControllerList
     }
     
     private func getHomeScreen() -> UINavigationController {
         let homeViewController = HomeRouter.createModule()
         let homeViewControllerWithNavigation = UINavigationController(rootViewController: homeViewController)
-        homeViewControllerWithNavigation.tabBarItem = UITabBarItem(title: nil,
-                                                                   image: UIImage(named: "icon-home")?.imageWithSize(CGSize(width: 30, height: 40)),
-                                                                   selectedImage: UIImage(named: "icon-home-selected")?.imageWithSize(CGSize(width: 30, height: 40)))
-        homeViewControllerWithNavigation.tabBarItem.imageInsets = UIEdgeInsets(top: 6,left: 0,bottom: -6,right: 0)
+        homeViewControllerWithNavigation.tabBarItem = UITabBarItem(title: "Início",
+                                                                   image: UIImage(named: "icon-home")?.imageWithSize(sizeOfIcon), tag: 0)
         
         return homeViewControllerWithNavigation
     }
@@ -35,10 +36,8 @@ class TabBarController: UITabBarController {
     private func getQuestionsScreen() -> UINavigationController {
         let questionsViewController = QuestionsRouter.createModule()
         let questionsViewControllerWithNavigation = UINavigationController(rootViewController: questionsViewController)
-        questionsViewControllerWithNavigation.tabBarItem = UITabBarItem(title: nil,
-                                                                        image: UIImage(named: "icon-question")?.imageWithSize(CGSize(width: 30, height: 40)),
-                                                                        selectedImage: UIImage(named: "icon-question-selected")?.imageWithSize(CGSize(width: 30, height: 40)))
-        questionsViewControllerWithNavigation.tabBarItem.imageInsets = UIEdgeInsets(top: 6,left: 0,bottom: -6,right: 0)
+        questionsViewControllerWithNavigation.tabBarItem = UITabBarItem(title: "Questões",
+                                                                        image: UIImage(named: "icon-question")?.imageWithSize(sizeOfIcon), tag: 1)
         
         return questionsViewControllerWithNavigation
     }
@@ -46,10 +45,17 @@ class TabBarController: UITabBarController {
     private func getMidiaScreen() -> UINavigationController {
         let midiaViewController = MidiaRouter.createModule()
         let midiaViewControllerWithNavigation = UINavigationController(rootViewController: midiaViewController)
-        midiaViewControllerWithNavigation.tabBarItem = UITabBarItem(title: nil,
-                                                                    image: UIImage(named: "icon-question")?.imageWithSize(CGSize(width: 30, height: 40)),
-                                                                    selectedImage: UIImage(named: "icon-question-selected")?.imageWithSize(CGSize(width: 30, height: 40)))
-        midiaViewControllerWithNavigation.tabBarItem.imageInsets = UIEdgeInsets(top: 6,left: 0,bottom: -6,right: 0)
+        midiaViewControllerWithNavigation.tabBarItem = UITabBarItem(title: "Mídias",
+                                                                    image: UIImage(named: "icon-midia")?.imageWithSize(sizeOfIcon), tag: 2)
+        
+        return midiaViewControllerWithNavigation
+    }
+    
+    private func getProfileScreen() -> UINavigationController {
+        let midiaViewController = MidiaRouter.createModule()
+        let midiaViewControllerWithNavigation = UINavigationController(rootViewController: midiaViewController)
+        midiaViewControllerWithNavigation.tabBarItem = UITabBarItem(title: "Perfil",
+                                                                    image: UIImage(named: "icon-profile")?.imageWithSize(sizeOfIcon), tag: 3)
         
         return midiaViewControllerWithNavigation
     }
