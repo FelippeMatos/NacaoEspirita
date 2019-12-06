@@ -58,14 +58,14 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         
         setupPDFView()
         setupThumbnailView()
-//        self.perform(#selector(changeOrder), with: nil, afterDelay: 0.2)
+        self.perform(#selector(changeOrder), with: nil, afterDelay: 0.2)
         
         resume()
     }
     
     @objc func changeOrder() {
         pdfView.layer.zPosition = 0
-        pageNumberLabelContainer.layer.zPosition = 2
+        pageNumberLabelContainer.layer.zPosition = 1
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,7 +89,7 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        pdfView.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height + 50)
+        pdfView.frame = CGRect(x: 0, y: -45, width: self.view.frame.width, height: self.view.frame.height + 45)
         let thumbanilHeight: CGFloat = 80
         thumbnailView.translatesAutoresizingMaskIntoConstraints = false
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: thumbnailView)
@@ -244,12 +244,14 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         pdfView.pageBreakMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pdfView.displayMode = .singlePageContinuous
         pdfView.autoScales = true
-
+        
+        pdfView.usePageViewController(true, withViewOptions: [UIPageViewController.OptionsKey.interPageSpacing: 20])
+        
         barHideOnTapGestureRecognizer.addTarget(self, action: #selector(gestureRecognizedToggleVisibility(_:)))
         view.addGestureRecognizer(barHideOnTapGestureRecognizer)
-//        pdfView.addGestureRecognizer(barHideOnTapGestureRecognizer)
-        
+        pdfView.addGestureRecognizer(barHideOnTapGestureRecognizer)
         pdfView.addGestureRecognizer(doubleTapGesture)
+        view.addGestureRecognizer(doubleTapGesture)
         
         pdfView.scrollView?.contentInsetAdjustmentBehavior = .scrollableAxes
         pdfView.getScaleFactorForSizeToFit()
