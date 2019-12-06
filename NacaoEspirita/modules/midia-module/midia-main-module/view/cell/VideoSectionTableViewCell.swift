@@ -12,8 +12,10 @@ import Kingfisher
 
 class VideoSectionTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var collectionTableView: UICollectionView!
     var videoArray: [VideoModel] = []
+    var navigationController: UINavigationController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +26,7 @@ class VideoSectionTableViewCell: UITableViewCell {
     func reloadCell(videoArrayList: [VideoModel]) {
         self.videoArray = videoArrayList
         collectionTableView.reloadData()
+        loading.isHidden = true
     }
 }
 
@@ -33,6 +36,11 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
         self.collectionTableView.delegate = self
         self.collectionTableView.dataSource = self
         self.collectionTableView.register(UINib(nibName: "VideoCollectionCell", bundle: nil), forCellWithReuseIdentifier: "VideoCollectionCell")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        pushToVideoDisplayScreen(navigationController: self.navigationController!, id: videoArray[indexPath.row].id!)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,8 +91,16 @@ extension VideoSectionTableViewCell : UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let hardCodedPadding:CGFloat = 25
         let itemWidth = collectionView.bounds.width - hardCodedPadding
-        let itemHeight = (itemWidth * 0.56) + 76
+        let itemHeight = (itemWidth * 0.56) + 100
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+    func pushToVideoDisplayScreen(navigationController: UINavigationController, id: String) {
+        hideProgressIndicator(view: self.navigationController!.view)
+        
+        let url = "https://www.youtube.com/watch?v=\(id)"
+        let midiaVideoDisplayModule = MidiaVideoDisplayRouter.createModule(url: url)
+        self.navigationController?.pushViewController(midiaVideoDisplayModule, animated: true)
     }
     
 }

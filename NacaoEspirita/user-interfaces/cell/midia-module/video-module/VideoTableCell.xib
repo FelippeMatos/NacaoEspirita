@@ -89,7 +89,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkP-Vi-ULE">
                                         <rect key="frame" x="11" y="15" width="42" height="42"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color-text-light"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-heart-on" translatesAutoresizingMaskIntoConstraints="NO" id="Kfp-DE-nYE">
                                         <rect key="frame" x="12" y="16" width="40" height="40"/>

@@ -58,8 +58,14 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
         
         setupPDFView()
         setupThumbnailView()
+//        self.perform(#selector(changeOrder), with: nil, afterDelay: 0.2)
         
         resume()
+    }
+    
+    @objc func changeOrder() {
+        pdfView.layer.zPosition = 0
+        pageNumberLabelContainer.layer.zPosition = 2
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -241,6 +247,7 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
 
         barHideOnTapGestureRecognizer.addTarget(self, action: #selector(gestureRecognizedToggleVisibility(_:)))
         view.addGestureRecognizer(barHideOnTapGestureRecognizer)
+//        pdfView.addGestureRecognizer(barHideOnTapGestureRecognizer)
         
         pdfView.addGestureRecognizer(doubleTapGesture)
         

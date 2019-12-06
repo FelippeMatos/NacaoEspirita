@@ -59,4 +59,26 @@ class TabBarController: UITabBarController {
         
         return midiaViewControllerWithNavigation
     }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        var tabBarView: [UIView] = []
+
+        for i in tabBar.subviews {
+            if i.isKind(of: NSClassFromString("UITabBarButton")! ) {
+                tabBarView.append(i)
+            }
+        }
+
+        if !tabBarView.isEmpty {
+            UIView.animate(withDuration: 0.15, animations: {
+                tabBarView[item.tag].transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.15) {
+                    tabBarView[item.tag].transform = CGAffineTransform.identity
+                }
+            })
+        }
+    }
 }
+
+

@@ -22,6 +22,7 @@ class MidiaAllVideosViewController: UIViewController {
     var isFilteringByChannel: Bool = false
     var channelSelected = ""
     
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var closeSearchOption: UIButton!
     @IBAction func closeSearchOptionAction(_ sender: Any) {
         self.searchController.searchBar.endEditing(true)
@@ -137,6 +138,7 @@ extension MidiaAllVideosViewController: MidiaAllVideosPresenterToViewProtocol {
     func showVideos(videosArray: [VideoModel]) {
         self.videoArray = videosArray
         self.tableView.reloadData()
+        loading.isHidden = true
     }
     
     func showError() {

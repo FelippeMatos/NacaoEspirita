@@ -18,6 +18,7 @@ class MidiaAllBooksViewController: LoginBaseViewController {
     @IBOutlet weak var searchFooter: SearchFooter!
     @IBOutlet weak var searchFooterBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeSearchOption: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBAction func closeSearchOptionAction(_ sender: Any) {
         self.searchController.searchBar.endEditing(true)
@@ -115,6 +116,7 @@ extension MidiaAllBooksViewController: MidiaAllBooksPresenterToViewProtocol {
     func showBooks(booksArray: [BookModel]) {
         self.bookArray = booksArray
         self.collectionTableView.reloadData()
+        loading.isHidden = true
     }
     
     func showError() {
@@ -173,7 +175,7 @@ extension MidiaAllBooksViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfCellsPerRow : CGFloat = 2.0
+        let numberOfCellsPerRow : CGFloat = 3.0
         let itemWidth = (collectionView.bounds.width / numberOfCellsPerRow)
         let itemHeight = itemWidth * 1.5
         

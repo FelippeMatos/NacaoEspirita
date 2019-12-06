@@ -22,6 +22,14 @@ class MidiaViewController: UIViewController {
 
         setTableView()
         presenter?.startFetchingVideos()
+        presenter?.startFetchingBooks()
+        
+//        let indexPathBook = IndexPath(item: 0, section: 0)
+//        let cellBook = tableView.cellForRow(at: indexPathBook) as! BookSectionTableViewCell
+//        let indexPathVideo = IndexPath(item: 0, section: 1)
+//        let cellVideo = tableView.cellForRow(at: indexPathVideo) as! VideoSectionTableViewCell
+//        showProgressIndicator(view: navigationController!.view)
+//        showProgressIndicator(view: cellVideo.contentView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +40,6 @@ class MidiaViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         configureNavigationBar()
-        presenter?.startFetchingBooks()
     }
     
     fileprivate func configureNavigationBar() {
@@ -117,6 +124,7 @@ extension MidiaViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoSectionCell", for: indexPath) as! VideoSectionTableViewCell
             cell.videoArray = self.videoArray
+            cell.navigationController = navigationController
             return cell
         }
     }

@@ -16,6 +16,7 @@ class QuestionsViewController: LoginBaseViewController {
     @IBOutlet weak var searchFooter: SearchFooter!
     @IBOutlet weak var searchFooterBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeSearchOption: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBAction func closeSearchOptionAction(_ sender: Any) {
         self.searchController.searchBar.endEditing(true)
@@ -166,6 +167,7 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
         self.userLike = statusUserLikeArray
         self.topAnswer = topAnswerArray
         tableView.reloadData()
+        loading.isHidden = true
     }
     
     func showError() {

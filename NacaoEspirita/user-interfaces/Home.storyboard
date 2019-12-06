@@ -59,10 +59,20 @@
                                     <action selector="closeSearchOptionAction:" destination="DT1-Yc-bWN" eventType="touchUpInside" id="T3i-i0-k17"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Gnh-Kd-p0L">
+                                <rect key="frame" x="140" y="264" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="40A-lx-NM3"/>
+                                    <constraint firstAttribute="width" constant="40" id="4X8-FL-kTg"/>
+                                </constraints>
+                                <color key="color" name="color-answer-background"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="cRh-am-z8m" firstAttribute="bottom" secondItem="E3X-Mj-WqV" secondAttribute="bottom" id="5xE-Uj-8s7"/>
+                            <constraint firstItem="Gnh-Kd-p0L" firstAttribute="centerY" secondItem="I5W-dE-O0V" secondAttribute="centerY" id="9YS-mz-Xfu"/>
+                            <constraint firstItem="Gnh-Kd-p0L" firstAttribute="centerX" secondItem="I5W-dE-O0V" secondAttribute="centerX" id="IzI-xf-6Jy"/>
                             <constraint firstItem="UCs-Lz-cMv" firstAttribute="leading" secondItem="I5W-dE-O0V" secondAttribute="leading" id="Krs-me-34r"/>
                             <constraint firstItem="cRh-am-z8m" firstAttribute="bottom" secondItem="UCs-Lz-cMv" secondAttribute="bottom" id="YHa-PH-Yrc"/>
                             <constraint firstItem="cRh-am-z8m" firstAttribute="trailing" secondItem="UCs-Lz-cMv" secondAttribute="trailing" id="gTx-Zi-3bI"/>
@@ -75,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="closeSearchOption" destination="E3X-Mj-WqV" id="tjD-1b-6Tb"/>
+                        <outlet property="loading" destination="Gnh-Kd-p0L" id="Uu1-km-kNR"/>
                         <outlet property="tableView" destination="UCs-Lz-cMv" id="fDU-Fs-mv3"/>
                     </connections>
                 </viewController>
@@ -131,6 +142,14 @@
                                     <action selector="closeSearchOptionAction:" destination="mwg-s1-IpU" eventType="touchUpInside" id="u5l-04-DjR"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fUi-H8-D9O">
+                                <rect key="frame" x="140" y="264" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iFp-s0-lqG"/>
+                                    <constraint firstAttribute="width" constant="40" id="jyC-yw-CfL"/>
+                                </constraints>
+                                <color key="color" name="color-answer-background"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="color-background"/>
                         <constraints>
@@ -141,7 +160,9 @@
                             <constraint firstItem="ss1-SQ-NBx" firstAttribute="leading" secondItem="g8B-qU-WKU" secondAttribute="leading" id="VFY-hf-YTE"/>
                             <constraint firstItem="g8B-qU-WKU" firstAttribute="trailing" secondItem="ss1-SQ-NBx" secondAttribute="trailing" constant="16" id="XOy-y2-PPy"/>
                             <constraint firstItem="cW7-58-B28" firstAttribute="bottom" secondItem="g8B-qU-WKU" secondAttribute="bottom" id="d6U-oI-Dst"/>
+                            <constraint firstItem="fUi-H8-D9O" firstAttribute="centerY" secondItem="Dx8-7V-Xd8" secondAttribute="centerY" id="hFi-Og-mUh"/>
                             <constraint firstItem="cW7-58-B28" firstAttribute="leading" secondItem="g8B-qU-WKU" secondAttribute="leading" id="hLp-AP-wjl"/>
+                            <constraint firstItem="fUi-H8-D9O" firstAttribute="centerX" secondItem="Dx8-7V-Xd8" secondAttribute="centerX" id="hZf-NX-tOC"/>
                             <constraint firstItem="Vyg-dO-iF5" firstAttribute="trailing" secondItem="g8B-qU-WKU" secondAttribute="trailing" id="pDD-5N-Dpt"/>
                             <constraint firstItem="cW7-58-B28" firstAttribute="top" secondItem="Dx8-7V-Xd8" secondAttribute="top" id="tdG-q3-TXJ"/>
                             <constraint firstItem="cW7-58-B28" firstAttribute="trailing" secondItem="g8B-qU-WKU" secondAttribute="trailing" id="tqF-Gr-hRQ"/>
@@ -151,6 +172,7 @@
                     <connections>
                         <outlet property="closeSearchOption" destination="cW7-58-B28" id="Q2W-51-ZNv"/>
                         <outlet property="collectionTableView" destination="ss1-SQ-NBx" id="Hgy-Qm-Vz5"/>
+                        <outlet property="loading" destination="fUi-H8-D9O" id="lFY-Rl-XX6"/>
                         <outlet property="searchFooter" destination="Vyg-dO-iF5" id="KUy-BK-XJV"/>
                         <outlet property="searchFooterBottomConstraint" destination="3DG-v5-3Dm" id="GlY-lh-cjQ"/>
                     </connections>
@@ -468,6 +490,14 @@
                                     <action selector="addQuestionAction:" destination="mwg-s1-IpU" eventType="touchUpInside" id="U8e-td-OXq"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sFN-kn-kPw">
+                                <rect key="frame" x="140" y="264" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6Hy-ZY-0fY"/>
+                                    <constraint firstAttribute="width" constant="40" id="npi-cV-O5F"/>
+                                </constraints>
+                                <color key="color" name="color-answer-background"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="color-background"/>
                         <constraints>
@@ -483,7 +513,9 @@
                             <constraint firstItem="BoM-g6-0oz" firstAttribute="leading" secondItem="W8r-90-d9M" secondAttribute="leading" id="VDL-IR-1Ex"/>
                             <constraint firstItem="hmn-UL-8MK" firstAttribute="leading" secondItem="gXX-TX-9GF" secondAttribute="leading" id="Wpa-aZ-ELT"/>
                             <constraint firstItem="W8r-90-d9M" firstAttribute="bottom" secondItem="BoM-g6-0oz" secondAttribute="bottom" id="YFG-EQ-goo"/>
+                            <constraint firstItem="sFN-kn-kPw" firstAttribute="centerX" secondItem="gXX-TX-9GF" secondAttribute="centerX" id="c8s-6k-KZ4"/>
                             <constraint firstItem="W8r-90-d9M" firstAttribute="trailing" secondItem="1Dv-fd-py1" secondAttribute="trailing" constant="8" id="ndI-Ep-i8Z"/>
+                            <constraint firstItem="sFN-kn-kPw" firstAttribute="centerY" secondItem="gXX-TX-9GF" secondAttribute="centerY" id="rc9-ca-RKO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W8r-90-d9M"/>
                     </view>
@@ -491,6 +523,7 @@
                     <connections>
                         <outlet property="addQuestionButton" destination="1Dv-fd-py1" id="iAC-aX-YFS"/>
                         <outlet property="closeSearchOption" destination="hmn-UL-8MK" id="vRC-fg-iaV"/>
+                        <outlet property="loading" destination="sFN-kn-kPw" id="r1x-Nw-cIK"/>
                         <outlet property="searchFooter" destination="Y05-iu-DaM" id="DHI-yU-WWJ"/>
                         <outlet property="searchFooterBottomConstraint" destination="Fpv-cl-fh8" id="H54-ys-LAu"/>
                         <outlet property="tableView" destination="BoM-g6-0oz" id="f9s-jd-6MR"/>
@@ -762,7 +795,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-question" width="50" height="50"/>
+        <image name="icon-question" width="128" height="128"/>
+        <namedColor name="color-answer-background">
+            <color red="0.83529411764705885" green="0.96470588235294119" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="color-background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

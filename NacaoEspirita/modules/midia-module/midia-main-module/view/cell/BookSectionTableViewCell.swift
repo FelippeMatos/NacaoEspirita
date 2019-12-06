@@ -12,6 +12,7 @@ import FirebaseUI
 
 class BookSectionTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var collectionTableView: UICollectionView!
     var bookArray: [BookModel] = []
     var navigationController: UINavigationController?
@@ -33,6 +34,7 @@ class BookSectionTableViewCell: UITableViewCell {
     func reloadCell(bookArrayList: [BookModel]) {
         self.bookArray = bookArrayList
         collectionTableView.reloadData()
+        loading.isHidden = true
     }
 
 }

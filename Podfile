@@ -23,5 +23,5 @@ target 'NacaoEspirita' do
   
   # Pods for Image
   pod 'Kingfisher', '~> 5.0'
-  
+  #Pods for animation
 end
