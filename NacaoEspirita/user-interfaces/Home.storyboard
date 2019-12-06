@@ -448,6 +448,36 @@
             </objects>
             <point key="canvasLocation" x="-7234" y="713"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="srR-sh-ZF7">
+            <objects>
+                <viewController storyboardIdentifier="Profile" id="4Ix-v9-Hhf" customClass="ProfileViewController" customModule="NacaoEspirita" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="md5-7L-iT5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i2U-Xw-IvP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" name="color-background"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="i2U-Xw-IvP" firstAttribute="leading" secondItem="sYB-Me-o6I" secondAttribute="leading" id="9hc-O5-j6W"/>
+                            <constraint firstItem="i2U-Xw-IvP" firstAttribute="top" secondItem="sYB-Me-o6I" secondAttribute="top" id="bft-jV-eLU"/>
+                            <constraint firstItem="sYB-Me-o6I" firstAttribute="bottom" secondItem="i2U-Xw-IvP" secondAttribute="bottom" id="ddr-Z7-OgN"/>
+                            <constraint firstItem="sYB-Me-o6I" firstAttribute="trailing" secondItem="i2U-Xw-IvP" secondAttribute="trailing" id="gmz-d8-Wn3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sYB-Me-o6I"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="i2U-Xw-IvP" id="bhX-Nu-Ptl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b5l-Ws-cdH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7924" y="1476"/>
+        </scene>
         <!--Questions View Controller-->
         <scene sceneID="aTZ-tp-dM4">
             <objects>
@@ -476,7 +506,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dv-fd-py1">
                                 <rect key="frame" x="262" y="510" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="color-background-red"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="O9s-Cb-TsH"/>
                                     <constraint firstAttribute="height" constant="50" id="qm7-Kv-9ch"/>
@@ -801,6 +831,9 @@
         </namedColor>
         <namedColor name="color-background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-background-red">
+            <color red="1" green="0.44705882352941173" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-black-white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

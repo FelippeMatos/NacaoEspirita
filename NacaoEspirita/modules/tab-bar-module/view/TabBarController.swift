@@ -52,7 +52,7 @@ class TabBarController: UITabBarController {
     }
     
     private func getProfileScreen() -> UINavigationController {
-        let midiaViewController = MidiaRouter.createModule()
+        let midiaViewController = ProfileRouter.createModule()
         let midiaViewControllerWithNavigation = UINavigationController(rootViewController: midiaViewController)
         midiaViewControllerWithNavigation.tabBarItem = UITabBarItem(title: "Perfil",
                                                                     image: UIImage(named: "icon-profile")?.imageWithSize(sizeOfIcon), tag: 3)

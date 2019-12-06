@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="color-question-background"/>
+                        <color key="backgroundColor" name="color-background-red"/>
                         <constraints>
                             <constraint firstItem="JWA-wA-mPf" firstAttribute="centerX" secondItem="ICy-zO-520" secondAttribute="centerX" id="0xQ-D8-cbI"/>
                             <constraint firstItem="RF6-v8-X6u" firstAttribute="leading" secondItem="ICy-zO-520" secondAttribute="leading" id="3Tb-ze-yaZ"/>
@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="36"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="color-question-background"/>
+                        <color key="backgroundColor" name="color-background-red"/>
                         <constraints>
                             <constraint firstItem="hcj-Ki-GFw" firstAttribute="leading" secondItem="x5n-Hr-BEZ" secondAttribute="leading" id="B13-GK-Mts"/>
                             <constraint firstAttribute="bottom" secondItem="hcj-Ki-GFw" secondAttribute="bottom" id="QNY-Eo-pYT"/>
@@ -96,8 +96,8 @@
     <resources>
         <image name="icon-search" width="25" height="25"/>
         <image name="mask-channel" width="240" height="240"/>
-        <namedColor name="color-question-background">
-            <color red="0.93725490196078431" green="0.97647058823529409" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="color-background-red">
+            <color red="0.8901960784313725" green="0.5607843137254902" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
