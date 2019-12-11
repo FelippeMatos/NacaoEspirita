@@ -53,6 +53,17 @@ class MidiaAllVideosViewController: UIViewController {
     
     fileprivate func configureNavigationBar() {
         navigationController?.navigationBar.isTranslucent = false
+        
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: AppColor.MAIN_BLUE]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: AppColor.MAIN_BLUE]
+            navBarAppearance.backgroundColor = UIColor(named: "color-navigation-background")
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+        
         navigationController?.navigationBar.topItem?.title = "Vídeos"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,

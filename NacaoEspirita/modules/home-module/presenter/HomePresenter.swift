@@ -15,14 +15,8 @@ class HomePresenter: HomeViewToPresenterProtocol {
     var interactor: HomePresenterToInteractorProtocol?
     var router: HomePresenterToRouterProtocol?
     
-    func chamarAlerta() {
-        interactor?.verificarAlerta()
-    }
 }
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {
     
-    func showAlerta() {
-        view?.mostrarAlerta()
-    }
 }

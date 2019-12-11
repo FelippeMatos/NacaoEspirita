@@ -16,12 +16,11 @@ protocol HomeViewToPresenterProtocol: class {
     var interactor: HomePresenterToInteractorProtocol? {get set}
     var router: HomePresenterToRouterProtocol? {get set}
     
-    func chamarAlerta()
 }
 
 // Presenter -> View
 protocol HomePresenterToViewProtocol: class {
-    func mostrarAlerta()
+
 }
 
 // Presenter -> Router
@@ -33,10 +32,9 @@ protocol HomePresenterToRouterProtocol: class {
 protocol HomePresenterToInteractorProtocol: class {
     var presenter: HomeInteractorToPresenterProtocol? {get set}
     
-    func verificarAlerta()
 }
 
 // Interactor -> Presenter
 protocol HomeInteractorToPresenterProtocol: class {
-    func showAlerta()
+    
 }

@@ -14,41 +14,29 @@ class HomeViewController: UIViewController {
     var presenter: HomeViewToPresenterProtocol?
     var handle: AuthStateDidChangeListenerHandle?
     
-    //TEMP
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBAction func logoutAction(_ sender: Any) {
-        do{
-            try Auth.auth().signOut()
-            
-            let loginVC = LoginRouter.createModule()
-            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            let navigationController = UINavigationController()
-            
-            navigationController.viewControllers = [loginVC]
-            appDelegate.window!.rootViewController = navigationController
-
-        }catch{
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        view.backgroundColor = UIColor(named: "color-background")
-    }
-    
-    @IBAction func actionShowAlert(_ sender: Any) {
-        presenter?.chamarAlerta()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let user = user {
-                self.nameLabel.text = user.displayName
-            }
-        }
+    }
+    
+    @objc func logout() {
+        do{
+           try Auth.auth().signOut()
+           
+           let loginVC = LoginRouter.createModule()
+           let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+           let navigationController = UINavigationController()
+           
+           navigationController.viewControllers = [loginVC]
+           appDelegate.window!.rootViewController = navigationController
+
+       }catch{
+       }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,10 +54,6 @@ class HomeViewController: UIViewController {
 
 //MARK: Interaction between Presenter and View
 extension HomeViewController: HomePresenterToViewProtocol {
-    func mostrarAlerta() {
-        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: "APENAS UMA MENSAGEM", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+
 }
 

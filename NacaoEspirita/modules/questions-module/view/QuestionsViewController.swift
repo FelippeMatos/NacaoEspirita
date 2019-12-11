@@ -11,37 +11,32 @@ import UIKit
 class QuestionsViewController: LoginBaseViewController {
     
     var presenter: QuestionsViewToPresenterProtocol?
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchFooter: SearchFooter!
-    @IBOutlet weak var searchFooterBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var closeSearchOption: UIButton!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
-    
-    @IBAction func closeSearchOptionAction(_ sender: Any) {
-        self.searchController.searchBar.endEditing(true)
-        closeSearchOption.isHidden = true
-    }
-    
-    @IBOutlet weak var addQuestionButton: UIButton! {
-        didSet {
-            self.addQuestionButton.roundCorners(.allCorners, radius: 25)
-        }
-    }
-    
-    @IBAction func addQuestionAction(_ sender: Any) {
-        guard let view = navigationController, navigationController != nil else {
-            return
-        }
-        
-        presenter?.showAddQuestionController(navigationController: view)
-    }
-    
     var questions: [QuestionModel] = []
     var userLike: [Int] = []
     var topAnswer: [AnswerModel] = []
     let searchController = UISearchController(searchResultsController: nil)
     var filteredQuestions: [QuestionModel] = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchFooter: SearchFooter!
+    @IBOutlet weak var searchFooterBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var closeSearchOption: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBAction func closeSearchOptionAction(_ sender: Any) {
+        self.searchController.searchBar.endEditing(true)
+        closeSearchOption.isHidden = true
+    }
+    @IBOutlet weak var addQuestionButton: UIButton! {
+        didSet {
+            self.addQuestionButton.roundCorners(.allCorners, radius: 25)
+        }
+    }
+    @IBAction func addQuestionAction(_ sender: Any) {
+        guard let view = navigationController, navigationController != nil else {
+            return
+        }
+        presenter?.showAddQuestionController(navigationController: view)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +79,17 @@ class QuestionsViewController: LoginBaseViewController {
     
     fileprivate func configureNavigationBar() {
         navigationController?.navigationBar.isTranslucent = false
+        
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: AppColor.MAIN_BLUE]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: AppColor.MAIN_BLUE]
+            navBarAppearance.backgroundColor = UIColor(named: "color-navigation-background")
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+        
         navigationController?.navigationBar.topItem?.title = "Questões"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: AppColor.MAIN_BLUE,

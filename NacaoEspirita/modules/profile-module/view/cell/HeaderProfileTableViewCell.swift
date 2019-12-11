@@ -12,12 +12,12 @@ class HeaderProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageContainer: UIView! {
         didSet {
-            self.profileImageContainer.roundCorners(.allCorners, radius: 6)
+            self.profileImageContainer.roundCorners(.allCorners, radius: 12)
         }
     }
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
-            self.profileImage.roundCorners(.allCorners, radius: 6)
+            self.profileImage.roundCorners(.allCorners, radius: 12)
         }
     }
     @IBOutlet weak var userNameLabel: UILabel!
