@@ -32,6 +32,18 @@ class DateUtils {
         return timeString
     }
     
+    func currentDayString() -> String {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        
+        let timeString = "\(year)-\(month)-\(day)"
+        return timeString
+    }
+    
     func stringToDate(_ dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         let format = "yyyy-MM-dd HH"

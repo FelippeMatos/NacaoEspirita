@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController {
     var transparentView = UIView()
     var userName: String?
     
-    //TEMP
     let height: CGFloat = 70
     var settingArray = ["Logout"]
     
@@ -145,7 +144,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MessageProfileCell", for: indexPath) as! MessageProfileTableViewCell
-                cell.myInit(theBody: "Podeis, sim, ser feliz. \nMas isso tem um preço.\n\nAceita-te como és,\nSem esperar destaque. \n\nConserva a disciplina\nDe teus próprios impulsos.")
+                cell.myInit(message: "Podeis, sim, ser feliz. \nMas isso tem um preço.\n\nAceita-te como és,\nSem esperar destaque. \n\nConserva a disciplina\nDe teus próprios impulsos.", numberOfLines: 2, padding: 9, profile: true)
                 
                 cell.delegate = self
                

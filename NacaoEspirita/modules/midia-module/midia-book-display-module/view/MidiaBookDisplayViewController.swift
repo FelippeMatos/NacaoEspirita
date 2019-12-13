@@ -44,7 +44,7 @@ class MidiaBookDisplayViewController: UIViewController, UIPopoverPresentationCon
     
     @IBOutlet private var doubleTapGesture: UITapGestureRecognizer!
     @IBAction private func doubleTapAction(_ sender: UITapGestureRecognizer) {
-        print("DOUBLE TAP")
+
         pdfView.autoZoomInOrOut(location: sender.location(in: pdfView), animated: true)
     }
     

@@ -14,9 +14,28 @@ class HomePresenter: HomeViewToPresenterProtocol {
     var view: HomePresenterToViewProtocol?
     var interactor: HomePresenterToInteractorProtocol?
     var router: HomePresenterToRouterProtocol?
+    let dateUtils = DateUtils()
     
+    func startFetchingMessageOfTheDay() {
+        if UserDefaults.standard.dateMessageOfTheDay != nil {
+            if UserDefaults.standard.dateMessageOfTheDay != dateUtils.currentDayString() {
+                self.interactor?.fetchMessageOfTheDay()
+            }
+        } else {
+            self.interactor?.fetchMessageOfTheDay()
+        }
+    }
 }
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {
+    func messageOfTheDayFetchedSuccess() {
+        UserDefaults.standard.dateMessageOfTheDay = dateUtils.currentDayString()
+        view?.showMessageOfTheDay()
+    }
+    
+    func messageOfTheDayFetchFailed() {
+        view?.showError()
+    }
+    
     
 }

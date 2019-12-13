@@ -16,11 +16,13 @@ protocol HomeViewToPresenterProtocol: class {
     var interactor: HomePresenterToInteractorProtocol? {get set}
     var router: HomePresenterToRouterProtocol? {get set}
     
+    func startFetchingMessageOfTheDay()
 }
 
 // Presenter -> View
 protocol HomePresenterToViewProtocol: class {
-
+    func showMessageOfTheDay()
+    func showError()
 }
 
 // Presenter -> Router
@@ -32,9 +34,11 @@ protocol HomePresenterToRouterProtocol: class {
 protocol HomePresenterToInteractorProtocol: class {
     var presenter: HomeInteractorToPresenterProtocol? {get set}
     
+    func fetchMessageOfTheDay()
 }
 
 // Interactor -> Presenter
 protocol HomeInteractorToPresenterProtocol: class {
-    
+    func messageOfTheDayFetchedSuccess()
+    func messageOfTheDayFetchFailed()
 }

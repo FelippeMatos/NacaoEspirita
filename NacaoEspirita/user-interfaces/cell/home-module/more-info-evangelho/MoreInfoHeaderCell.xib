@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreInfoHeaderCell" id="QgH-zx-4SL" customClass="MoreInfoHeaderTableViewCell" customModule="NacaoEspirita" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QgH-zx-4SL" id="M9K-0q-28z">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vno-2n-IaO">
+                        <rect key="frame" x="16" y="6" width="37" height="32"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" name="color-text-current"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-yI-9Ff">
+                        <rect key="frame" x="363" y="6" width="45" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="Bw5-id-zV2"/>
+                        </constraints>
+                        <state key="normal" title="...mais">
+                            <color key="titleColor" name="color-main-blue"/>
+                        </state>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jeB-yI-9Ff" secondAttribute="bottom" constant="6" id="2B7-fi-7T9"/>
+                    <constraint firstAttribute="trailing" secondItem="jeB-yI-9Ff" secondAttribute="trailing" constant="6" id="CHZ-sD-8XU"/>
+                    <constraint firstItem="jeB-yI-9Ff" firstAttribute="top" secondItem="M9K-0q-28z" secondAttribute="top" constant="6" id="L5b-jc-fks"/>
+                    <constraint firstItem="Vno-2n-IaO" firstAttribute="leading" secondItem="M9K-0q-28z" secondAttribute="leading" constant="16" id="L7j-HU-aN6"/>
+                    <constraint firstItem="Vno-2n-IaO" firstAttribute="top" secondItem="M9K-0q-28z" secondAttribute="top" constant="6" id="Re2-cS-8gS"/>
+                    <constraint firstAttribute="bottom" secondItem="Vno-2n-IaO" secondAttribute="bottom" constant="6" id="Soq-p3-3WB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="moreButton" destination="jeB-yI-9Ff" id="cw2-Ng-TIS"/>
+                <outlet property="titleLabel" destination="Vno-2n-IaO" id="aG8-Gd-OmF"/>
+            </connections>
+            <point key="canvasLocation" x="133" y="113"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="color-main-blue">
+            <color red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-text-current">
+            <color red="0.111" green="0.111" blue="0.111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
