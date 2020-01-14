@@ -78,7 +78,6 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     func fetchTopAnswer(questions: [QuestionModel], userId: String) {
         
         var topAnswerArray = [AnswerModel](repeating: AnswerModel()!, count: questions.count)
-//        var topAnswerArray = [AnswerModel]()
         var count = 0
         for (index, question) in questions.enumerated() {
             db.collection("questions").document(question.id!).collection("answer").order(by: "like", descending: true).limit(to: 1).getDocuments() { (querySnapshot, err) in

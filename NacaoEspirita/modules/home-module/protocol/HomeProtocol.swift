@@ -17,6 +17,7 @@ protocol HomeViewToPresenterProtocol: class {
     var router: HomePresenterToRouterProtocol? {get set}
     
     func startFetchingMessageOfTheDay()
+    func goToScheduleEvangelhoScreen(view: UIViewController)
 }
 
 // Presenter -> View
@@ -27,7 +28,7 @@ protocol HomePresenterToViewProtocol: class {
 
 // Presenter -> Router
 protocol HomePresenterToRouterProtocol: class {
-    
+    func presentModalToScheduleEvangelhoScreen(view: UIViewController)
 }
 
 // Presenter -> Interactor

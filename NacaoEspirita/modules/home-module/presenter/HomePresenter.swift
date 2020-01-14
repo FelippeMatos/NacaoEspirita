@@ -25,6 +25,10 @@ class HomePresenter: HomeViewToPresenterProtocol {
             self.interactor?.fetchMessageOfTheDay()
         }
     }
+    
+    func goToScheduleEvangelhoScreen(view: UIViewController) {
+        router?.presentModalToScheduleEvangelhoScreen(view: view)
+    }
 }
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {

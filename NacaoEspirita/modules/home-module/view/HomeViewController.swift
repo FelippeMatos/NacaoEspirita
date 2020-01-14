@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     
     var presenter: HomeViewToPresenterProtocol?
     var handle: AuthStateDidChangeListenerHandle?
-    
     var transparentView = UIView()
     
     @IBOutlet weak var tableView: UITableView!
@@ -86,24 +85,33 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarCell", for: indexPath) as! EvangelhoNoLarTableViewCell
             
             cell.moreAction = { (cell) in
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: HomeMoreViewController.self)) as? HomeMoreViewController {
-                    viewController.modalPresentationStyle = .formSheet
-                    viewController.popoverPresentationController?.sourceView = self.view
-                    viewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: self.view.frame.width - 90, height: self.view.frame.height - 100)
-                    viewController.popoverPresentationController?.delegate = self
-                    viewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-                        self.present(viewController, animated: true, completion: nil)
-                    }, completion: nil)
-                   
-                }
+                self.createScreenMoreInfoEvangelho()
             }
             cell.scheduleAction = { (cell) in
-                print("$$$$$$ AGENDAR!")
+                self.createScreenScheduleEvangelho()
             }
             
             return cell
         }
+        
+    }
+    
+    fileprivate func createScreenMoreInfoEvangelho() {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: HomeMoreViewController.self)) as? HomeMoreViewController {
+            viewController.modalPresentationStyle = .formSheet
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+                
+                self.navigationController?.pushViewController(viewController, animated: true)
+                self.present(viewController, animated: true, completion: nil)
+            }, completion: nil)
+            
+        }
+    }
+    
+    fileprivate func createScreenScheduleEvangelho() {
+        
+        presenter?.goToScheduleEvangelhoScreen(view: self)
+        
         
     }
 }

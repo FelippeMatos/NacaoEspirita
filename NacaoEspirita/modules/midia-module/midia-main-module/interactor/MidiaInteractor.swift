@@ -18,7 +18,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
     let db = Firestore.firestore()
     var ref: DocumentReference? = nil
     
-    let dateUtils = DateUtils()
+    let dateUtils = DateUtils() 
     var currentDateString: String?
 
     //MARK: BOOKS

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreInfoHeaderCell" id="QgH-zx-4SL" customClass="MoreInfoHeaderTableViewCell" customModule="NacaoEspirita" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoreInfoHeaderCell" id="QgH-zx-4SL" customClass="MoreInfoHeaderTableViewCell" customModule="NacaoEspirita" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QgH-zx-4SL" id="M9K-0q-28z">
@@ -23,11 +23,12 @@
                         <color key="textColor" name="color-text-current"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-yI-9Ff">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-yI-9Ff">
                         <rect key="frame" x="363" y="6" width="45" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="45" id="Bw5-id-zV2"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <state key="normal" title="...mais">
                             <color key="titleColor" name="color-main-blue"/>
                         </state>
@@ -43,6 +44,7 @@
                     <constraint firstAttribute="bottom" secondItem="Vno-2n-IaO" secondAttribute="bottom" constant="6" id="Soq-p3-3WB"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="color-background"/>
             <connections>
                 <outlet property="moreButton" destination="jeB-yI-9Ff" id="cw2-Ng-TIS"/>
                 <outlet property="titleLabel" destination="Vno-2n-IaO" id="aG8-Gd-OmF"/>
@@ -51,11 +53,14 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="color-background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="color-main-blue">
-            <color red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1289999932050705" green="0.58799999952316284" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-text-current">
-            <color red="0.111" green="0.111" blue="0.111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.11100000143051147" green="0.11100000143051147" blue="0.11100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

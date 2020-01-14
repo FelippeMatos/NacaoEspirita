@@ -52,4 +52,11 @@ class DateUtils {
         let dateFormated = dateFormatter.date(from: dateString)
         return dateFormated!
     }
+    
+    func getTodayWeekDay()-> String{
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "EEEE"
+           let weekDay = dateFormatter.string(from: Date())
+           return weekDay
+     }
 }

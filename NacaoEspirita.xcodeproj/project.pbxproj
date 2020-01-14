@@ -71,6 +71,11 @@
 		5E676A5F23A2773600094672 /* MoreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E676A5E23A2773600094672 /* MoreInfoCell.xib */; };
 		5E676A6123A277C800094672 /* MoreInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E676A6023A277C800094672 /* MoreInfoTableViewCell.swift */; };
 		5E676A6323A3920200094672 /* UserDefaults+type-safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E676A6223A3920200094672 /* UserDefaults+type-safe.swift */; };
+		5E730EF423CE2036004541E4 /* HomeSchedulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EF323CE2036004541E4 /* HomeSchedulePresenter.swift */; };
+		5E730EF623CE204A004541E4 /* HomeScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EF523CE204A004541E4 /* HomeScheduleInteractor.swift */; };
+		5E730EF823CE2059004541E4 /* HomeScheduleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EF723CE2059004541E4 /* HomeScheduleProtocol.swift */; };
+		5E730EFC23CE2AFA004541E4 /* HomeScheduleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */; };
+		5E7665D923C5E45900202CF7 /* HomeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */; };
 		5E7897EC2360559700F769A7 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7897EB2360559700F769A7 /* QuestionCell.xib */; };
 		5E7897EF2360561800F769A7 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */; };
 		5E7897F1236063BE00F769A7 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897F0236063BE00F769A7 /* SearchFooter.swift */; };
@@ -229,6 +234,11 @@
 		5E676A5E23A2773600094672 /* MoreInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoCell.xib; sourceTree = "<group>"; };
 		5E676A6023A277C800094672 /* MoreInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoTableViewCell.swift; sourceTree = "<group>"; };
 		5E676A6223A3920200094672 /* UserDefaults+type-safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+type-safe.swift"; sourceTree = "<group>"; };
+		5E730EF323CE2036004541E4 /* HomeSchedulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSchedulePresenter.swift; sourceTree = "<group>"; };
+		5E730EF523CE204A004541E4 /* HomeScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleInteractor.swift; sourceTree = "<group>"; };
+		5E730EF723CE2059004541E4 /* HomeScheduleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleProtocol.swift; sourceTree = "<group>"; };
+		5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleRouter.swift; sourceTree = "<group>"; };
+		5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleViewController.swift; sourceTree = "<group>"; };
 		5E7897EB2360559700F769A7 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		5E7897F0236063BE00F769A7 /* SearchFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
@@ -1492,6 +1502,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA3760E23599BE40026E8E5 /* HomeRouter.swift */,
+				5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */,
 			);
 			path = router;
 			sourceTree = "<group>";
@@ -1507,6 +1518,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA3760C23599BD80026E8E5 /* HomeProtocol.swift */,
+				5E730EF723CE2059004541E4 /* HomeScheduleProtocol.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -1515,6 +1527,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA3760A23599BC70026E8E5 /* HomePresenter.swift */,
+				5E730EF323CE2036004541E4 /* HomeSchedulePresenter.swift */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -1523,6 +1536,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA3760823599BBB0026E8E5 /* HomeInteractor.swift */,
+				5E730EF523CE204A004541E4 /* HomeScheduleInteractor.swift */,
 			);
 			path = interactor;
 			sourceTree = "<group>";
@@ -1533,6 +1547,7 @@
 				5E676A5223A21EC700094672 /* cell */,
 				5EA3760623599B6E0026E8E5 /* HomeViewController.swift */,
 				5E676A5723A232C100094672 /* HomeMoreViewController.swift */,
+				5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1685,6 +1700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E344148239A955200204CDA /* ProfileModel.swift in Sources */,
+				5E730EF423CE2036004541E4 /* HomeSchedulePresenter.swift in Sources */,
 				5E676A4E23A0EF5B00094672 /* MenuOptionTableViewCell.swift in Sources */,
 				5EA375F023577A330026E8E5 /* UIView+RoundCorners.swift in Sources */,
 				5E86CA76237D995F00A0B06E /* SearchViewController.swift in Sources */,
@@ -1728,8 +1744,10 @@
 				5E7898152362F84900F769A7 /* AddAnswerProtocol.swift in Sources */,
 				5E91272123845B6B00E24D2B /* ProgressIndicator.swift in Sources */,
 				5EA375DB235723770026E8E5 /* LoginCreateInteractor.swift in Sources */,
+				5E7665D923C5E45900202CF7 /* HomeScheduleViewController.swift in Sources */,
 				5EA375D723570F110026E8E5 /* LoginAccessRouter.swift in Sources */,
 				5E34414E239AA1F900204CDA /* HeaderProfileTableViewCell.swift in Sources */,
+				5E730EF823CE2059004541E4 /* HomeScheduleProtocol.swift in Sources */,
 				5E10F73B237574B5000B2DFE /* VideoCollectionViewCell.swift in Sources */,
 				5E54C2B3238E9B48002D3651 /* MidiaAllVideosPresenter.swift in Sources */,
 				5E676A5D23A276D300094672 /* MoreInfoHeaderTableViewCell.swift in Sources */,
@@ -1754,6 +1772,8 @@
 				5E86CA7B237D995F00A0B06E /* SearchResultsCell.swift in Sources */,
 				5E86CA45237599D600A0B06E /* MidiaBookDisplayRouter.swift in Sources */,
 				5EA375FC2358EEEE0026E8E5 /* TextConstants.swift in Sources */,
+				5E730EF623CE204A004541E4 /* HomeScheduleInteractor.swift in Sources */,
+				5E730EFC23CE2AFA004541E4 /* HomeScheduleRouter.swift in Sources */,
 				5E676A6323A3920200094672 /* UserDefaults+type-safe.swift in Sources */,
 				5EA375D123570EE00026E8E5 /* LoginAccessInteractor.swift in Sources */,
 				5E86CA77237D995F00A0B06E /* OutlineCell.swift in Sources */,

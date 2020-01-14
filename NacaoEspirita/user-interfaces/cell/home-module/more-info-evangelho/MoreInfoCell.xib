@@ -24,6 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="2RR-e1-0ua" secondAttribute="trailing" constant="16" id="ErD-fH-Gno"/>
                     <constraint firstItem="2RR-e1-0ua" firstAttribute="leading" secondItem="XGm-ox-hXk" secondAttribute="leading" constant="16" id="IdC-hp-qfj"/>
@@ -40,7 +41,7 @@
     </objects>
     <resources>
         <namedColor name="color-text-current">
-            <color red="0.111" green="0.111" blue="0.111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.11100000143051147" green="0.11100000143051147" blue="0.11100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

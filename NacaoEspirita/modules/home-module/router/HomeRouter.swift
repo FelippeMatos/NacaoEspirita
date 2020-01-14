@@ -36,4 +36,15 @@ class HomeRouter: HomePresenterToRouterProtocol {
         return UIStoryboard(name: "Home", bundle: Bundle.main)
     }
     
+    func presentModalToScheduleEvangelhoScreen(view: UIViewController) {
+        
+        let viewController = HomeScheduleRouter.createModule()
+
+        viewController.modalPresentationStyle = .formSheet
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            view.present(viewController, animated: true, completion: nil)
+        }, completion: nil)
+            
+    }
+    
 }
