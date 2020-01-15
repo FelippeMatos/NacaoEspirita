@@ -75,6 +75,8 @@
 		5E730EF623CE204A004541E4 /* HomeScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EF523CE204A004541E4 /* HomeScheduleInteractor.swift */; };
 		5E730EF823CE2059004541E4 /* HomeScheduleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EF723CE2059004541E4 /* HomeScheduleProtocol.swift */; };
 		5E730EFC23CE2AFA004541E4 /* HomeScheduleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */; };
+		5E730F0023CF38DC004541E4 /* EvangelhoNoLarDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E730EFF23CF38DC004541E4 /* EvangelhoNoLarDayCell.xib */; };
+		5E730F0223CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E730F0123CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib */; };
 		5E7665D923C5E45900202CF7 /* HomeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */; };
 		5E7897EC2360559700F769A7 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7897EB2360559700F769A7 /* QuestionCell.xib */; };
 		5E7897EF2360561800F769A7 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */; };
@@ -238,6 +240,8 @@
 		5E730EF523CE204A004541E4 /* HomeScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleInteractor.swift; sourceTree = "<group>"; };
 		5E730EF723CE2059004541E4 /* HomeScheduleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleProtocol.swift; sourceTree = "<group>"; };
 		5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleRouter.swift; sourceTree = "<group>"; };
+		5E730EFF23CF38DC004541E4 /* EvangelhoNoLarDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvangelhoNoLarDayCell.xib; sourceTree = "<group>"; };
+		5E730F0123CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvangelhoNoLarScheduledCell.xib; sourceTree = "<group>"; };
 		5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleViewController.swift; sourceTree = "<group>"; };
 		5E7897EB2360559700F769A7 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
@@ -765,8 +769,8 @@
 		5E676A4F23A2176A00094672 /* home-module */ = {
 			isa = PBXGroup;
 			children = (
+				5E730EFD23CF3847004541E4 /* evangelho-no-lar */,
 				5E676A5923A2761500094672 /* more-info-evangelho */,
-				5E676A5023A217C800094672 /* EvangelhoNoLarCell.xib */,
 			);
 			path = "home-module";
 			sourceTree = "<group>";
@@ -788,6 +792,16 @@
 				5E676A5E23A2773600094672 /* MoreInfoCell.xib */,
 			);
 			path = "more-info-evangelho";
+			sourceTree = "<group>";
+		};
+		5E730EFD23CF3847004541E4 /* evangelho-no-lar */ = {
+			isa = PBXGroup;
+			children = (
+				5E676A5023A217C800094672 /* EvangelhoNoLarCell.xib */,
+				5E730EFF23CF38DC004541E4 /* EvangelhoNoLarDayCell.xib */,
+				5E730F0123CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib */,
+			);
+			path = "evangelho-no-lar";
 			sourceTree = "<group>";
 		};
 		5E7897EA2360556200F769A7 /* cell */ = {
@@ -1626,6 +1640,7 @@
 				5E676A5F23A2773600094672 /* MoreInfoCell.xib in Resources */,
 				5E34414B239A9AB500204CDA /* HeaderProfileCell.xib in Resources */,
 				5EA375912354B6110026E8E5 /* LaunchScreen.storyboard in Resources */,
+				5E730F0223CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib in Resources */,
 				5E10F73623749CED000B2DFE /* BookSectionCell.xib in Resources */,
 				5EA3761123599BF70026E8E5 /* Home.storyboard in Resources */,
 				5EA3758E2354B6110026E8E5 /* Assets.xcassets in Resources */,
@@ -1633,6 +1648,7 @@
 				5E54C2C5238EB919002D3651 /* VideoTableCell.xib in Resources */,
 				5E78981923634EAE00F769A7 /* AnswerCell.xib in Resources */,
 				5E86CAFA237DAE9100A0B06E /* SearchResultsCell.xib in Resources */,
+				5E730F0023CF38DC004541E4 /* EvangelhoNoLarDayCell.xib in Resources */,
 				5E10F73123742043000B2DFE /* BookCollectionCell.xib in Resources */,
 				5E676A5123A217C800094672 /* EvangelhoNoLarCell.xib in Resources */,
 				5E54C2BC238EA6D1002D3651 /* HeaderMidiaAllVideos.xib in Resources */,

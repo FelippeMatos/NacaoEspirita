@@ -109,10 +109,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func createScreenScheduleEvangelho() {
-        
         presenter?.goToScheduleEvangelhoScreen(view: self)
-        
-        
     }
 }
 
