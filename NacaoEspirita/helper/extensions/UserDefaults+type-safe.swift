@@ -24,4 +24,10 @@ extension UserDefaults {
         get { return string(forKey: #function) }
         set { set(newValue, forKey: #function) }
     }
+    
+    var dateSchedulingOfEvangelhoNoLar: String? {
+        get { return string(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
+    
 }

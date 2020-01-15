@@ -19,9 +19,17 @@ class HomeSchedulePresenter: HomeScheduleViewToPresenterProtocol {
     func sendScheduleToPresenter(date: String) {
         interactor?.saveScheduleInFirebase(date: date)
     }
+    
+    func deleteScheduleToPresenter() {
+        interactor?.deleteScheduleInFirebase()
+    }
 }
 
 extension HomeSchedulePresenter: HomeScheduleInteractorToPresenterProtocol {
+    func deleteScheduleSuccess() {
+        view?.showMessageOfSuccessAndDismiss()
+    }
+    
     func saveScheduleSuccess() {
         view?.showMessageOfSuccessAndDismiss()
     }

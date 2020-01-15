@@ -859,7 +859,7 @@
                                 <rect key="frame" x="0.0" y="155.5" width="320" height="257"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUK-iv-xdZ">
-                                <rect key="frame" x="85" y="462" width="150" height="46"/>
+                                <rect key="frame" x="85" y="442" width="150" height="46"/>
                                 <color key="backgroundColor" name="color-main-blue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="TkK-az-PBK"/>
@@ -886,17 +886,33 @@
                                 <color key="textColor" name="color-text-current"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbw-30-74s">
+                                <rect key="frame" x="85" y="496" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Lic-hG-NST"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="excluir...">
+                                    <color key="titleColor" name="color-background-red"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteScheduleButton:" destination="MX8-gf-3Pr" eventType="touchUpInside" id="LP5-8U-MWc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="QZ5-MP-8XV" firstAttribute="centerY" secondItem="7MU-JJ-zRz" secondAttribute="centerY" id="0Qg-Td-GCC"/>
                             <constraint firstItem="QZ5-MP-8XV" firstAttribute="top" secondItem="HHW-5Q-HYk" secondAttribute="bottom" constant="16" id="8eH-co-HZ2"/>
                             <constraint firstItem="HHW-5Q-HYk" firstAttribute="leading" secondItem="hdV-ow-10z" secondAttribute="leading" constant="16" id="9Ip-mh-xby"/>
+                            <constraint firstItem="NUK-iv-xdZ" firstAttribute="trailing" secondItem="dbw-30-74s" secondAttribute="trailing" id="Aac-cp-aTt"/>
+                            <constraint firstItem="dbw-30-74s" firstAttribute="leading" secondItem="NUK-iv-xdZ" secondAttribute="leading" id="Ezy-ps-NU6"/>
                             <constraint firstAttribute="trailing" secondItem="HHW-5Q-HYk" secondAttribute="trailing" constant="16" id="FIT-0F-kOH"/>
-                            <constraint firstItem="hdV-ow-10z" firstAttribute="bottom" secondItem="NUK-iv-xdZ" secondAttribute="bottom" constant="60" id="IBP-qF-fvg"/>
+                            <constraint firstAttribute="bottom" secondItem="NUK-iv-xdZ" secondAttribute="bottom" constant="80" id="IBP-qF-fvg"/>
                             <constraint firstItem="GHF-e8-Zem" firstAttribute="centerX" secondItem="7MU-JJ-zRz" secondAttribute="centerX" id="Qaz-Wn-Jrn"/>
                             <constraint firstItem="NUK-iv-xdZ" firstAttribute="centerX" secondItem="7MU-JJ-zRz" secondAttribute="centerX" id="Uv6-Jh-nmy"/>
                             <constraint firstItem="QZ5-MP-8XV" firstAttribute="trailing" secondItem="hdV-ow-10z" secondAttribute="trailing" id="WwN-TS-ZB1"/>
+                            <constraint firstItem="dbw-30-74s" firstAttribute="top" secondItem="NUK-iv-xdZ" secondAttribute="bottom" constant="8" id="fxZ-Lz-7nz"/>
                             <constraint firstItem="QZ5-MP-8XV" firstAttribute="leading" secondItem="hdV-ow-10z" secondAttribute="leading" id="jIZ-Id-IF5"/>
                             <constraint firstItem="HHW-5Q-HYk" firstAttribute="top" secondItem="GHF-e8-Zem" secondAttribute="bottom" constant="30" id="jQc-mp-EYt"/>
                             <constraint firstItem="GHF-e8-Zem" firstAttribute="top" secondItem="7MU-JJ-zRz" secondAttribute="top" constant="12" id="rmb-e2-Ogr"/>
@@ -905,7 +921,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="deleteButton" destination="dbw-30-74s" id="lXA-cI-Fac"/>
+                        <outlet property="descriptionLabel" destination="HHW-5Q-HYk" id="UO4-jg-nyW"/>
                         <outlet property="pickerView" destination="QZ5-MP-8XV" id="Ulg-9b-B1r"/>
+                        <outlet property="saveButton" destination="NUK-iv-xdZ" id="8cw-ZK-HbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bG-DF-rKV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

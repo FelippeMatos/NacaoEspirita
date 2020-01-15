@@ -77,6 +77,8 @@
 		5E730EFC23CE2AFA004541E4 /* HomeScheduleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */; };
 		5E730F0023CF38DC004541E4 /* EvangelhoNoLarDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E730EFF23CF38DC004541E4 /* EvangelhoNoLarDayCell.xib */; };
 		5E730F0223CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E730F0123CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib */; };
+		5E730F0423CF3E95004541E4 /* EvangelhoNoLarScheduledTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730F0323CF3E95004541E4 /* EvangelhoNoLarScheduledTableViewCell.swift */; };
+		5E730F0823CF8412004541E4 /* EvangelhoNoLarDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E730F0723CF8412004541E4 /* EvangelhoNoLarDayTableViewCell.swift */; };
 		5E7665D923C5E45900202CF7 /* HomeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */; };
 		5E7897EC2360559700F769A7 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7897EB2360559700F769A7 /* QuestionCell.xib */; };
 		5E7897EF2360561800F769A7 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */; };
@@ -242,6 +244,8 @@
 		5E730EFB23CE2AFA004541E4 /* HomeScheduleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleRouter.swift; sourceTree = "<group>"; };
 		5E730EFF23CF38DC004541E4 /* EvangelhoNoLarDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvangelhoNoLarDayCell.xib; sourceTree = "<group>"; };
 		5E730F0123CF3902004541E4 /* EvangelhoNoLarScheduledCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvangelhoNoLarScheduledCell.xib; sourceTree = "<group>"; };
+		5E730F0323CF3E95004541E4 /* EvangelhoNoLarScheduledTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvangelhoNoLarScheduledTableViewCell.swift; sourceTree = "<group>"; };
+		5E730F0723CF8412004541E4 /* EvangelhoNoLarDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvangelhoNoLarDayTableViewCell.swift; sourceTree = "<group>"; };
 		5E7665D823C5E45900202CF7 /* HomeScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScheduleViewController.swift; sourceTree = "<group>"; };
 		5E7897EB2360559700F769A7 /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		5E7897EE2360561800F769A7 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
@@ -779,6 +783,8 @@
 			isa = PBXGroup;
 			children = (
 				5E676A5323A21EDC00094672 /* EvangelhoNoLarTableViewCell.swift */,
+				5E730F0723CF8412004541E4 /* EvangelhoNoLarDayTableViewCell.swift */,
+				5E730F0323CF3E95004541E4 /* EvangelhoNoLarScheduledTableViewCell.swift */,
 				5E676A5C23A276D300094672 /* MoreInfoHeaderTableViewCell.swift */,
 				5E676A6023A277C800094672 /* MoreInfoTableViewCell.swift */,
 			);
@@ -1752,6 +1758,7 @@
 				5E54C2A9238E86CA002D3651 /* String+formaterYoutubeDuration.swift in Sources */,
 				5E86CA3F2375994E00A0B06E /* MidiaBookDisplayInteractor.swift in Sources */,
 				5E54C2CB238ED195002D3651 /* MidiaVideoDisplayViewController.swift in Sources */,
+				5E730F0823CF8412004541E4 /* EvangelhoNoLarDayTableViewCell.swift in Sources */,
 				5EA375F123577A330026E8E5 /* UIView+Shadow.swift in Sources */,
 				5E10F72F23740DE7000B2DFE /* BookSectionTableViewCell.swift in Sources */,
 				5E86CA5B237C16B800A0B06E /* UIView+Extension.swift in Sources */,
@@ -1766,6 +1773,7 @@
 				5E730EF823CE2059004541E4 /* HomeScheduleProtocol.swift in Sources */,
 				5E10F73B237574B5000B2DFE /* VideoCollectionViewCell.swift in Sources */,
 				5E54C2B3238E9B48002D3651 /* MidiaAllVideosPresenter.swift in Sources */,
+				5E730F0423CF3E95004541E4 /* EvangelhoNoLarScheduledTableViewCell.swift in Sources */,
 				5E676A5D23A276D300094672 /* MoreInfoHeaderTableViewCell.swift in Sources */,
 				5EA375AD2355CEFE0026E8E5 /* LoginInteractor.swift in Sources */,
 				5EA375D523570F020026E8E5 /* LoginAccessProtocol.swift in Sources */,

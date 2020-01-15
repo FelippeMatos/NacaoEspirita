@@ -59,4 +59,20 @@ class DateUtils {
            let weekDay = dateFormatter.string(from: Date())
            return weekDay
      }
+    
+    func getPositionWeekDay(_ weekDay: String) -> Int {
+        var weekDayInt = 0
+        
+        switch weekDay {
+        case "Tuesday", "Terça": weekDayInt = 1
+        case "Wednesday", "Quarta": weekDayInt = 2
+        case "Thursday", "Quinta": weekDayInt = 3
+        case "Friday", "Sexta": weekDayInt = 4
+        case "Saturday", "Sábado": weekDayInt = 5
+        case "Sunday", "Domingo": weekDayInt = 6
+        default: weekDayInt = 0
+        }
+        
+        return weekDayInt
+    }
 }

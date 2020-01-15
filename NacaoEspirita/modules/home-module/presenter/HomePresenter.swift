@@ -26,8 +26,8 @@ class HomePresenter: HomeViewToPresenterProtocol {
         }
     }
     
-    func goToScheduleEvangelhoScreen(view: UIViewController) {
-        router?.presentModalToScheduleEvangelhoScreen(view: view)
+    func goToScheduleEvangelhoScreen(view: HomeViewController, toSave: Bool) {
+        router?.presentModalToScheduleEvangelhoScreen(view: view, toSave: toSave)
     }
 }
 

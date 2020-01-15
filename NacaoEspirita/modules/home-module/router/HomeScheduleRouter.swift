@@ -11,7 +11,7 @@ import UIKit
 
 class HomeScheduleRouter: HomeSchedulePresenterToRouterProtocol {
     
-    static func createModule() -> HomeScheduleViewController {
+    static func createModule(toSave: Bool, viewToUpdate: HomeViewController) -> HomeScheduleViewController {
         
         let view = homeStoryboard.instantiateViewController(withIdentifier: "HomeScheduleViewController") as! HomeScheduleViewController
         
@@ -24,6 +24,9 @@ class HomeScheduleRouter: HomeSchedulePresenterToRouterProtocol {
         presenter.router = router
         presenter.interactor = interactor
         interactor.presenter = presenter
+        
+        view.toSave = toSave
+        view.viewToUpdate = viewToUpdate
         
         return view
     }

@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     var presenter: HomeViewToPresenterProtocol?
     var handle: AuthStateDidChangeListenerHandle?
     var transparentView = UIView()
+    var toSave: Bool?
+    let dateUtils = DateUtils()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,11 +28,11 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         configureNavigationBar()
+        tableView.reloadData()
     }
     
     fileprivate func configureNavigationBar() {
@@ -64,6 +66,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "MessageProfileCell", bundle: nil), forCellReuseIdentifier: "MessageProfileCell")
         self.tableView.register(UINib(nibName: "EvangelhoNoLarCell", bundle: nil), forCellReuseIdentifier: "EvangelhoNoLarCell")
+        self.tableView.register(UINib(nibName: "EvangelhoNoLarScheduledCell", bundle: nil), forCellReuseIdentifier: "EvangelhoNoLarScheduledCell")
+        self.tableView.register(UINib(nibName: "EvangelhoNoLarDayCell", bundle: nil), forCellReuseIdentifier: "EvangelhoNoLarDayCell")
         
     }
     
@@ -82,18 +86,50 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
              return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarCell", for: indexPath) as! EvangelhoNoLarTableViewCell
-            
-            cell.moreAction = { (cell) in
-                self.createScreenMoreInfoEvangelho()
+            if UserDefaults.standard.dateSchedulingOfEvangelhoNoLar != nil {
+                if self.compareDateScheduledWithDateNow() {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarDayCell", for: indexPath) as! EvangelhoNoLarDayTableViewCell
+                    
+                    return cell
+                }
+                self.toSave = false
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarScheduledCell", for: indexPath) as! EvangelhoNoLarScheduledTableViewCell
+
+                cell.dateLabel.text = UserDefaults.standard.dateSchedulingOfEvangelhoNoLar
+                cell.modifyScheduleAction = { (cell) in
+                    self.createScreenScheduleEvangelho()
+                }
+                
+                return cell
+            } else {
+                self.toSave = true
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarCell", for: indexPath) as! EvangelhoNoLarTableViewCell
+                
+                cell.moreAction = { (cell) in
+                    self.createScreenMoreInfoEvangelho()
+                }
+                cell.scheduleAction = { (cell) in
+                    self.createScreenScheduleEvangelho()
+                }
+                
+                return cell
             }
-            cell.scheduleAction = { (cell) in
-                self.createScreenScheduleEvangelho()
-            }
             
-            return cell
         }
         
+    }
+    
+    func compareDateScheduledWithDateNow() -> Bool {
+        let daySaved = UserDefaults.standard.dateSchedulingOfEvangelhoNoLar?.components(separatedBy: "-")
+        let daySavedPosition = dateUtils.getPositionWeekDay(daySaved![0])
+        let dayWeekPosition = dateUtils.getPositionWeekDay(dateUtils.getTodayWeekDay())
+        
+        if daySavedPosition == dayWeekPosition {
+            return true
+        }
+        return false
     }
     
     fileprivate func createScreenMoreInfoEvangelho() {
@@ -109,13 +145,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func createScreenScheduleEvangelho() {
-        presenter?.goToScheduleEvangelhoScreen(view: self)
+        presenter?.goToScheduleEvangelhoScreen(view: self, toSave: self.toSave!)
     }
 }
 
 extension HomeViewController: MessageProfileCellDelegate {
     func moreTapped(cell: MessageProfileTableViewCell) {
-        
         UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.tableView.beginUpdates()
             self.tableView.endUpdates()

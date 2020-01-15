@@ -17,6 +17,7 @@ protocol HomeScheduleViewToPresenterProtocol: class {
     var router: HomeSchedulePresenterToRouterProtocol? {get set}
     
     func sendScheduleToPresenter(date: String)
+    func deleteScheduleToPresenter()
 }
 
 // Presenter -> View
@@ -35,10 +36,12 @@ protocol HomeSchedulePresenterToInteractorProtocol: class {
     var presenter: HomeScheduleInteractorToPresenterProtocol? {get set}
     
     func saveScheduleInFirebase(date: String)
+    func deleteScheduleInFirebase()
 }
 
 // Interactor -> Presenter
 protocol HomeScheduleInteractorToPresenterProtocol: class {
     func saveScheduleSuccess()
     func saveScheduleFailed()
+    func deleteScheduleSuccess()
 }
