@@ -18,11 +18,14 @@ protocol HomeViewToPresenterProtocol: class {
     
     func startFetchingMessageOfTheDay()
     func goToScheduleEvangelhoScreen(view: HomeViewController, toSave: Bool)
+    func checkIfIsNeedFetchMessage()
+    func compareDateScheduledWithDateNow() -> Bool
 }
 
 // Presenter -> View
 protocol HomePresenterToViewProtocol: class {
     func showMessageOfTheDay()
+    func showMessageOfTheEvangelho()
     func showError()
 }
 
@@ -36,10 +39,12 @@ protocol HomePresenterToInteractorProtocol: class {
     var presenter: HomeInteractorToPresenterProtocol? {get set}
     
     func fetchMessageOfTheDay()
+    func fetchMessageOfEvangelho()
 }
 
 // Interactor -> Presenter
 protocol HomeInteractorToPresenterProtocol: class {
     func messageOfTheDayFetchedSuccess()
+    func messageOfTheEvangelhoFetchedSuccess()
     func messageOfTheDayFetchFailed()
 }

@@ -30,4 +30,18 @@ extension UserDefaults {
         set { set(newValue, forKey: #function) }
     }
     
+    var messageOfTheEvangelho: String? {
+        get { return string(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
+    
+    var authorMessageOfTheEvangelho: String? {
+        get { return string(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
+    
+    var dateMessageOfTheEvangelho: String? {
+        get { return string(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
 }

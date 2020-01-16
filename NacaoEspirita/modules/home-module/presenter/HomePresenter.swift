@@ -29,6 +29,33 @@ class HomePresenter: HomeViewToPresenterProtocol {
     func goToScheduleEvangelhoScreen(view: HomeViewController, toSave: Bool) {
         router?.presentModalToScheduleEvangelhoScreen(view: view, toSave: toSave)
     }
+    
+    func checkIfIsNeedFetchMessage() {
+        if UserDefaults.standard.dateSchedulingOfEvangelhoNoLar != nil {
+            if compareDateScheduledWithDateNow() {
+                if UserDefaults.standard.dateMessageOfTheEvangelho != dateUtils.currentDayString() {
+                    self.interactor?.fetchMessageOfEvangelho()
+                }
+            }
+        }
+    }
+    
+    func compareDateScheduledWithDateNow() -> Bool {
+        let daySaved = UserDefaults.standard.dateSchedulingOfEvangelhoNoLar?.components(separatedBy: "-")
+        let daySavedPosition = dateUtils.getPositionWeekDay(daySaved![0])
+        let dayWeekPosition = dateUtils.getPositionWeekDay(dateUtils.getTodayWeekDay())
+        
+        if daySavedPosition == dayWeekPosition {
+            let savedHour = UserDefaults.standard.dateSchedulingOfEvangelhoNoLar?.components(separatedBy: " ")
+            let currentHour = String(dateUtils.currentHour()) + ":00h"
+            
+            if currentHour >= (savedHour?.last)! {
+                return false
+            }
+            return true
+        }
+        return false
+    }
 }
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {
@@ -37,9 +64,13 @@ extension HomePresenter: HomeInteractorToPresenterProtocol {
         view?.showMessageOfTheDay()
     }
     
+    func messageOfTheEvangelhoFetchedSuccess() {
+        UserDefaults.standard.dateMessageOfTheEvangelho = dateUtils.currentDayString()
+        view?.showMessageOfTheDay()
+    }
+    
     func messageOfTheDayFetchFailed() {
         view?.showError()
     }
-    
     
 }

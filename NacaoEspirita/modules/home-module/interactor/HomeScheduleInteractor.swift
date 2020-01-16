@@ -38,8 +38,7 @@ class HomeScheduleInteractor: HomeSchedulePresenterToInteractorProtocol {
         guard let userId = Auth.auth().currentUser?.uid, !userId.isEmpty else {
             return
         }
-        
-        db.collection("evangelho").document("01").collection("schedule").document(userId).delete() { err in
+                db.collection("evangelho").document("01").collection("schedule").document(userId).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
                 

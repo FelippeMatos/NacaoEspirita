@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
     
         self.presenter?.startFetchingMessageOfTheDay()
+        
+        checkDayOfEvangelho()
         setTableView()
     }
     
@@ -33,6 +35,10 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         configureNavigationBar()
         tableView.reloadData()
+    }
+    
+    func checkDayOfEvangelho() {
+        self.presenter?.checkIfIsNeedFetchMessage()
     }
     
     fileprivate func configureNavigationBar() {
@@ -48,6 +54,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomePresenterToViewProtocol {
     func showMessageOfTheDay() {
         let sections = IndexSet.init(integer: 0)
+        tableView.reloadSections(sections, with: .none)
+    }
+    
+    func showMessageOfTheEvangelho() {
+        let sections = IndexSet.init(integer: 1)
         tableView.reloadSections(sections, with: .none)
     }
     
@@ -87,13 +98,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
              return cell
         default:
             if UserDefaults.standard.dateSchedulingOfEvangelhoNoLar != nil {
-                if self.compareDateScheduledWithDateNow() {
+                if (presenter?.compareDateScheduledWithDateNow())! {
+                    self.toSave = false
+                    
                     let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarDayCell", for: indexPath) as! EvangelhoNoLarDayTableViewCell
+                    
+                    cell.messageLabel.text = UserDefaults.standard.messageOfTheEvangelho!
+                    cell.authorLabel.text = "- " + UserDefaults.standard.authorMessageOfTheEvangelho!
+                    
+                    cell.modifyScheduleAction = { (cell) in
+                        self.createScreenScheduleEvangelho()
+                    }
                     
                     return cell
                 }
                 self.toSave = false
-                
+        
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EvangelhoNoLarScheduledCell", for: indexPath) as! EvangelhoNoLarScheduledTableViewCell
 
                 cell.dateLabel.text = UserDefaults.standard.dateSchedulingOfEvangelhoNoLar
@@ -121,16 +141,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func compareDateScheduledWithDateNow() -> Bool {
-        let daySaved = UserDefaults.standard.dateSchedulingOfEvangelhoNoLar?.components(separatedBy: "-")
-        let daySavedPosition = dateUtils.getPositionWeekDay(daySaved![0])
-        let dayWeekPosition = dateUtils.getPositionWeekDay(dateUtils.getTodayWeekDay())
-        
-        if daySavedPosition == dayWeekPosition {
-            return true
-        }
-        return false
-    }
+    
     
     fileprivate func createScreenMoreInfoEvangelho() {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: HomeMoreViewController.self)) as? HomeMoreViewController {
