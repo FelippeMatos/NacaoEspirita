@@ -56,10 +56,10 @@ class SearchFooter: UIView {
     if (filteredItemCount == totalItemCount) {
       setNotFiltering()
     } else if (filteredItemCount == 0) {
-      label.text = "No items match your query"
+      label.text = "Nenhum resultado encontrado."
       showFooter()
     } else {
-      label.text = "Filtering \(filteredItemCount) of \(totalItemCount)"
+      label.text = "Foram encontrados \(filteredItemCount) resultados."
       showFooter()
     }
   }

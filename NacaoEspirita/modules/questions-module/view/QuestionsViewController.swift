@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuestionsViewController: LoginBaseViewController {
+class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
     
     var presenter: QuestionsViewToPresenterProtocol?
     var questions: [QuestionModel] = []
@@ -23,14 +23,15 @@ class QuestionsViewController: LoginBaseViewController {
     @IBOutlet weak var closeSearchOption: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBAction func closeSearchOptionAction(_ sender: Any) {
-        self.searchController.searchBar.endEditing(true)
-        closeSearchOption.isHidden = true
+       configureScreenAfterKeyboardDisappear()
     }
+    
     @IBOutlet weak var addQuestionButton: UIButton! {
         didSet {
             self.addQuestionButton.roundCorners(.allCorners, radius: 25)
         }
     }
+    
     @IBAction func addQuestionAction(_ sender: Any) {
         guard let view = navigationController, navigationController != nil else {
             return
@@ -43,15 +44,13 @@ class QuestionsViewController: LoginBaseViewController {
 
         presenter?.startFetchingQuestions()
         
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Procure por perguntas"
 
         navigationItem.searchController = searchController
         definesPresentationContext = true
-
-//        searchController.searchBar.scopeButtonTitles = Candy.Category.allCases.map { $0.rawValue }
-//        searchController.searchBar.delegate = self
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification,
@@ -60,6 +59,9 @@ class QuestionsViewController: LoginBaseViewController {
         notificationCenter.addObserver(forName: UIResponder.keyboardWillHideNotification,
                                        object: nil, queue: .main) { (notification) in
                                         self.handleKeyboard(notification: notification) }
+        notificationCenter.addObserver(forName: UIResponder.keyboardWillShowNotification,
+                                        object: nil, queue: .main) { (notification) in
+                                         self.handleKeyboard(notification: notification) }
         
         setTableView()
     }
@@ -96,6 +98,22 @@ class QuestionsViewController: LoginBaseViewController {
              NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 21)!]
     }
     
+    fileprivate func configureScreenAfterKeyboardDisappear() {
+        self.searchController.searchBar.endEditing(true)
+        closeSearchOption.isHidden = true
+        
+        let screenHight: CGFloat = UIScreen.main.bounds.height
+        self.view.frame.size.height = screenHight - (self.searchController.searchBar.frame.size.height)
+        self.view.frame.origin.y = self.searchController.searchBar.frame.size.height
+        
+        view.layoutIfNeeded()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        configureScreenAfterKeyboardDisappear()
+        searchBar.resignFirstResponder()
+    }
+    
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -128,8 +146,10 @@ class QuestionsViewController: LoginBaseViewController {
 //    }
     
     func handleKeyboard(notification: Notification) {
-        guard notification.name == UIResponder.keyboardWillChangeFrameNotification else {
-            searchFooterBottomConstraint.constant = 48
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            searchFooterBottomConstraint.constant = -49
+            tableView.frame.origin.y = tableView.frame.origin.y - 72
+            self.view.frame.origin.y = self.view.frame.origin.y - 72
             view.layoutIfNeeded()
             return
         }
@@ -137,8 +157,16 @@ class QuestionsViewController: LoginBaseViewController {
         guard let info = notification.userInfo, let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
             return
         }
-
         let keyboardHeight = keyboardFrame.cgRectValue.size.height
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            print("$$$$$$ valor apareceu antes: \(self.searchFooterBottomConstraint.constant)")
+            self.searchFooterBottomConstraint.constant = keyboardHeight
+            print("$$$$$$ valor apareceu: \(self.searchFooterBottomConstraint.constant)")
+            view.layoutIfNeeded()
+            return
+        }
+        
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.searchFooterBottomConstraint.constant = keyboardHeight
             self.closeSearchOption.isHidden = false

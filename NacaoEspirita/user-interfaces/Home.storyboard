@@ -548,11 +548,11 @@
                             <constraint firstItem="hmn-UL-8MK" firstAttribute="top" secondItem="gXX-TX-9GF" secondAttribute="top" id="5zt-qv-NiI"/>
                             <constraint firstItem="BoM-g6-0oz" firstAttribute="top" secondItem="W8r-90-d9M" secondAttribute="top" id="9jE-9l-lXt"/>
                             <constraint firstItem="1Dv-fd-py1" firstAttribute="bottom" secondItem="W8r-90-d9M" secondAttribute="bottom" constant="-8" id="ADo-kB-48Q"/>
-                            <constraint firstAttribute="bottom" secondItem="Y05-iu-DaM" secondAttribute="bottom" constant="48" id="Fpv-cl-fh8"/>
+                            <constraint firstItem="BoM-g6-0oz" firstAttribute="bottom" secondItem="Y05-iu-DaM" secondAttribute="bottom" constant="48" id="Fpv-cl-fh8"/>
                             <constraint firstItem="Y05-iu-DaM" firstAttribute="trailing" secondItem="W8r-90-d9M" secondAttribute="trailing" id="JFs-x8-MQv"/>
                             <constraint firstItem="BoM-g6-0oz" firstAttribute="leading" secondItem="W8r-90-d9M" secondAttribute="leading" id="VDL-IR-1Ex"/>
                             <constraint firstItem="hmn-UL-8MK" firstAttribute="leading" secondItem="gXX-TX-9GF" secondAttribute="leading" id="Wpa-aZ-ELT"/>
-                            <constraint firstItem="W8r-90-d9M" firstAttribute="bottom" secondItem="BoM-g6-0oz" secondAttribute="bottom" id="YFG-EQ-goo"/>
+                            <constraint firstAttribute="bottom" secondItem="BoM-g6-0oz" secondAttribute="bottom" id="YFG-EQ-goo"/>
                             <constraint firstItem="sFN-kn-kPw" firstAttribute="centerX" secondItem="gXX-TX-9GF" secondAttribute="centerX" id="c8s-6k-KZ4"/>
                             <constraint firstItem="W8r-90-d9M" firstAttribute="trailing" secondItem="1Dv-fd-py1" secondAttribute="trailing" constant="8" id="ndI-Ep-i8Z"/>
                             <constraint firstItem="sFN-kn-kPw" firstAttribute="centerY" secondItem="gXX-TX-9GF" secondAttribute="centerY" id="rc9-ca-RKO"/>
