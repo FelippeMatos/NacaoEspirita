@@ -18,7 +18,7 @@ struct AppText {
 struct AppAlert {
     
     static let ALERT_CONFIRM                        = "Entendido"
-    static let ALERT_ERROR                          = "Atenção irmão(ã)"
+    static let ALERT_ERROR                          = "Atenção"
     
     static let ALERT_NAME_FIELD_EMPTY               = "Favor verificar o campo NOME."
     static let ALERT_EMAIL_FIELD_EMPTY              = "Favor verificar o campo E-MAIL."
