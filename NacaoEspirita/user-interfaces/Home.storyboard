@@ -367,21 +367,18 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-m6-Mo2">
-                                                <rect key="frame" x="50" y="8" width="176" height="36"/>
+                                                <rect key="frame" x="12" y="8" width="214" height="36"/>
                                                 <color key="backgroundColor" name="color-background"/>
                                                 <color key="tintColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" name="color-text-light"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-question" translatesAutoresizingMaskIntoConstraints="NO" id="4hl-Rt-6mI">
-                                                <rect key="frame" x="12" y="8" width="30" height="30"/>
-                                                <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Wah-cR-ohv"/>
-                                                    <constraint firstAttribute="width" constant="30" id="dg4-ED-vPm"/>
-                                                </constraints>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oa-2s-iGI">
                                                 <rect key="frame" x="232" y="11" width="80" height="33"/>
                                                 <constraints>
@@ -403,11 +400,9 @@
                                             <constraint firstAttribute="height" constant="52" id="4Tg-JJ-8W4"/>
                                             <constraint firstAttribute="bottom" secondItem="2Gt-m6-Mo2" secondAttribute="bottom" constant="8" id="4Xy-Hb-mNj"/>
                                             <constraint firstItem="2Gt-m6-Mo2" firstAttribute="top" secondItem="rci-Lp-zj2" secondAttribute="top" constant="8" id="Qmi-xX-X7J"/>
-                                            <constraint firstItem="2Gt-m6-Mo2" firstAttribute="leading" secondItem="4hl-Rt-6mI" secondAttribute="trailing" constant="8" id="aKp-4P-swv"/>
-                                            <constraint firstItem="4hl-Rt-6mI" firstAttribute="leading" secondItem="rci-Lp-zj2" secondAttribute="leading" constant="12" id="hC2-6c-ofJ"/>
                                             <constraint firstAttribute="bottom" secondItem="3oa-2s-iGI" secondAttribute="bottom" constant="8" id="hvo-Nd-gFo"/>
                                             <constraint firstItem="3oa-2s-iGI" firstAttribute="leading" secondItem="2Gt-m6-Mo2" secondAttribute="trailing" constant="6" id="lVu-bZ-5P4"/>
-                                            <constraint firstItem="4hl-Rt-6mI" firstAttribute="top" secondItem="rci-Lp-zj2" secondAttribute="top" constant="8" id="wKS-yk-vp7"/>
+                                            <constraint firstItem="2Gt-m6-Mo2" firstAttribute="leading" secondItem="rci-Lp-zj2" secondAttribute="leading" constant="12" id="laZ-MG-JzQ"/>
                                             <constraint firstAttribute="trailing" secondItem="3oa-2s-iGI" secondAttribute="trailing" constant="8" id="yTx-Vl-cWr"/>
                                         </constraints>
                                     </view>
@@ -933,7 +928,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-question" width="128" height="128"/>
         <namedColor name="color-answer-background">
             <color red="0.83499997854232788" green="0.9649999737739563" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
