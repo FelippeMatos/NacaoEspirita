@@ -22,7 +22,20 @@ class QuestionTableViewCell: UITableViewCell {
 
     var buttonLikeTappedAction : ((UITableViewCell) -> Void)?
     var buttonDislikeTappedAction : ((UITableViewCell) -> Void)?
-    var buttonPinTappedAction : ((UITableViewCell) -> Void)?
+
+    @IBOutlet weak var pinButton: UIButton!
+    var pinSaveTappedAction : ((UITableViewCell) -> Void)?
+    var pinDeleteTappedAction : ((UITableViewCell) -> Void)?
+    @IBAction func pinUpdateStateAction(_ sender: Any) {
+        if self.pinButton.image(for: .normal) == UIImage(named: "icon-pin-off") {
+            self.pinButton.setImage(UIImage(named: "icon-pin-on"), for: .normal)
+            pinSaveTappedAction?(self)
+        } else {
+            self.pinButton.setImage(UIImage(named: "icon-pin-off"), for: .normal)
+            pinDeleteTappedAction?(self)
+        }
+    }
+    
     
     @IBOutlet weak var likeButton: UIButton!
     public func setLikeButton() {

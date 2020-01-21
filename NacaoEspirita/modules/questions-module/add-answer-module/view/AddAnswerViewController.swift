@@ -17,6 +17,7 @@ class AddAnswerViewController: UIViewController {
     var focus: Bool?
     var likeStatus : Int?
     var answerLikeStatus: [Bool] = []
+    var pinQuestion: Bool = false
     var answers: [AnswerModel] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -148,9 +149,10 @@ class AddAnswerViewController: UIViewController {
 //MARK: Result of PRESENTER
 extension AddAnswerViewController: AddAnswerPresenterToViewProtocol {
     
-    func showAnswers(answersArray: [AnswerModel], statusUserLikeArray: [Bool]) {
+    func showAnswers(answersArray: [AnswerModel], statusUserLikeArray: [Bool], questionPin: Bool) {
         self.answers = answersArray
         self.answerLikeStatus = statusUserLikeArray
+        self.pinQuestion = questionPin
         self.tableView.reloadData()
     }
     
@@ -159,6 +161,12 @@ extension AddAnswerViewController: AddAnswerPresenterToViewProtocol {
         alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    func showSuccess() {
+        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: "message", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func updateAnswers() {
@@ -251,13 +259,19 @@ extension AddAnswerViewController: UITableViewDelegate, UITableViewDataSource {
             default: cell.turnOffButtons()
             }
             
+            if pinQuestion {
+                cell.pinButton.setImage(UIImage(named: "icon-pin-on"), for: .normal)
+            } else {
+                cell.pinButton.setImage(UIImage(named: "icon-pin-off"), for: .normal)
+            }
+            
             cell.nameLabel.text = self.question!.name
             cell.questionLabel.text = self.question!.question
             cell.categoryLabel.text = self.question!.category
             cell.numberOfLikesLabel.text = "\(self.question!.like ?? 0) likes"
             
             cell.buttonLikeTappedAction = { (cell) in
-                self.buttonLikeTapped(true, questionId: (self.question?.id)!)
+                self.buttonLikeTapped(true, questionId: self.questionId!)
                 
                 var likeOrDislike : Int
                 var newValueForStatusLike : Int
@@ -276,7 +290,7 @@ extension AddAnswerViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             cell.buttonDislikeTappedAction = { (cell) in
-                self.buttonLikeTapped(false, questionId: (self.question?.id)!)
+                self.buttonLikeTapped(false, questionId: self.questionId!)
                 
                 var likeOrDislike : Int
                 var newValueForStatusLike : Int
@@ -292,6 +306,14 @@ extension AddAnswerViewController: UITableViewDelegate, UITableViewDataSource {
                     newValueForStatusLike = 2
                 }
                 self.updateQuestionLike(likeOrDislike: likeOrDislike, newValueForStatusLike: newValueForStatusLike)
+            }
+            
+            cell.pinSaveTappedAction = { (cell) in
+                self.pinButtonTapped(self.questionId!, toSave: true)
+            }
+
+            cell.pinDeleteTappedAction = { (cell) in
+                self.pinButtonTapped(self.questionId!, toSave: false)
             }
             
             return cell
@@ -335,6 +357,10 @@ extension AddAnswerViewController: UITableViewDelegate, UITableViewDataSource {
     
     func buttonLikeTapped(_ like: Bool, questionId: String) {
         presenter?.sendActionLike(like, questionId: questionId)
+    }
+    
+    func pinButtonTapped(_ questionId: String, toSave: Bool) {
+        presenter?.sendPinAction(questionId, toSave: toSave)
     }
     
     func buttonLikeAnswerTapped(_ like: Bool, questionId: String, answerId: String) {

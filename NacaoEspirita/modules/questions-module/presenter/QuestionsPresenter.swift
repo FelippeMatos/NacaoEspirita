@@ -27,19 +27,31 @@ class QuestionsPresenter: QuestionsViewToPresenterProtocol {
         router?.pushToAddAnswerScreen(question: question, navigationController: navigationController, focus: focus, likeStatus: likeStatus)
     }
     
-    func sendActionLike(_ like: Bool, questionId: String) {
+    func sendLikeAction(_ like: Bool, questionId: String) {
         interactor?.checkStatusOfLike(like, questionId: questionId)
+    }
+    
+    func sendPinAction(_ questionId: String, toSave: Bool) {
+        interactor?.updatePinQuestion(questionId, toSave: toSave)
     }
 }
 
 extension QuestionsPresenter: QuestionsInteractorToPresenterProtocol {
     
-    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel]) {
-        view?.showQuestions(questionsArray: questionsModelArray, statusUserLikeArray: statusUserLikeArray, topAnswerArray: topAnswerArray)
+    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool]) {
+        view?.showQuestions(questionsArray: questionsModelArray, statusUserLikeArray: statusUserLikeArray, topAnswerArray: topAnswerArray, pinQuestionsArray: pinQuestionsArray)
     }
     
     func questionsFetchFailed() {
         view?.showError()
+    }
+    
+    func pinQuestionFailed() {
+        view?.showError()
+    }
+    
+    func pinQuestionSuccess() {
+        view?.showSuccess()
     }
     
 }

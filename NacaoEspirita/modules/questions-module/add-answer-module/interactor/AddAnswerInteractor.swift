@@ -14,8 +14,12 @@ class AddAnswerInteractor: AddAnswerPresenterToInteractorProtocol {
     var presenter: AddAnswerInteractorToPresenterProtocol?
     var answerArrayList = [AnswerModel]()
     var statusUserLikeArrayList = [Bool]()
+    var statusPinQuestion = false
     let db = Firestore.firestore()
     var ref: DocumentReference? = nil
+    
+    var fetchAnswersDone = false
+    var fetchPinDone = false
     
     func validate(answer: String, id: String) {
         
@@ -60,7 +64,7 @@ class AddAnswerInteractor: AddAnswerPresenterToInteractorProtocol {
     //MARK: INITIAL FETCH
     func fetchAnswers(questionId: String) {
         var answerArray = [AnswerModel]()
-        
+        checkPinSituation(questionId)
         db.collection("questions").document(questionId).collection("answer").order(by: "like", descending: true).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
@@ -72,6 +76,23 @@ class AddAnswerInteractor: AddAnswerPresenterToInteractorProtocol {
                 self.answerArrayList = answerArray
                 self.fetchUserLikes(answers: self.answerArrayList, questionId: questionId)
             }
+        }
+    }
+    
+    func checkPinSituation(_ questionId: String) {
+       
+        guard let userId = Auth.auth().currentUser?.uid, !userId.isEmpty else {
+            return
+        }
+        
+        db.collection("questions").document(questionId).collection("pin").document(userId).getDocument { (document, error) in
+            if let document = document, document.exists {
+                self.statusPinQuestion = true
+            } else {
+                self.statusPinQuestion = false
+            }
+            self.fetchPinDone = true
+            self.completeFetchOfAnswers()
         }
     }
     
@@ -94,9 +115,17 @@ class AddAnswerInteractor: AddAnswerPresenterToInteractorProtocol {
                 }
                 self.statusUserLikeArrayList = statusUserLikeArray
                 if count.count == self.answerArrayList.count {
-                    self.presenter?.answerFetchedSuccess(answerModelArray: self.answerArrayList, statusUserLikeArray: self.statusUserLikeArrayList)
+                    self.fetchAnswersDone = true
+                    self.completeFetchOfAnswers()
                 }
             }
+        }
+    }
+    
+    func completeFetchOfAnswers() {
+
+        if fetchAnswersDone && fetchPinDone {
+            self.presenter?.answerFetchedSuccess(answerModelArray: self.answerArrayList, statusUserLikeArray: self.statusUserLikeArrayList, questionPin: self.statusPinQuestion)
         }
     }
     
@@ -187,6 +216,37 @@ class AddAnswerInteractor: AddAnswerPresenterToInteractorProtocol {
                 print("Error removing document: \(err)")
             } else {
                 self.updateLikeOfQuestionWith(!value, questionId: questionId)
+            }
+        }
+    }
+    
+    func updatePinQuestion(_ questionId: String, toSave: Bool) {
+        
+        guard let userId = Auth.auth().currentUser?.uid, !userId.isEmpty else {
+            return
+        }
+        
+        guard let name = Auth.auth().currentUser?.displayName, !name.isEmpty else {
+            return
+        }
+        
+        if toSave {
+            db.collection("questions").document(questionId).collection("pin").document(userId).setData([
+                "name": name
+            ]) { err in
+                if let err = err {
+                     print("Error adding document: \(err)")
+                } else {
+                    self.presenter?.pinQuestionSuccess()
+                }
+            }
+        } else {
+            db.collection("questions").document(questionId).collection("pin").document(userId).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    self.presenter?.pinQuestionFailed()
+                }
             }
         }
     }

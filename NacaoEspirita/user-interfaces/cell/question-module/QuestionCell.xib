@@ -23,7 +23,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-yK-lxi">
                                 <rect key="frame" x="16" y="8" width="344" height="298"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Q-Ut-f3a">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5Q-Ut-f3a">
                                         <rect key="frame" x="8" y="269" width="64.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="SMw-9I-Bgg"/>
@@ -52,6 +52,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="10"/>
                                         <state key="normal" image="icon-pin-off"/>
+                                        <connections>
+                                            <action selector="pinUpdateStateAction:" destination="UBl-uG-qVZ" eventType="touchUpInside" id="Z9v-rS-gmP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="140-jq-yEq">
                                         <rect key="frame" x="238.5" y="257" width="35" height="35"/>
@@ -144,6 +147,7 @@
                 <outlet property="likeButton" destination="140-jq-yEq" id="4Aa-uG-DEk"/>
                 <outlet property="nameLabel" destination="eLc-oY-4Fn" id="8xp-BM-0LP"/>
                 <outlet property="numberOfLikesLabel" destination="TuH-AO-H3k" id="EyX-zI-YMy"/>
+                <outlet property="pinButton" destination="TTB-bx-OS4" id="7kG-QA-VWN"/>
                 <outlet property="questionLabel" destination="wyv-y1-Afc" id="avm-7y-93h"/>
                 <outlet property="questionView" destination="L8k-yK-lxi" id="EFV-fX-hcF"/>
             </connections>
@@ -158,13 +162,13 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-question-background">
-            <color red="0.93725490196078431" green="0.97647058823529409" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93699997663497925" green="0.97600001096725464" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-text-current">
-            <color red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.11100000143051147" green="0.11100000143051147" blue="0.11100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-text-light">
-            <color red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -21,12 +21,14 @@ protocol AddAnswerViewToPresenterProtocol: class {
     func startFetchingAnswers(questionId: String)
     func sendActionLike(_ like: Bool, questionId: String)
     func sendActionLikeAnswer(_ like: Bool, questionId: String, answerId: String)
+    func sendPinAction(_ questionId: String, toSave: Bool)
 }
 
 // Presenter -> View
 protocol AddAnswerPresenterToViewProtocol: class {
-    func showAnswers(answersArray: [AnswerModel], statusUserLikeArray: [Bool])
+    func showAnswers(answersArray: [AnswerModel], statusUserLikeArray: [Bool], questionPin: Bool)
     func showError(message: String)
+    func showSuccess()
     func updateAnswers()
 }
 
@@ -43,12 +45,15 @@ protocol AddAnswerPresenterToInteractorProtocol: class {
     func fetchAnswers(questionId: String)
     func checkStatusOfLike(_ like: Bool, questionId: String)
     func checkStatusOfAnswerLike(_ like: Bool, questionId: String, answerId: String)
+    func updatePinQuestion(_ questionId: String, toSave: Bool)
 }
 
 // Interactor -> Presenter
 protocol AddAnswerInteractorToPresenterProtocol: class {
     func sendError(message: String)
     func saveAnswerDone()
+    func pinQuestionSuccess()
+    func pinQuestionFailed()
     
-    func answerFetchedSuccess(answerModelArray: [AnswerModel], statusUserLikeArray: [Bool])
+    func answerFetchedSuccess(answerModelArray: [AnswerModel], statusUserLikeArray: [Bool], questionPin: Bool)
 }

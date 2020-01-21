@@ -14,6 +14,7 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     var presenter: QuestionsInteractorToPresenterProtocol?
     var questionArrayList = [QuestionModel]()
     var statusUserLikeArrayList = [Int]()
+    var statusPinArrayList = [Bool]()
     var topAnswerArrayList = [AnswerModel]()
     let db = Firestore.firestore()
     var ref: DocumentReference? = nil
@@ -21,6 +22,7 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     
     var fetchLikeDone = false
     var fetchAnswerDone = false
+    var fetchPinDone = false
     
     func fetchQuestions() {
         
@@ -41,6 +43,7 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
                 self.questionArrayList = questionArray
                 self.fetchUserLikes(questions: self.questionArrayList, userId: id)
                 self.fetchTopAnswer(questions: self.questionArrayList, userId: id)
+                self.fetchPin(questions: self.questionArrayList, userId: id)
             }
         }
     }
@@ -94,10 +97,32 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
         }
     }
     
+    func fetchPin(questions: [QuestionModel], userId: String) {
+        
+        var statusPinArray = [Bool](repeating: false, count: questions.count)
+        var count = [Int]()
+        for (index, question) in questions.enumerated() {
+            db.collection("questions").document(question.id!).collection("pin").document(userId).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    statusPinArray[index] = true
+                    count.append(1)
+                } else {
+                    statusPinArray[index] = false
+                    count.append(0)
+                }
+                self.statusPinArrayList = statusPinArray
+                if count.count == self.questionArrayList.count {
+                    self.fetchPinDone = true
+                    self.completeFetchOfQuestions()
+                }
+            }
+        }
+    }
+    
     func completeFetchOfQuestions() {
 
-        if fetchLikeDone && fetchAnswerDone {
-            self.presenter?.questionsFetchedSuccess(questionsModelArray: self.questionArrayList, statusUserLikeArray: self.statusUserLikeArrayList, topAnswerArray: self.topAnswerArrayList)
+        if fetchLikeDone && fetchAnswerDone && fetchPinDone {
+            self.presenter?.questionsFetchedSuccess(questionsModelArray: self.questionArrayList, statusUserLikeArray: self.statusUserLikeArrayList, topAnswerArray: self.topAnswerArrayList, pinQuestionsArray: self.statusPinArrayList)
         }
     }
     
@@ -185,12 +210,42 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     }
     
     func deleteRegisterUsersLike(_ questionId: String, userId: String, value: Bool) {
-        
         db.collection("questions").document(questionId).collection("usersLike").document(userId).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
                 self.updateLikeOfQuestionWith(!value, questionId: questionId)
+            }
+        }
+    }
+    
+    func updatePinQuestion(_ questionId: String, toSave: Bool) {
+        
+        guard let userId = Auth.auth().currentUser?.uid, !userId.isEmpty else {
+            return
+        }
+        
+        guard let name = Auth.auth().currentUser?.displayName, !name.isEmpty else {
+            return
+        }
+        
+        if toSave {
+            db.collection("questions").document(questionId).collection("pin").document(userId).setData([
+                "name": name
+            ]) { err in
+                if let err = err {
+                     print("Error adding document: \(err)")
+                } else {
+                    self.presenter?.pinQuestionSuccess()
+                }
+            }
+        } else {
+            db.collection("questions").document(questionId).collection("pin").document(userId).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    self.presenter?.pinQuestionFailed()
+                }
             }
         }
     }

@@ -14,6 +14,7 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
     var questions: [QuestionModel] = []
     var userLike: [Int] = []
     var topAnswer: [AnswerModel] = []
+    var pinQuestions: [Bool] = []
     let searchController = UISearchController(searchResultsController: nil)
     var filteredQuestions: [QuestionModel] = []
     
@@ -160,9 +161,7 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
         let keyboardHeight = keyboardFrame.cgRectValue.size.height
         
         if notification.name == UIResponder.keyboardWillShowNotification {
-            print("$$$$$$ valor apareceu antes: \(self.searchFooterBottomConstraint.constant)")
             self.searchFooterBottomConstraint.constant = keyboardHeight
-            print("$$$$$$ valor apareceu: \(self.searchFooterBottomConstraint.constant)")
             view.layoutIfNeeded()
             return
         }
@@ -196,10 +195,11 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
 //MARK: Interaction between Presenter and View
 extension QuestionsViewController: QuestionsPresenterToViewProtocol {
     
-    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel]) {
+    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool]) {
         self.questions = questionsArray
         self.userLike = statusUserLikeArray
         self.topAnswer = topAnswerArray
+        self.pinQuestions = pinQuestionsArray
         tableView.reloadData()
         loading.isHidden = true
     }
@@ -211,6 +211,12 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func showSuccess() {
+        //TODO: Arrumar esse alerta / - retirar os textos fixos
+        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: "BOAAAAAA Fetching Cards", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 //MARK: Setup tableview
@@ -251,6 +257,12 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.turnOffButtons()
         }
         
+        if self.pinQuestions[indexPath.row] {
+            cell.pinButton.setImage(UIImage(named: "icon-pin-on"), for: .normal)
+        } else {
+            cell.pinButton.setImage(UIImage(named: "icon-pin-off"), for: .normal)
+        }
+        
         if topAnswer[indexPath.row].id == nil {
             cell.answerViewHeightConstraint.constant = 0
         } else {
@@ -276,7 +288,7 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.buttonLikeTappedAction = { (cell) in
-            self.buttonLikeTapped(true, questionId: question.id!)
+            self.likeActionTapped(true, questionId: question.id!)
             
             var likeOrDislike : Int
             var newValueForStatusLike : Int
@@ -295,7 +307,7 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.buttonDislikeTappedAction = { (cell) in
-            self.buttonLikeTapped(false, questionId: question.id!)
+            self.likeActionTapped(false, questionId: question.id!)
             
             var likeOrDislike : Int
             var newValueForStatusLike : Int
@@ -313,11 +325,23 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
             self.updateQuestionLike(likeOrDislike: likeOrDislike, indexQuestion: indexPath.row, newValueForStatusLike: newValueForStatusLike)
         }
         
+        cell.pinSaveTappedAction = { (cell) in
+            self.pinButtonTapped(question.id!, toSave: true)
+        }
+
+        cell.pinDeleteTappedAction = { (cell) in
+            self.pinButtonTapped(question.id!, toSave: false)
+        }
+        
         return cell
     }
     
-    func buttonLikeTapped(_ like: Bool, questionId: String) {
-        presenter?.sendActionLike(like, questionId: questionId)
+    func likeActionTapped(_ like: Bool, questionId: String) {
+        presenter?.sendLikeAction(like, questionId: questionId)
+    }
+    
+    func pinButtonTapped(_ questionId: String, toSave: Bool) {
+        presenter?.sendPinAction(questionId, toSave: toSave)
     }
     
     func answerThe(question: QuestionModel, focus: Bool, likeStatus: Int) {

@@ -47,6 +47,7 @@ class AddQuestionInteractor: AddQuestionPresenterToInteractorProtocol {
             "userId": id,
             "name": name,
             "question": question,
+            "like": 0,
             "category": category
         ]) { err in
             if let err = err {

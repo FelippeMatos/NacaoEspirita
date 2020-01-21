@@ -39,7 +39,19 @@ class QuestionAnswerTableViewCell: UITableViewCell {
     
     var buttonLikeTappedAction : ((UITableViewCell) -> Void)?
     var buttonDislikeTappedAction : ((UITableViewCell) -> Void)?
-    var buttonPinTappedAction : ((UITableViewCell) -> Void)?
+    
+    @IBOutlet weak var pinButton: UIButton!
+    var pinSaveTappedAction : ((UITableViewCell) -> Void)?
+    var pinDeleteTappedAction : ((UITableViewCell) -> Void)?
+    @IBAction func pinUpdateStateAction(_ sender: Any) {
+        if self.pinButton.image(for: .normal) == UIImage(named: "icon-pin-off") {
+            self.pinButton.setImage(UIImage(named: "icon-pin-on"), for: .normal)
+            pinSaveTappedAction?(self)
+        } else {
+            self.pinButton.setImage(UIImage(named: "icon-pin-off"), for: .normal)
+            pinDeleteTappedAction?(self)
+        }
+    }
     
     var answerTappedWithFocusAction : ((UITableViewCell) -> Void)?
     @IBAction func goToAddAnswerWithFocusAction(_ sender: AnyObject) {
@@ -125,6 +137,13 @@ class QuestionAnswerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionAnswerTableViewCell.tapFunction))
+        titleLabel.isUserInteractionEnabled = true
+        titleLabel.addGestureRecognizer(tap)
+    }
+    
+    @objc func tapFunction(sender:UITapGestureRecognizer) {
+        answerTappedWithoutFocusAction?(self)
     }
     
     override func prepareForReuse() {

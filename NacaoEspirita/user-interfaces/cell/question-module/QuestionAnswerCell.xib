@@ -30,7 +30,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFA-dq-pXH">
                                 <rect key="frame" x="16" y="8" width="344" height="158"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wU-d8-mPK">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wU-d8-mPK">
                                         <rect key="frame" x="8" y="129" width="64.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="JiT-tK-gty"/>
@@ -39,7 +39,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-yE-3Py">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-yE-3Py">
                                         <rect key="frame" x="48" y="47" width="288" height="47"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" name="color-text-current"/>
@@ -59,6 +59,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="10"/>
                                         <state key="normal" image="icon-pin-off"/>
+                                        <connections>
+                                            <action selector="pinUpdateStateAction:" destination="UBl-uG-qVZ" eventType="touchUpInside" id="bat-UY-WH7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5N3-8j-0xN">
                                         <rect key="frame" x="238.5" y="117" width="35" height="35"/>
@@ -299,6 +302,7 @@
                 <outlet property="likeButton" destination="5N3-8j-0xN" id="Sss-Bf-Z7a"/>
                 <outlet property="nameLabel" destination="xQd-C8-HDM" id="sZi-6b-1U4"/>
                 <outlet property="numberOfLikesLabel" destination="Q7s-uc-AME" id="C3l-pl-xCX"/>
+                <outlet property="pinButton" destination="r9l-95-DLg" id="KhM-zR-mGy"/>
                 <outlet property="profileImage" destination="4QV-vK-Nte" id="q2F-pi-XcH"/>
                 <outlet property="questionContainerView" destination="vpL-ke-M1b" id="HXv-tY-mXD"/>
                 <outlet property="questionView" destination="nFA-dq-pXH" id="NSQ-43-fi1"/>
@@ -324,7 +328,7 @@
             <color red="0.93699997663497925" green="0.97600001096725464" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-text-current">
-            <color red="0.33300000429153442" green="0.33300000429153442" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.11100000143051147" green="0.11100000143051147" blue="0.11100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="color-text-light">
             <color red="0.66699999570846558" green="0.66699999570846558" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

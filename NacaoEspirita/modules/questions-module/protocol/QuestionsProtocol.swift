@@ -19,13 +19,15 @@ protocol QuestionsViewToPresenterProtocol: class {
     func showAddQuestionController(navigationController: UINavigationController)
     func startFetchingQuestions()
     func goToAddAnswerScreen(question: QuestionModel, navigationController: UINavigationController, focus: Bool, likeStatus: Int)
-    func sendActionLike(_ like: Bool, questionId: String)
+    func sendLikeAction(_ like: Bool, questionId: String)
+    func sendPinAction(_ questionId: String, toSave: Bool)
 }
 
 // Presenter -> View
 protocol QuestionsPresenterToViewProtocol: class {
-    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel])
+    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool])
     func showError()
+    func showSuccess()
     func updateQuestionLike(likeOrDislike: Int, indexQuestion: Int, newValueForStatusLike: Int)
 }
 
@@ -40,10 +42,13 @@ protocol QuestionsPresenterToInteractorProtocol: class {
     var presenter: QuestionsInteractorToPresenterProtocol? {get set}
     func fetchQuestions()
     func checkStatusOfLike(_ like: Bool, questionId: String)
+    func updatePinQuestion(_ questionId: String, toSave: Bool)
 }
 
 // Interactor -> Presenter
 protocol QuestionsInteractorToPresenterProtocol: class {
-    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel])
+    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool])
     func questionsFetchFailed()
+    func pinQuestionSuccess()
+    func pinQuestionFailed()
 }

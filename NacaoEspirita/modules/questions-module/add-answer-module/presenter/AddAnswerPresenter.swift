@@ -36,6 +36,10 @@ class AddAnswerPresenter: AddAnswerViewToPresenterProtocol {
     func sendActionLikeAnswer(_ like: Bool, questionId: String, answerId: String) {
         interactor?.checkStatusOfAnswerLike(like, questionId: questionId, answerId: answerId)
     }
+    
+    func sendPinAction(_ questionId: String, toSave: Bool) {
+        interactor?.updatePinQuestion(questionId, toSave: toSave)
+    }
 }
 
 extension AddAnswerPresenter: AddAnswerInteractorToPresenterProtocol {
@@ -44,12 +48,20 @@ extension AddAnswerPresenter: AddAnswerInteractorToPresenterProtocol {
         view?.updateAnswers()
     }
     
-    func answerFetchedSuccess(answerModelArray: [AnswerModel], statusUserLikeArray: [Bool]) {
-        view?.showAnswers(answersArray: answerModelArray, statusUserLikeArray: statusUserLikeArray)
+    func answerFetchedSuccess(answerModelArray: [AnswerModel], statusUserLikeArray: [Bool], questionPin: Bool) {
+        view?.showAnswers(answersArray: answerModelArray, statusUserLikeArray: statusUserLikeArray, questionPin: questionPin)
     }
     
     func sendError (message: String) {
         view?.showError(message: message)
+    }
+    
+    func pinQuestionSuccess() {
+        view?.showSuccess()
+    }
+    
+    func pinQuestionFailed() {
+        view?.showError(message: "message")
     }
     
 }
