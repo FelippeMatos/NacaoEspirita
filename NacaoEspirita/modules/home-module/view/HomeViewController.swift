@@ -62,9 +62,8 @@ extension HomeViewController: HomePresenterToViewProtocol {
         tableView.reloadSections(sections, with: .none)
     }
     
-    func showError() {
-        //TODO: Arrumar esse alerta / - retirar os textos fixos
-        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: "Problem Fetching Cards", preferredStyle: UIAlertController.Style.alert)
+    func showError(message: String) {
+        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

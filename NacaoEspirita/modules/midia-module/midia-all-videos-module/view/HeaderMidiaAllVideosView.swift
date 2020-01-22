@@ -46,7 +46,6 @@ class HeaderMidiaAllVideosView: UITableViewCell {
     func selectedChannel(_ number: Int) {
         
         if channelId == number {
-            //MOSTRAR TODOS
             channelSelected = nil
             channelId = nil
             

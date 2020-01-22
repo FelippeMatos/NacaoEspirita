@@ -28,7 +28,15 @@ struct AppAlert {
     static let ALERT_PASSWORD_LESS_6_CHARACTERS     = "Precisamos de no mínimo 6 characteres na senha, para garantir sua segurança."
     static let ALERT_PASSWORD_DIFFERENT             = "A confirmação da senha está diferente da sua senha."
     static let ALERT_FAILED_ACCESS                  = "Ocorreu um problema ao acessar a conta, favor verificar os dados e tentar novamente."
-
+    
+    static let MESSAGE_QUESTIONS_FETCH_SAVED_FAILED  = "Ocorreu um erro ao recuperar as perguntas salvas, por favor tente novamente"
+    static let MESSAGE_ALL_QUESTIONS_FETCH_FAILED   = "Ocorreu um erro ao recuperar as perguntas, por favor tente novamente"
+    static let MESSAGE_PIN_QUESTION_DELETE_SUCCESS  = "Pergunta removida com sucesso"
+    static let MESSAGE_OF_THE_DAY_FETCH_FAILED      = "Ocorreu um erro ao recuperar a mensagem do dia, por favor tente novamente"
+    static let MESSAGE_OF_THE_EVANGELHO_FETCH_FAILED = "Ocorreu um erro ao recuperar a mensagem do evangelho, por favor tente novamente"
+    static let MESSAGE_BOOKS_FETCH_FAILED           = "Ocorreu um erro ao recuperar os livros, por favor tente novamente"
+    static let MESSAGE_VIDEOS_FETCH_FAILED           = "Ocorreu um erro ao recuperar os livros, por favor tente novamente"
+    static let MESSAGE_SAVE_SCHEDULE_FAILED           = "Ocorreu um erro ao agendar o culto do evangelho no lar, por favor tente novamente"
 }
 
 struct AppDate {

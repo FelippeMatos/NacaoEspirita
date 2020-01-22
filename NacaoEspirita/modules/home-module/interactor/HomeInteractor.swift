@@ -19,7 +19,7 @@ class HomeInteractor: HomePresenterToInteractorProtocol {
         db.collection("messages").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
-                self.presenter?.messageOfTheDayFetchFailed()
+                self.presenter?.messageOfTheDayFetchFailed(message: AppAlert.MESSAGE_OF_THE_DAY_FETCH_FAILED)
             } else {
                 let data = querySnapshot?.documents
                 let number = Int.random(in: 0 ..< (data?.count)!)
@@ -35,7 +35,7 @@ class HomeInteractor: HomePresenterToInteractorProtocol {
         db.collection("evangelho").document("02").collection("messages").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
-                self.presenter?.messageOfTheDayFetchFailed()
+                self.presenter?.messageOfTheDayFetchFailed(message: AppAlert.MESSAGE_OF_THE_EVANGELHO_FETCH_FAILED)
             } else {
                 let data = querySnapshot?.documents
                 let number = Int.random(in: 0 ..< (data?.count)!)

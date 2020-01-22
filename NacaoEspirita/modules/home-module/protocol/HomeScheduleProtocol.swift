@@ -23,7 +23,7 @@ protocol HomeScheduleViewToPresenterProtocol: class {
 // Presenter -> View
 protocol HomeSchedulePresenterToViewProtocol: class {
     func showMessageOfSuccessAndDismiss()
-    func showError()
+    func showError(message: String)
 }
 
 // Presenter -> Router
@@ -42,6 +42,6 @@ protocol HomeSchedulePresenterToInteractorProtocol: class {
 // Interactor -> Presenter
 protocol HomeScheduleInteractorToPresenterProtocol: class {
     func saveScheduleSuccess()
-    func saveScheduleFailed()
+    func saveScheduleFailed(message: String)
     func deleteScheduleSuccess()
 }

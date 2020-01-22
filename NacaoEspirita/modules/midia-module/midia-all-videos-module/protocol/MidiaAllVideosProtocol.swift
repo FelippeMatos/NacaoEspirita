@@ -23,7 +23,7 @@ protocol MidiaAllVideosViewToPresenterProtocol: class {
 // Presenter -> View
 protocol MidiaAllVideosPresenterToViewProtocol: class {
     func showVideos(videosArray: [VideoModel])
-    func showError()
+    func showError(message: String)
 }
 
 // Presenter -> Router
@@ -41,6 +41,6 @@ protocol MidiaAllVideosPresenterToInteractorProtocol: class {
 // Interactor -> Presenter
 protocol MidiaAllVideosInteractorToPresenterProtocol: class {
     func videosFetchedSuccess(videoModelArray: [VideoModel])
-    func videosFetchFailed()
+    func videosFetchFailed(message: String)
 }
 

@@ -26,7 +26,7 @@ extension MidiaAllBooksPresenter: MidiaAllBooksInteractorToPresenterProtocol {
         view?.showBooks(booksArray: bookModelArray)
     }
     
-    func booksFetchFailed() {
-        view?.showError()
+    func booksFetchFailed(message: String) {
+        view?.showError(message: message)
     }
 }

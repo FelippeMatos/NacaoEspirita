@@ -20,6 +20,16 @@ class AddAnswerViewController: UIViewController {
     var pinQuestion: Bool = false
     var answers: [AnswerModel] = []
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+                     #selector(AddAnswerViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(named: "color-answer-background")
+        
+        return refreshControl
+    }()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerAnswerView: UIView!
     @IBOutlet weak var containerAnswerViewHeightConstraint: NSLayoutConstraint!
@@ -143,6 +153,12 @@ class AddAnswerViewController: UIViewController {
         cell?.numberOfLikesLabel.text = "\(self.answers[indexAnswer-1].like ?? 0) likes"
         cell?.setLikeButton(isTrue: self.answerLikeStatus[indexAnswer-1])
     }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+       
+        presenter?.startFetchingAnswers(questionId: questionId!)
+        refreshControl.endRefreshing()
+    }
 
 }
 
@@ -239,6 +255,7 @@ extension AddAnswerViewController: UITextViewDelegate {
 extension AddAnswerViewController: UITableViewDelegate, UITableViewDataSource {
 
     func setTableView() {
+        self.tableView.addSubview(self.refreshControl)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "AnswerCell", bundle: nil), forCellReuseIdentifier: "AnswerCell")

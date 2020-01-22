@@ -19,8 +19,12 @@ class QuestionsPresenter: QuestionsViewToPresenterProtocol {
         router?.pushToAddQuestionScreen(navigationController: navigationController)
     }
     
-    func startFetchingQuestions() {
-        interactor?.fetchQuestions()
+    func startFetchingQuestions(_ all: Bool) {
+        interactor?.fetchQuestions(all)
+    }
+    
+    func startFetchingSavedQuestions() {
+        interactor?.fetchSavedQuestions()
     }
     
     func goToAddAnswerScreen(question: QuestionModel, navigationController: UINavigationController, focus: Bool, likeStatus: Int) {
@@ -42,15 +46,15 @@ extension QuestionsPresenter: QuestionsInteractorToPresenterProtocol {
         view?.showQuestions(questionsArray: questionsModelArray, statusUserLikeArray: statusUserLikeArray, topAnswerArray: topAnswerArray, pinQuestionsArray: pinQuestionsArray)
     }
     
-    func questionsFetchFailed() {
-        view?.showError()
+    func questionsFetchFailed(message: String) {
+        view?.showError(message: message)
     }
     
-    func pinQuestionFailed() {
-        view?.showError()
+    func pinDeleteQuestionSuccess(message: String) {
+        view?.showSuccess()
     }
     
-    func pinQuestionSuccess() {
+    func pinSaveQuestionSuccess() {
         view?.showSuccess()
     }
     

@@ -26,7 +26,7 @@ class MidiaAllVideosInteractor: MidiaAllVideosPresenterToInteractorProtocol {
         db.collection("videos").order(by: "publishedAt", descending: true).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
-                self.presenter?.videosFetchFailed()
+                self.presenter?.videosFetchFailed(message: AppAlert.MESSAGE_VIDEOS_FETCH_FAILED)
             } else {
                 for document in querySnapshot!.documents {
                     videoArray.append(VideoModel(document: document)!)

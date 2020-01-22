@@ -17,6 +17,7 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
     var pinQuestions: [Bool] = []
     let searchController = UISearchController(searchResultsController: nil)
     var filteredQuestions: [QuestionModel] = []
+    var allQuestions = true
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchFooter: SearchFooter!
@@ -40,10 +41,20 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
         presenter?.showAddQuestionController(navigationController: view)
     }
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+                     #selector(QuestionsViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(named: "color-answer-background")
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter?.startFetchingQuestions()
+        presenter?.startFetchingQuestions(allQuestions)
         
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
@@ -65,6 +76,7 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
                                          self.handleKeyboard(notification: notification) }
         
         setTableView()
+//        setSegmentedControl()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +90,32 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         configureNavigationBar()
+    }
+    
+    func setSegmentedControl() {
+        let segmentedControl = MaterialSegmentedControl(frame: CGRect(x: 0.0, y: 40.0, width: 300.0, height: 90.0))
+
+        // Configure the view, note that you need to call updateViews in order to apply your cofiguration.
+        segmentedControl.textColor = AppColor.MAIN_BLUE
+        segmentedControl.backgroundColor = AppColor.ALMOST_WHITE
+        segmentedControl.selectorColor = .black
+        segmentedControl.selectorTextColor = .black
+        setSampleSegments(segmentedControl, 3.0)
+        segmentedControl.updateViews()
+
+//        self.view.addSubview(segmentedControl)
+//        self.searchController.addSubview(segmentedControl)
+        self.searchController.searchBar.addSubview(segmentedControl)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setSampleSegments(_ segmentedControl: MaterialSegmentedControl, _ cornerRadius: CGFloat) {
+        let teste = ["Todas", "Salvas", "Minhas"]
+        for i in 0..<3 {
+            // Button background needs to be clear, it will be set to clear in segmented control anyway.
+            let button = MaterialButton(text: teste[i], textColor: .gray, bgColor: .clear, cornerRadius: cornerRadius)
+            segmentedControl.segments.append(button)
+        }
     }
     
     fileprivate func configureNavigationBar() {
@@ -190,6 +228,12 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
             cell?.turnOffButtons()
         }
     }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+       
+        presenter?.startFetchingQuestions(allQuestions)
+        refreshControl.endRefreshing()
+    }
 }
 
 //MARK: Interaction between Presenter and View
@@ -204,9 +248,8 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
         loading.isHidden = true
     }
     
-    func showError() {
-        //TODO: Arrumar esse alerta / - retirar os textos fixos
-        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: "Problem Fetching Cards", preferredStyle: UIAlertController.Style.alert)
+    func showError(message: String) {
+        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -223,117 +266,143 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
 extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setTableView() {
+        self.tableView.addSubview(self.refreshControl)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "QuestionAnswerCell", bundle: nil), forCellReuseIdentifier: "QuestionAnswerCell")
+        self.tableView.register(UINib(nibName: "QuestionSegmentedCell", bundle: nil), forCellReuseIdentifier: "QuestionSegmentedCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             searchFooter.setIsFilteringToShow(filteredItemCount: filteredQuestions.count, of: questions.count)
-            return filteredQuestions.count
+            return filteredQuestions.count + 1
         }
         
         searchFooter.setNotFiltering()
-        return questions.count
+        return questions.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionAnswerCell", for: indexPath) as! QuestionAnswerTableViewCell
-        
-        let question: QuestionModel
-    
-        if isFiltering {
-            question = filteredQuestions[indexPath.row]
-        } else {
-            question = questions[indexPath.row]
-        }
-        
-        if self.userLike[indexPath.row] == 1 {
-            cell.setLikeButton()
-        } else if self.userLike[indexPath.row] == 2 {
-            cell.setDislikeButton()
-        } else {
-            cell.turnOffButtons()
-        }
-        
-        if self.pinQuestions[indexPath.row] {
-            cell.pinButton.setImage(UIImage(named: "icon-pin-on"), for: .normal)
-        } else {
-            cell.pinButton.setImage(UIImage(named: "icon-pin-off"), for: .normal)
-        }
-        
-        if topAnswer[indexPath.row].id == nil {
-            cell.answerViewHeightConstraint.constant = 0
-        } else {
-            cell.answerViewHeightConstraint.constant = 104
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionSegmentedCell", for: indexPath) as! QuestionSegmentedTableViewCell
             
-            cell.answerNameLabel.text = topAnswer[indexPath.row].name
-            cell.answerLabel.text = topAnswer[indexPath.row].answer
-        }
-        
-        cell.questionView.roundCorners(.allCorners, radius: 12)
-        
-        cell.nameLabel.text = question.name
-        cell.titleLabel.text = question.question
-        cell.descriptionLabel.text = question.category
-        cell.numberOfLikesLabel.text = "\(question.like ?? 0) likes"
-        
-        cell.answerTappedWithFocusAction = { (cell) in
-            self.answerThe(question: question, focus: true, likeStatus: self.userLike[indexPath.row])
-        }
-        
-        cell.answerTappedWithoutFocusAction = { (cell) in
-            self.answerThe(question: question, focus: false, likeStatus: self.userLike[indexPath.row])
-        }
-        
-        cell.buttonLikeTappedAction = { (cell) in
-            self.likeActionTapped(true, questionId: question.id!)
-            
-            var likeOrDislike : Int
-            var newValueForStatusLike : Int
-            switch self.userLike[indexPath.row] {
-            case 1:
-                likeOrDislike = -1
-                newValueForStatusLike = 0
-            case 2:
-                likeOrDislike = 2
-                newValueForStatusLike = 1
-            default:
-                likeOrDislike = 1
-                newValueForStatusLike = 1
+            cell.allTappedAction = { (cell) in
+                self.loading.isHidden = false
+                self.allQuestions = true
+                self.presenter?.startFetchingQuestions(self.allQuestions)
             }
-            self.updateQuestionLike(likeOrDislike: likeOrDislike, indexQuestion: indexPath.row, newValueForStatusLike: newValueForStatusLike)
-        }
-        
-        cell.buttonDislikeTappedAction = { (cell) in
-            self.likeActionTapped(false, questionId: question.id!)
             
-            var likeOrDislike : Int
-            var newValueForStatusLike : Int
-            switch self.userLike[indexPath.row] {
-            case 1:
-                likeOrDislike = -2
-                newValueForStatusLike = 2
-            case 2:
-                likeOrDislike = 1
-                newValueForStatusLike = 0
-            default:
-                likeOrDislike = -1
-                newValueForStatusLike = 2
+            cell.savedTappedAction = { (cell) in
+                self.loading.isHidden = false
+                self.presenter?.startFetchingSavedQuestions()
             }
-            self.updateQuestionLike(likeOrDislike: likeOrDislike, indexQuestion: indexPath.row, newValueForStatusLike: newValueForStatusLike)
-        }
-        
-        cell.pinSaveTappedAction = { (cell) in
-            self.pinButtonTapped(question.id!, toSave: true)
-        }
+            
+            cell.mineTappedAction = { (cell) in
+                self.loading.isHidden = false
+                self.allQuestions = false
+                self.presenter?.startFetchingQuestions(self.allQuestions)
+            }
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionAnswerCell", for: indexPath) as! QuestionAnswerTableViewCell
+                
+            let question: QuestionModel
+            let index = indexPath.row - 1
+            
+            if isFiltering {
+                question = filteredQuestions[index]
+            } else {
+                question = questions[index]
+            }
+            
+            if self.userLike[index] == 1 {
+                cell.setLikeButton()
+            } else if self.userLike[index] == 2 {
+                cell.setDislikeButton()
+            } else {
+                cell.turnOffButtons()
+            }
+            
+            if self.pinQuestions[index] {
+                cell.pinButton.setImage(UIImage(named: "icon-pin-on"), for: .normal)
+            } else {
+                cell.pinButton.setImage(UIImage(named: "icon-pin-off"), for: .normal)
+            }
+            
+            if topAnswer[index].id == nil {
+                cell.answerViewHeightConstraint.constant = 0
+            } else {
+                cell.answerViewHeightConstraint.constant = 104
+                
+                cell.answerNameLabel.text = topAnswer[index].name
+                cell.answerLabel.text = topAnswer[index].answer
+            }
+            
+            cell.questionView.roundCorners(.allCorners, radius: 12)
+            
+            cell.nameLabel.text = question.name
+            cell.titleLabel.text = question.question
+            cell.descriptionLabel.text = question.category
+            cell.numberOfLikesLabel.text = "\(question.like ?? 0) likes"
+            
+            cell.answerTappedWithFocusAction = { (cell) in
+                self.answerThe(question: question, focus: true, likeStatus: self.userLike[index])
+            }
+            
+            cell.answerTappedWithoutFocusAction = { (cell) in
+                self.answerThe(question: question, focus: false, likeStatus: self.userLike[index])
+            }
+            
+            cell.buttonLikeTappedAction = { (cell) in
+                self.likeActionTapped(true, questionId: question.id!)
+                
+                var likeOrDislike : Int
+                var newValueForStatusLike : Int
+                switch self.userLike[index] {
+                case 1:
+                    likeOrDislike = -1
+                    newValueForStatusLike = 0
+                case 2:
+                    likeOrDislike = 2
+                    newValueForStatusLike = 1
+                default:
+                    likeOrDislike = 1
+                    newValueForStatusLike = 1
+                }
+                self.updateQuestionLike(likeOrDislike: likeOrDislike, indexQuestion: index, newValueForStatusLike: newValueForStatusLike)
+            }
+            
+            cell.buttonDislikeTappedAction = { (cell) in
+                self.likeActionTapped(false, questionId: question.id!)
+                
+                var likeOrDislike : Int
+                var newValueForStatusLike : Int
+                switch self.userLike[index] {
+                case 1:
+                    likeOrDislike = -2
+                    newValueForStatusLike = 2
+                case 2:
+                    likeOrDislike = 1
+                    newValueForStatusLike = 0
+                default:
+                    likeOrDislike = -1
+                    newValueForStatusLike = 2
+                }
+                self.updateQuestionLike(likeOrDislike: likeOrDislike, indexQuestion: index, newValueForStatusLike: newValueForStatusLike)
+            }
+            
+            cell.pinSaveTappedAction = { (cell) in
+                self.pinButtonTapped(question.id!, toSave: true)
+            }
 
-        cell.pinDeleteTappedAction = { (cell) in
-            self.pinButtonTapped(question.id!, toSave: false)
+            cell.pinDeleteTappedAction = { (cell) in
+                self.pinButtonTapped(question.id!, toSave: false)
+            }
+            
+            return cell
         }
-        
-        return cell
     }
     
     func likeActionTapped(_ like: Bool, questionId: String) {

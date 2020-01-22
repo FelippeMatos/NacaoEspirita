@@ -34,8 +34,8 @@ extension HomeSchedulePresenter: HomeScheduleInteractorToPresenterProtocol {
         view?.showMessageOfSuccessAndDismiss()
     }
     
-    func saveScheduleFailed() {
-        view?.showError()
+    func saveScheduleFailed(message: String) {
+        view?.showError(message: message)
     }
     
     

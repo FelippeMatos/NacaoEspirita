@@ -26,7 +26,7 @@ class HomeScheduleInteractor: HomeSchedulePresenterToInteractorProtocol {
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
-                self.presenter?.saveScheduleFailed()
+                self.presenter?.saveScheduleFailed(message: AppAlert.MESSAGE_SAVE_SCHEDULE_FAILED)
             } else {
                 UserDefaults.standard.dateSchedulingOfEvangelhoNoLar = date
                 self.presenter?.saveScheduleSuccess()

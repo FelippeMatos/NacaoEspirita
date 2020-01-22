@@ -358,7 +358,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="127-Xb-1G6">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color-background"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfB-7m-4ev">
                                 <rect key="frame" x="0.0" y="516" width="320" height="52"/>
@@ -426,7 +426,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="color-background"/>
                         <constraints>
                             <constraint firstItem="127-Xb-1G6" firstAttribute="leading" secondItem="w3V-E1-Dsm" secondAttribute="leading" id="4JZ-ap-EtG"/>
                             <constraint firstItem="gfB-7m-4ev" firstAttribute="top" secondItem="127-Xb-1G6" secondAttribute="bottom" id="C6N-CU-Zdc"/>

@@ -30,7 +30,7 @@ extension MidiaAllVideosPresenter: MidiaAllVideosInteractorToPresenterProtocol {
         view?.showVideos(videosArray: videoModelArray)
     }
     
-    func videosFetchFailed() {
-        view?.showError()
+    func videosFetchFailed(message: String) {
+        view?.showError(message: message)
     }
 }

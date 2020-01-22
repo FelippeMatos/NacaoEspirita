@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionSegmentedCell" rowHeight="93" id="Mgq-8U-aeU" customClass="QuestionSegmentedTableViewCell" customModule="NacaoEspirita" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mgq-8U-aeU" id="IKt-fw-RUS">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HlG-3d-T1O">
+                        <rect key="frame" x="16" y="12" width="382" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Yfq-Ny-xUq"/>
+                        </constraints>
+                        <segments>
+                            <segment title="Todas"/>
+                            <segment title="Salvas"/>
+                            <segment title="Minhas"/>
+                        </segments>
+                        <color key="selectedSegmentTintColor" name="color-background-red"/>
+                        <connections>
+                            <action selector="indexChanged:" destination="Mgq-8U-aeU" eventType="valueChanged" id="7YB-Kw-1q2"/>
+                        </connections>
+                    </segmentedControl>
+                </subviews>
+                <color key="backgroundColor" name="color-background"/>
+                <constraints>
+                    <constraint firstItem="HlG-3d-T1O" firstAttribute="top" secondItem="IKt-fw-RUS" secondAttribute="top" constant="12" id="Dct-zD-ega"/>
+                    <constraint firstAttribute="trailing" secondItem="HlG-3d-T1O" secondAttribute="trailing" constant="16" id="P18-Jc-SiB"/>
+                    <constraint firstItem="HlG-3d-T1O" firstAttribute="leading" secondItem="IKt-fw-RUS" secondAttribute="leading" constant="16" id="bdW-A0-4hi"/>
+                    <constraint firstAttribute="bottom" secondItem="HlG-3d-T1O" secondAttribute="bottom" id="mIf-Zj-Tpl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="segmentedControl" destination="HlG-3d-T1O" id="2EJ-kO-wPR"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="128.90625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="color-background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color-background-red">
+            <color red="1" green="0.44699999690055847" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

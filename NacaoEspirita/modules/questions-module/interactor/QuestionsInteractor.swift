@@ -17,14 +17,12 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     var statusPinArrayList = [Bool]()
     var topAnswerArrayList = [AnswerModel]()
     let db = Firestore.firestore()
-    var ref: DocumentReference? = nil
-    
     
     var fetchLikeDone = false
     var fetchAnswerDone = false
     var fetchPinDone = false
     
-    func fetchQuestions() {
+    func fetchSavedQuestions() {
         
         guard let id = Auth.auth().currentUser?.uid, !id.isEmpty else {
             return
@@ -32,10 +30,62 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
         
         var questionArray = [QuestionModel]()
         
-        db.collection("questions").order(by: "like", descending: true).getDocuments() { (querySnapshot, err) in
+        let ref = db.collection("questions").order(by: "like", descending: true)
+        ref.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
-                self.presenter?.questionsFetchFailed()
+                self.presenter?.questionsFetchFailed(message: AppAlert.MESSAGE_QUESTIONS_FETCH_SAVED_FAILED)
+            } else {
+                for document in querySnapshot!.documents {
+                    questionArray.append(QuestionModel(document: document)!)
+                }
+                self.questionArrayList = questionArray
+                self.fetchOnlyPin(questions: self.questionArrayList, userId: id)
+            }
+        }
+    }
+    
+    func fetchOnlyPin(questions: [QuestionModel], userId: String) {
+        
+        var statusPinArray = [Bool](repeating: false, count: questions.count)
+        var count = [Int]()
+        for (index, question) in questions.enumerated() {
+            db.collection("questions").document(question.id!).collection("pin").document(userId).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    statusPinArray[index] = true
+                    count.append(1)
+                } else {
+                    self.questionArrayList.remove(at: index)
+                    statusPinArray.remove(at: index)
+                }
+                self.statusPinArrayList = statusPinArray
+                if count.count == self.questionArrayList.count {
+                    self.fetchUserLikes(questions: self.questionArrayList, userId: userId)
+                    self.fetchTopAnswer(questions: self.questionArrayList, userId: userId)
+                    self.fetchPinDone = true
+                    self.completeFetchOfQuestions()
+                }
+            }
+        }
+    }
+    
+    func fetchQuestions(_ all: Bool) {
+        
+        guard let id = Auth.auth().currentUser?.uid, !id.isEmpty else {
+            return
+        }
+        
+        var questionArray = [QuestionModel]()
+        
+        var ref = db.collection("questions").order(by: "like", descending: true)
+        if !all {
+            ref = db.collection("questions").whereField("userId", isEqualTo: id)
+        }
+        
+        ref.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
+                self.presenter?.questionsFetchFailed(message: AppAlert.MESSAGE_ALL_QUESTIONS_FETCH_FAILED)
             } else {
                 for document in querySnapshot!.documents {
                     questionArray.append(QuestionModel(document: document)!)
@@ -236,7 +286,7 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
                 if let err = err {
                      print("Error adding document: \(err)")
                 } else {
-                    self.presenter?.pinQuestionSuccess()
+                    self.presenter?.pinSaveQuestionSuccess()
                 }
             }
         } else {
@@ -244,7 +294,7 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
-                    self.presenter?.pinQuestionFailed()
+                    self.presenter?.pinDeleteQuestionSuccess(message: AppAlert.MESSAGE_PIN_QUESTION_DELETE_SUCCESS)
                 }
             }
         }

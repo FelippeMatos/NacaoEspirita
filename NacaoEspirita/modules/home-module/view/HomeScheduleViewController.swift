@@ -126,9 +126,9 @@ extension HomeScheduleViewController: HomeSchedulePresenterToViewProtocol {
         }, completion: nil)
     }
     
-    func showError() {
+    func showError(message: String) {
         //TODO: Arrumar esse alerta / - retirar os textos fixos
-        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: "Problem Save Schedule", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: AppAlert.ALERT_ERROR, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: AppAlert.ALERT_CONFIRM, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

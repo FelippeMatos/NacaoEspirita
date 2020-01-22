@@ -26,7 +26,7 @@ protocol MidiaViewToPresenterProtocol: class {
 protocol MidiaPresenterToViewProtocol: class {
     func showBooks(booksArray: [BookModel])
     func showVideos(videosArray: [VideoModel])
-    func showError()
+    func showError(message: String)
 }
 
 // Presenter -> Router
@@ -46,8 +46,8 @@ protocol MidiaPresenterToInteractorProtocol: class {
 // Interactor -> Presenter
 protocol MidiaInteractorToPresenterProtocol: class {
     func booksFetchedSuccess(bookModelArray: [BookModel])
-    func booksFetchFailed()
+    func booksFetchFailed(message: String)
     func videosFetchedSuccess(videoModelArray: [VideoModel])
-    func videosFetchFailed()
+    func videosFetchFailed(message: String)
 }
 

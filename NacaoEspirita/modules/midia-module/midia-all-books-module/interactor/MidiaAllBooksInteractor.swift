@@ -26,7 +26,7 @@ class MidiaAllBooksInteractor: MidiaAllBooksPresenterToInteractorProtocol {
         db.collection("books").order(by: "name", descending: false).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
-                self.presenter?.booksFetchFailed()
+                self.presenter?.booksFetchFailed(message: AppAlert.MESSAGE_BOOKS_FETCH_FAILED)
             } else {
                 for document in querySnapshot!.documents {
                     bookArray.append(BookModel(document: document)!)

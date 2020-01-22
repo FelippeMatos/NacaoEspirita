@@ -17,7 +17,8 @@ protocol QuestionsViewToPresenterProtocol: class {
     var router: QuestionsPresenterToRouterProtocol? {get set}
     
     func showAddQuestionController(navigationController: UINavigationController)
-    func startFetchingQuestions()
+    func startFetchingQuestions(_ all: Bool)
+    func startFetchingSavedQuestions()
     func goToAddAnswerScreen(question: QuestionModel, navigationController: UINavigationController, focus: Bool, likeStatus: Int)
     func sendLikeAction(_ like: Bool, questionId: String)
     func sendPinAction(_ questionId: String, toSave: Bool)
@@ -26,7 +27,7 @@ protocol QuestionsViewToPresenterProtocol: class {
 // Presenter -> View
 protocol QuestionsPresenterToViewProtocol: class {
     func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool])
-    func showError()
+    func showError(message: String)
     func showSuccess()
     func updateQuestionLike(likeOrDislike: Int, indexQuestion: Int, newValueForStatusLike: Int)
 }
@@ -40,7 +41,8 @@ protocol QuestionsPresenterToRouterProtocol: class {
 // Presenter -> Interactor
 protocol QuestionsPresenterToInteractorProtocol: class {
     var presenter: QuestionsInteractorToPresenterProtocol? {get set}
-    func fetchQuestions()
+    func fetchQuestions(_ all: Bool)
+    func fetchSavedQuestions()
     func checkStatusOfLike(_ like: Bool, questionId: String)
     func updatePinQuestion(_ questionId: String, toSave: Bool)
 }
@@ -48,7 +50,7 @@ protocol QuestionsPresenterToInteractorProtocol: class {
 // Interactor -> Presenter
 protocol QuestionsInteractorToPresenterProtocol: class {
     func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool])
-    func questionsFetchFailed()
-    func pinQuestionSuccess()
-    func pinQuestionFailed()
+    func questionsFetchFailed(message: String)
+    func pinSaveQuestionSuccess()
+    func pinDeleteQuestionSuccess(message: String)
 }

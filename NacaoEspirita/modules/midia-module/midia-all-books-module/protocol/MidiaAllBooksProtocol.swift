@@ -22,7 +22,7 @@ protocol MidiaAllBooksViewToPresenterProtocol: class {
 // Presenter -> View
 protocol MidiaAllBooksPresenterToViewProtocol: class {
     func showBooks(booksArray: [BookModel])
-    func showError()
+    func showError(message: String)
 }
 
 // Presenter -> Router
@@ -40,6 +40,6 @@ protocol MidiaAllBooksPresenterToInteractorProtocol: class {
 // Interactor -> Presenter
 protocol MidiaAllBooksInteractorToPresenterProtocol: class {
     func booksFetchedSuccess(bookModelArray: [BookModel])
-    func booksFetchFailed()
+    func booksFetchFailed(message: String)
 }
 

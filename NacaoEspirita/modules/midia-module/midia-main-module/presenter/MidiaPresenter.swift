@@ -38,15 +38,15 @@ extension MidiaPresenter: MidiaInteractorToPresenterProtocol {
         view?.showBooks(booksArray: bookModelArray)
     }
     
-    func booksFetchFailed() {
-        view?.showError()
+    func booksFetchFailed(message: String) {
+        view?.showError(message: message)
     }
     
     func videosFetchedSuccess(videoModelArray: [VideoModel]) {
         view?.showVideos(videosArray: videoModelArray)
     }
     
-    func videosFetchFailed() {
-        view?.showError()
+    func videosFetchFailed(message: String) {
+        view?.showError(message: message)
     }
 }

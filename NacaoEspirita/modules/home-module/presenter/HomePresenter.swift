@@ -69,8 +69,8 @@ extension HomePresenter: HomeInteractorToPresenterProtocol {
         view?.showMessageOfTheDay()
     }
     
-    func messageOfTheDayFetchFailed() {
-        view?.showError()
+    func messageOfTheDayFetchFailed(message: String) {
+        view?.showError(message: message)
     }
     
 }

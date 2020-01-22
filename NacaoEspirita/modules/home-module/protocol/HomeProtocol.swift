@@ -26,7 +26,7 @@ protocol HomeViewToPresenterProtocol: class {
 protocol HomePresenterToViewProtocol: class {
     func showMessageOfTheDay()
     func showMessageOfTheEvangelho()
-    func showError()
+    func showError(message: String)
 }
 
 // Presenter -> Router
@@ -46,5 +46,5 @@ protocol HomePresenterToInteractorProtocol: class {
 protocol HomeInteractorToPresenterProtocol: class {
     func messageOfTheDayFetchedSuccess()
     func messageOfTheEvangelhoFetchedSuccess()
-    func messageOfTheDayFetchFailed()
+    func messageOfTheDayFetchFailed(message: String)
 }

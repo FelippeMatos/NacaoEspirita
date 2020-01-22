@@ -33,7 +33,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         db.collection("books").order(by: "name", descending: false).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchBooks : ERROR = \(err)")
-                self.presenter?.booksFetchFailed()
+                self.presenter?.booksFetchFailed(message: AppAlert.MESSAGE_BOOKS_FETCH_FAILED)
             } else {
                 for document in querySnapshot!.documents {
                     bookArray.append(BookModel(document: document)!)
@@ -122,7 +122,7 @@ class MidiaInteractor: MidiaPresenterToInteractorProtocol {
         db.collection("videos").order(by: "publishedAt", descending: true).limit(to: 5).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 debugPrint("======>> DEBUG INFORMATION: MidiaInteractor/fetchVideosInFirebase : ERROR = \(err)")
-                self.presenter?.videosFetchFailed()
+                self.presenter?.videosFetchFailed(message: AppAlert.MESSAGE_VIDEOS_FETCH_FAILED)
             } else {
                 for document in querySnapshot!.documents {
                     videoArray.append(VideoModel(document: document)!)
