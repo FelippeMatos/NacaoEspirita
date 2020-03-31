@@ -18,6 +18,8 @@ protocol QuestionsViewToPresenterProtocol: class {
     
     func showAddQuestionController(navigationController: UINavigationController)
     func startFetchingQuestions(_ all: Bool)
+    func getNumberOfQuestions() -> Int
+    func startFetchingNumberOfQuestionsInFB()
     func startFetchingSavedQuestions()
     func goToAddAnswerScreen(question: QuestionModel, navigationController: UINavigationController, focus: Bool, likeStatus: Int)
     func sendLikeAction(_ like: Bool, questionId: String)
@@ -26,7 +28,7 @@ protocol QuestionsViewToPresenterProtocol: class {
 
 // Presenter -> View
 protocol QuestionsPresenterToViewProtocol: class {
-    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool])
+    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool], newIndexPathsToReload: [IndexPath]?)
     func showError(message: String)
     func showSuccess()
     func updateQuestionLike(likeOrDislike: Int, indexQuestion: Int, newValueForStatusLike: Int)
@@ -43,13 +45,14 @@ protocol QuestionsPresenterToInteractorProtocol: class {
     var presenter: QuestionsInteractorToPresenterProtocol? {get set}
     func fetchQuestions(_ all: Bool)
     func fetchSavedQuestions()
+    func fetchNumberOfQuestionsInFB()
     func checkStatusOfLike(_ like: Bool, questionId: String)
     func updatePinQuestion(_ questionId: String, toSave: Bool)
 }
 
 // Interactor -> Presenter
 protocol QuestionsInteractorToPresenterProtocol: class {
-    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool])
+    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool], indexPathsToReload: [IndexPath]?)
     func questionsFetchFailed(message: String)
     func pinSaveQuestionSuccess()
     func pinDeleteQuestionSuccess(message: String)

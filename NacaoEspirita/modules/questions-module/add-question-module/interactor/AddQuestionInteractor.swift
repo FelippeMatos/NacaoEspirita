@@ -11,6 +11,8 @@ import Firebase
 
 class AddQuestionInteractor: AddQuestionPresenterToInteractorProtocol {
     var presenter: AddQuestionInteractorToPresenterProtocol?
+    var ref: DocumentReference? = nil
+    let db = Firestore.firestore()
     
     func validate(question: String) {
         
@@ -28,9 +30,6 @@ class AddQuestionInteractor: AddQuestionPresenterToInteractorProtocol {
     }
     
     func saveQuestionInFirebase(_ question: String) {
-        
-        var ref: DocumentReference? = nil
-        let db = Firestore.firestore()
         
         guard let name = Auth.auth().currentUser?.displayName, !name.isEmpty else {
             return
@@ -54,8 +53,21 @@ class AddQuestionInteractor: AddQuestionPresenterToInteractorProtocol {
                 print("Error adding document: \(err)")
             } else {
                 //TODO: MOSTRAR POPUP
-                print("Document added with ID: \(ref!.documentID)")
+                print("Document added with ID: \(self.ref!.documentID)")
+                self.updateNumberOfQuestionsInFB()
                 self.presenter?.saveQuestionDone()
+            }
+        }
+    }
+    
+    func updateNumberOfQuestionsInFB() {
+        db.collection("numberOfQuestions").document("01").updateData([
+            "numberOfQuestions": FieldValue.increment(Int64(1))
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Success adding document!")
             }
         }
     }

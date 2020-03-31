@@ -54,7 +54,7 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter?.startFetchingQuestions(allQuestions)
+        presenter?.startFetchingNumberOfQuestionsInFB()
         
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
@@ -76,7 +76,6 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
                                          self.handleKeyboard(notification: notification) }
         
         setTableView()
-//        setSegmentedControl()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,32 +89,6 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         configureNavigationBar()
-    }
-    
-    func setSegmentedControl() {
-        let segmentedControl = MaterialSegmentedControl(frame: CGRect(x: 0.0, y: 40.0, width: 300.0, height: 90.0))
-
-        // Configure the view, note that you need to call updateViews in order to apply your cofiguration.
-        segmentedControl.textColor = AppColor.MAIN_BLUE
-        segmentedControl.backgroundColor = AppColor.ALMOST_WHITE
-        segmentedControl.selectorColor = .black
-        segmentedControl.selectorTextColor = .black
-        setSampleSegments(segmentedControl, 3.0)
-        segmentedControl.updateViews()
-
-//        self.view.addSubview(segmentedControl)
-//        self.searchController.addSubview(segmentedControl)
-        self.searchController.searchBar.addSubview(segmentedControl)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    private func setSampleSegments(_ segmentedControl: MaterialSegmentedControl, _ cornerRadius: CGFloat) {
-        let teste = ["Todas", "Salvas", "Minhas"]
-        for i in 0..<3 {
-            // Button background needs to be clear, it will be set to clear in segmented control anyway.
-            let button = MaterialButton(text: teste[i], textColor: .gray, bgColor: .clear, cornerRadius: cornerRadius)
-            segmentedControl.segments.append(button)
-        }
     }
     
     fileprivate func configureNavigationBar() {
@@ -239,13 +212,21 @@ class QuestionsViewController: LoginBaseViewController, UISearchBarDelegate {
 //MARK: Interaction between Presenter and View
 extension QuestionsViewController: QuestionsPresenterToViewProtocol {
     
-    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool]) {
+    func showQuestions(questionsArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool], newIndexPathsToReload: [IndexPath]?) {
         self.questions = questionsArray
         self.userLike = statusUserLikeArray
         self.topAnswer = topAnswerArray
         self.pinQuestions = pinQuestionsArray
+        
+        guard let newIndexPathsToReload = newIndexPathsToReload else {
+          loading.isHidden = true
+          tableView.reloadData()
+          return
+        }
         tableView.reloadData()
-        loading.isHidden = true
+        // 2
+//        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+//        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
     }
     
     func showError(message: String) {
@@ -263,9 +244,10 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
 }
 
 //MARK: Setup tableview
-extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
+extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
     
     func setTableView() {
+        self.tableView.prefetchDataSource = self
         self.tableView.addSubview(self.refreshControl)
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -280,7 +262,8 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         searchFooter.setNotFiltering()
-        return questions.count + 1
+        let number = (presenter?.getNumberOfQuestions())! + 1
+        return number
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -405,6 +388,13 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+            print("$$$$$$ ACIONOU O PREFETCH")
+            presenter?.startFetchingQuestions(allQuestions)
+        }
+    }
+    
     func likeActionTapped(_ like: Bool, questionId: String) {
         presenter?.sendLikeAction(like, questionId: questionId)
     }
@@ -426,4 +416,16 @@ extension QuestionsViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
     }
+}
+
+private extension QuestionsViewController {
+  func isLoadingCell(for indexPath: IndexPath) -> Bool {
+    return indexPath.row >= questions.count
+  }
+  
+  func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+    let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+    let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+    return Array(indexPathsIntersection)
+  }
 }

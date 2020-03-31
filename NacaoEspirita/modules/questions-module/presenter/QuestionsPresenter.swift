@@ -14,9 +14,19 @@ class QuestionsPresenter: QuestionsViewToPresenterProtocol {
     var view: QuestionsPresenterToViewProtocol?
     var interactor: QuestionsPresenterToInteractorProtocol?
     var router: QuestionsPresenterToRouterProtocol?
+    
+    var totalQuestions = 0
 
     func showAddQuestionController(navigationController: UINavigationController) {
         router?.pushToAddQuestionScreen(navigationController: navigationController)
+    }
+    
+    func startFetchingNumberOfQuestionsInFB() {
+        interactor?.fetchNumberOfQuestionsInFB()
+    }
+    
+    func getNumberOfQuestions() -> Int {
+        return totalQuestions
     }
     
     func startFetchingQuestions(_ all: Bool) {
@@ -42,8 +52,10 @@ class QuestionsPresenter: QuestionsViewToPresenterProtocol {
 
 extension QuestionsPresenter: QuestionsInteractorToPresenterProtocol {
     
-    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool]) {
-        view?.showQuestions(questionsArray: questionsModelArray, statusUserLikeArray: statusUserLikeArray, topAnswerArray: topAnswerArray, pinQuestionsArray: pinQuestionsArray)
+    func questionsFetchedSuccess(questionsModelArray: [QuestionModel], statusUserLikeArray: [Int], topAnswerArray: [AnswerModel], pinQuestionsArray: [Bool], indexPathsToReload: [IndexPath]?) {
+        
+        self.totalQuestions = questionsModelArray.count
+        view?.showQuestions(questionsArray: questionsModelArray, statusUserLikeArray: statusUserLikeArray, topAnswerArray: topAnswerArray, pinQuestionsArray: pinQuestionsArray, newIndexPathsToReload: indexPathsToReload)
     }
     
     func questionsFetchFailed(message: String) {

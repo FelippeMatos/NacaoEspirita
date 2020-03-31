@@ -17,10 +17,32 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     var statusPinArrayList = [Bool]()
     var topAnswerArrayList = [AnswerModel]()
     let db = Firestore.firestore()
+    var lastDocument: QueryDocumentSnapshot?
     
     var fetchLikeDone = false
     var fetchAnswerDone = false
     var fetchPinDone = false
+    
+    var indexPathsToReload: [IndexPath]?
+    private var isFetchInProgress = false
+    var numberOfAllQuestions = 0
+    
+    func fetchNumberOfQuestionsInFB() {
+        db.collection("numberOfQuestions").document("01").getDocument { (querySnapshot, err) in
+            if let err = err {
+                print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
+                print("$$$$$$$$$$$$ DEU MERDA")
+            } else {
+                if querySnapshot!.exists {
+                    let data = querySnapshot!.data()
+                    self.numberOfAllQuestions = data!["numberOfQuestions"] as! Int
+                    self.fetchQuestions(true)
+                } else {
+                    print("$$$$$$$$$$$$ DEU MERDA")
+                }
+            }
+        }
+    }
     
     func fetchSavedQuestions() {
         
@@ -71,31 +93,59 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     
     func fetchQuestions(_ all: Bool) {
         
+        guard !isFetchInProgress else {
+          return
+        }
+        isFetchInProgress = true
+        
         guard let id = Auth.auth().currentUser?.uid, !id.isEmpty else {
             return
         }
         
         var questionArray = [QuestionModel]()
         
-        var ref = db.collection("questions").order(by: "like", descending: true)
+        print("$$$$ VALOR ARRAY QUESTION: \(self.questionArrayList.count)")
+        guard self.numberOfAllQuestions > self.questionArrayList.count else {
+            return
+        }
+        
+        var ref = db.collection("questions").order(by: "like", descending: true).limit(to: 5)
+        if lastDocument != nil {
+            ref = db.collection("questions").order(by: "like", descending: true).start(afterDocument: lastDocument!).limit(to: 5)
+        }
+        
         if !all {
-            ref = db.collection("questions").whereField("userId", isEqualTo: id)
+            ref = db.collection("questions").whereField("userId", isEqualTo: id).limit(to: 5)
         }
         
         ref.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
+                self.isFetchInProgress = false
                 self.presenter?.questionsFetchFailed(message: AppAlert.MESSAGE_ALL_QUESTIONS_FETCH_FAILED)
             } else {
+                self.isFetchInProgress = false
+                if self.lastDocument != nil {
+                    self.indexPathsToReload = self.calculateIndexPathsToReload(from: questionArray)
+                }
+                self.lastDocument = querySnapshot!.documents.last
+                
                 for document in querySnapshot!.documents {
                     questionArray.append(QuestionModel(document: document)!)
                 }
-                self.questionArrayList = questionArray
+                
+                self.questionArrayList.append(contentsOf: questionArray)
                 self.fetchUserLikes(questions: self.questionArrayList, userId: id)
                 self.fetchTopAnswer(questions: self.questionArrayList, userId: id)
                 self.fetchPin(questions: self.questionArrayList, userId: id)
             }
         }
+    }
+    
+    private func calculateIndexPathsToReload(from newQuestions: [QuestionModel]) -> [IndexPath] {
+      let startIndex = self.questionArrayList.count - newQuestions.count
+      let endIndex = startIndex + newQuestions.count
+      return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
     
     func fetchUserLikes(questions: [QuestionModel], userId: String) {
@@ -172,7 +222,8 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     func completeFetchOfQuestions() {
 
         if fetchLikeDone && fetchAnswerDone && fetchPinDone {
-            self.presenter?.questionsFetchedSuccess(questionsModelArray: self.questionArrayList, statusUserLikeArray: self.statusUserLikeArrayList, topAnswerArray: self.topAnswerArrayList, pinQuestionsArray: self.statusPinArrayList)
+            
+            self.presenter?.questionsFetchedSuccess(questionsModelArray: self.questionArrayList, statusUserLikeArray: self.statusUserLikeArrayList, topAnswerArray: self.topAnswerArrayList, pinQuestionsArray: self.statusPinArrayList, indexPathsToReload: indexPathsToReload)
         }
     }
     

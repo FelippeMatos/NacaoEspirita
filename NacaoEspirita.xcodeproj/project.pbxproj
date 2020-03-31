@@ -170,12 +170,10 @@
 		5EA3761123599BF70026E8E5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA3761023599BF70026E8E5 /* Home.storyboard */; };
 		5EBD4CD3236AEC7000D494B7 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBD4CD2236AEC7000D494B7 /* AnswerModel.swift */; };
 		5EBD4CD5236C235B00D494B7 /* UIView+DashedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBD4CD4236C235B00D494B7 /* UIView+DashedBorder.swift */; };
-		C75382F4ABDFCBC020F46621 /* Pods_NacaoEspirita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A366599BFD229274175F5E8 /* Pods_NacaoEspirita.framework */; };
+		CAD294B1641111D7FD5EADA6 /* Pods_NacaoEspirita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09D8C0F6354ABED79211399 /* Pods_NacaoEspirita.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E65475BD07A7379423DE6D4 /* Pods-NacaoEspirita.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NacaoEspirita.release.xcconfig"; path = "Target Support Files/Pods-NacaoEspirita/Pods-NacaoEspirita.release.xcconfig"; sourceTree = "<group>"; };
-		4A366599BFD229274175F5E8 /* Pods_NacaoEspirita.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NacaoEspirita.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E10F715236EE982000B2DFE /* QuestionAnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionAnswerCell.xib; sourceTree = "<group>"; };
 		5E10F717236EEBE6000B2DFE /* QuestionAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerTableViewCell.swift; sourceTree = "<group>"; };
 		5E10F722237408BA000B2DFE /* MidiaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidiaViewController.swift; sourceTree = "<group>"; };
@@ -341,7 +339,9 @@
 		5EA3761023599BF70026E8E5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5EBD4CD2236AEC7000D494B7 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		5EBD4CD4236C235B00D494B7 /* UIView+DashedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+DashedBorder.swift"; sourceTree = "<group>"; };
-		8753EB075F2E701CCD296439 /* Pods-NacaoEspirita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NacaoEspirita.debug.xcconfig"; path = "Target Support Files/Pods-NacaoEspirita/Pods-NacaoEspirita.debug.xcconfig"; sourceTree = "<group>"; };
+		6398C15C80932BC8348B6A3E /* Pods-NacaoEspirita.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NacaoEspirita.release.xcconfig"; path = "Target Support Files/Pods-NacaoEspirita/Pods-NacaoEspirita.release.xcconfig"; sourceTree = "<group>"; };
+		A09D8C0F6354ABED79211399 /* Pods_NacaoEspirita.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NacaoEspirita.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF23B85E4438FDBA03749BD3 /* Pods-NacaoEspirita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NacaoEspirita.debug.xcconfig"; path = "Target Support Files/Pods-NacaoEspirita/Pods-NacaoEspirita.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,7 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C75382F4ABDFCBC020F46621 /* Pods_NacaoEspirita.framework in Frameworks */,
+				CAD294B1641111D7FD5EADA6 /* Pods_NacaoEspirita.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,10 +359,18 @@
 		323867798A967ACEE8D22240 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8753EB075F2E701CCD296439 /* Pods-NacaoEspirita.debug.xcconfig */,
-				1E65475BD07A7379423DE6D4 /* Pods-NacaoEspirita.release.xcconfig */,
+				BF23B85E4438FDBA03749BD3 /* Pods-NacaoEspirita.debug.xcconfig */,
+				6398C15C80932BC8348B6A3E /* Pods-NacaoEspirita.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5CB8A5656DBCB84D39C09E42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A09D8C0F6354ABED79211399 /* Pods_NacaoEspirita.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5E10F71923740853000B2DFE /* login-module */ = {
@@ -1153,7 +1161,7 @@
 				5EA375852354B6080026E8E5 /* NacaoEspirita */,
 				5EA375842354B6080026E8E5 /* Products */,
 				323867798A967ACEE8D22240 /* Pods */,
-				7BD05F55A03C6463CAE88A13 /* Frameworks */,
+				5CB8A5656DBCB84D39C09E42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1578,14 +1586,6 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		7BD05F55A03C6463CAE88A13 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4A366599BFD229274175F5E8 /* Pods_NacaoEspirita.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1593,11 +1593,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EA375952354B6110026E8E5 /* Build configuration list for PBXNativeTarget "NacaoEspirita" */;
 			buildPhases = (
-				F9A8402100366710BECCE585 /* [CP] Check Pods Manifest.lock */,
+				B44FFAEF2B656FC73DDD3A59 /* [CP] Check Pods Manifest.lock */,
 				5EA3757F2354B6080026E8E5 /* Sources */,
 				5EA375802354B6080026E8E5 /* Frameworks */,
 				5EA375812354B6080026E8E5 /* Resources */,
-				60A45EDCAEF29B27418ED023 /* [CP] Embed Pods Frameworks */,
+				A6D90B6EF742A8DFC7692211 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1682,7 +1682,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		60A45EDCAEF29B27418ED023 /* [CP] Embed Pods Frameworks */ = {
+		A6D90B6EF742A8DFC7692211 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1699,7 +1699,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NacaoEspirita/Pods-NacaoEspirita-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F9A8402100366710BECCE585 /* [CP] Check Pods Manifest.lock */ = {
+		B44FFAEF2B656FC73DDD3A59 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2006,7 +2006,7 @@
 		};
 		5EA375962354B6110026E8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8753EB075F2E701CCD296439 /* Pods-NacaoEspirita.debug.xcconfig */;
+			baseConfigurationReference = BF23B85E4438FDBA03749BD3 /* Pods-NacaoEspirita.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -2026,7 +2026,7 @@
 		};
 		5EA375972354B6110026E8E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E65475BD07A7379423DE6D4 /* Pods-NacaoEspirita.release.xcconfig */;
+			baseConfigurationReference = 6398C15C80932BC8348B6A3E /* Pods-NacaoEspirita.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
