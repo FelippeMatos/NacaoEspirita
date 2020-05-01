@@ -217,9 +217,10 @@ extension QuestionsViewController: QuestionsPresenterToViewProtocol {
         self.userLike = statusUserLikeArray
         self.topAnswer = topAnswerArray
         self.pinQuestions = pinQuestionsArray
-        
-        guard let newIndexPathsToReload = newIndexPathsToReload else {
-          loading.isHidden = true
+
+        loading.isHidden = true
+        guard newIndexPathsToReload != nil else {
+
           tableView.reloadData()
           return
         }

@@ -46,21 +46,37 @@ class QuestionsInteractor: QuestionsPresenterToInteractorProtocol {
     
     func fetchSavedQuestions() {
         
+        guard !isFetchInProgress else {
+          return
+        }
+        isFetchInProgress = true
+        
         guard let id = Auth.auth().currentUser?.uid, !id.isEmpty else {
             return
         }
         
         var questionArray = [QuestionModel]()
         
-        let ref = db.collection("questions").order(by: "like", descending: true)
+        print("$$$$ VALOR ARRAY QUESTION: \(self.questionArrayList.count)")
+        guard self.numberOfAllQuestions > self.questionArrayList.count else {
+            return
+        }
+        
+        var ref = db.collection("questions").order(by: "like", descending: true).limit(to: 5)
+        if lastDocument != nil {
+            ref = db.collection("questions").order(by: "like", descending: true).start(afterDocument: lastDocument!).limit(to: 5)
+        }
+        
         ref.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("======>> DEBUG INFORMATION: QuestionsInteractor/fetchQuestions : ERROR = \(err)")
+                self.isFetchInProgress = false
                 self.presenter?.questionsFetchFailed(message: AppAlert.MESSAGE_QUESTIONS_FETCH_SAVED_FAILED)
             } else {
                 for document in querySnapshot!.documents {
                     questionArray.append(QuestionModel(document: document)!)
                 }
+                self.isFetchInProgress = false
                 self.questionArrayList = questionArray
                 self.fetchOnlyPin(questions: self.questionArrayList, userId: id)
             }
